@@ -194,10 +194,10 @@ $(() => {
 function UpdateStats(teamArray, indexNum, p, color)
 {
 
-    var q = (color == "blue" ? ".blueTeam " : ".orangeTeam ") + p;
+    var q = (color === "blue" ? ".blueTeam " : ".orangeTeam ") + p;
 
     
-    if(teamArray[indexNum] != undefined)
+    if(teamArray[indexNum] !== undefined)
     {
         //Boost
         $(q + " .name").text(teamArray[indexNum]['name']);
@@ -212,6 +212,9 @@ function UpdateStats(teamArray, indexNum, p, color)
 
         //Car Bumps
         $(q + " .carBumps").text(teamArray[indexNum]['cartouches']);
+        
+        // Demos
+        $(q + " .numDemos").text(teamArray[indexNum]['demos']);
     
     }
     else
@@ -223,7 +226,7 @@ function UpdateStats(teamArray, indexNum, p, color)
 function UpdateZoneBar(lTime,rTime)
 {
     //Update Bar
-    var val = 100*lTime/(lTime+rTime)
+    const val = 100 * lTime / (lTime + rTime)
     $(".t-in-zone .fill-from-left").css({"width":val+"%"});
     //Update percentages
     $(".leftpressure").text(Math.round(100*lTime/(lTime+rTime))+"%");

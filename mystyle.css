@@ -95,6 +95,7 @@ body
     flex: 1;
     flex-direction: row;
     font-size: 16px;
+    justify-content: space-between;
 }
 
 .name
@@ -104,6 +105,14 @@ body
     opacity: 1;
     font-size: 26px;
     
+}
+
+.demos {
+    float: right;
+    color: white;
+    font-size: 1.2em;
+    margin-top: 4px;
+    margin-right: 8px;
 }
 
 .boost 
