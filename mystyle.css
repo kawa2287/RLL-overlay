@@ -40,6 +40,58 @@ i {
     visibility: hidden;
 }
 
+.leftTeam
+{
+    width : 480px;
+    height : 70px;
+    color: white;
+    font-size: 36px;
+    text-transform: uppercase;
+    text-shadow:2px 2px #000924;
+    top: 12px;
+    left: 280px;
+    position: absolute;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.rightTeam
+{
+    width : 480px;
+    height : 70px;
+    color: white;
+    font-size: 36px;
+    text-transform: uppercase;
+    text-shadow:2px 2px #000924;
+    top: 12px;
+    left: 1167px;
+    position: absolute;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.teamName
+{
+    display: flex;
+    width: 350px;
+    align-items: center;
+    justify-content: center;
+}
+.logo
+{
+    display: flex;
+}
+
+.logo img
+{
+    max-width: 130px;
+    max-height: 70px;
+    object-fit: scale-down;
+
+}
+
 .blueTeam
 {
     position:absolute;

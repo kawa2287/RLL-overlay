@@ -1,23 +1,5 @@
-const PLAYER_TEAM_MAP = {
-    "kawa": "Crabs",
-    "JR": "Crabs",
-    "dethorne": "LongBows",
-    "elffaW": "LongBows",
-    "Andy Mac": "Queens",
-    "Twerp": "LongBows",
-    "mattaux": "Samurai",
-    "kawa2796": "Samurai",
-    "pnkrockjock26": "Queens",
-    "Hootenannies": "Pigeons",
-    "ofthemoon16": "Pigeons",
-    "AwesomeX": "Knights",
-    "GolfJBC89": "Samurai",
-    "JMyrv": "Knights",
-    "Elissa": "Crabs",
-    "Kurtzy P00": "Knights",
-    "Snakes on a Microplane": "Queens",
-    "Evergreen6258": "Pigeons"
-};
+
+
 
 const WsSubscribers = {
     __subscribers: {},
@@ -148,10 +130,10 @@ $(() => {
         //Check if not replay
         
         //store team info
-        var blueTeam = [];
-        var orangeTeam = [];
+        let blueTeam = [];
+        let orangeTeam = [];
 
-        var players = d['players'];
+        let players = d['players'];
 
         for (var key of Object.keys(players)) {
             if(players[key].team === 0)
@@ -168,9 +150,9 @@ $(() => {
         if(d['game']['ballSpeed'] !== 0 && d['game']['isReplay'] === false)
         {
             //Update team time in zone stats
-            var curTimeL = parseFloat($(".scorebug .team.left .score").text());
-            var curTimeR = parseFloat($(".scorebug .team.right .score").text());
-            var percentageFromLeft = 50;
+            let curTimeL = parseFloat($(".scorebug .team.left .score").text());
+            let curTimeR = parseFloat($(".scorebug .team.right .score").text());
+            let percentageFromLeft = 50;
 
             if(d['game']['ballY'] > 0)
             {
@@ -193,6 +175,16 @@ $(() => {
             UpdateStats(orangeTeam, 0, ".p1","orange");
             UpdateStats(orangeTeam, 1, ".p2","orange");
             UpdateStats(orangeTeam, 2, ".p3","orange");
+
+
+            //Team and logo test
+            GetTeam(blueTeam)
+            
+            $(".leftTeam .teamName").text(PLAYER_TEAM_MAP["JR"]);
+            $(".rightTeam .teamName").text(PLAYER_TEAM_MAP["JR"]);
+            $(".leftTeam .logo img").attr("src","assets/knights_banner.png");
+            $(".rightTeam .logo img").attr("src","assets/knights_banner.png");
+
 
         }
      
@@ -256,7 +248,7 @@ function UpdateStats(teamArray, indexNum, p, color)
 function UpdateZoneBar(lTime,rTime)
 {
     //Update Bar
-    const val = 100 * lTime / (lTime + rTime)
+    let val = 100 * lTime / (lTime + rTime)
     $(".t-in-zone .fill-from-left").css({"width":val+"%"});
     //Update percentages
     $(".leftpressure").text(Math.round(100*lTime/(lTime+rTime))+"%");
@@ -269,6 +261,14 @@ function progress(percent, $element) {
 
 }
 
+function GetTeam(team)
+{
+    let teams = {};
+    for(var i = 0; i < team.length; i++)
+    {
+        console.log(team[i]['team']);
+    }
+}
 
 
 
