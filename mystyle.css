@@ -1,8 +1,8 @@
-.body
+body
 {
     width: 1920px;
     height: 1080px;
-    font-family:  Oswald,Roboto,RobotoDraft,sans-serif ;
+    font-family: Oswald,Roboto,RobotoDraft,sans-serif;
 }
 
 .scorebug
@@ -31,7 +31,7 @@
 {
     position:absolute;
     top: 250px;
-    left: 1580;
+    left: 1580px;
     color: black;
     font-size: 20px;
     text-transform: uppercase;
