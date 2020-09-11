@@ -2,6 +2,7 @@ body
 {
     width: 1920px;
     height: 1080px;
+    font-size: 20px;
     font-family: Oswald,Roboto,RobotoDraft,sans-serif;
 }
 
@@ -11,7 +12,6 @@ body
     top: 15px;
     left: 30px;
     color: black;
-    font-size: 20px;
     background-color: white;
     visibility: hidden;
 }
@@ -22,9 +22,7 @@ body
     top: 250px;
     left: 30px;
     color: black;
-    font-size: 20px;
     text-transform: uppercase;
-    font-family: Oswald,Roboto,RobotoDraft,sans-serif ;
 }
 
 .orangeTeam
@@ -33,9 +31,7 @@ body
     top: 250px;
     left: 1580px;
     color: black;
-    font-size: 20px;
     text-transform: uppercase;
-    font-family: Oswald,Roboto,RobotoDraft,sans-serif ;
 }
 
 .t-in-zone
@@ -44,7 +40,6 @@ body
     top: 130px;
     left: 310px;
     color: black;
-    font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
     background-color: orange;
     width: 1300px;
@@ -132,6 +127,7 @@ body
     color: white;
     text-shadow:2px 2px #000924;
     flex: 2;
+    align-items: center;
 }
 .score
 {
@@ -140,6 +136,7 @@ body
     text-shadow:2px 2px #000924;
     flex: 2;
     padding-left: 4px;
+    align-items: center;
 }
 .touchText
 {
@@ -147,6 +144,8 @@ body
     color: white;
     text-shadow:2px 2px #000924;
     flex: 3;
+    justify-content: flex-end;
+    align-items: center;
 }
 .touches
 {
@@ -155,6 +154,7 @@ body
     text-shadow:2px 2px #000924;
     flex: 2;
     padding-left: 4px;
+    align-items: center;
 }
 .carText
 {
@@ -162,6 +162,8 @@ body
     color: white;
     text-shadow:2px 2px #000924;
     flex: 3;
+    justify-content: flex-end;
+    align-items: center;
 }
 .carBumps
 {
@@ -170,6 +172,7 @@ body
     text-shadow:2px 2px #000924;
     flex: 2;
     padding-left: 4px;
+    align-items: center;
 }
 
 .border
@@ -262,7 +265,6 @@ body
 
 label {
     display: block;
-    background: rgb(0, 0, 0);
     border-radius: 50%;
     width: 0px;
     height: 0px;
@@ -272,6 +274,9 @@ label {
     margin-left: -50px;
     margin-top: -50px;
     transition: all .5s;
+    background: black;
+    background-image: url("assets/RLL_Logo_LARGE.png");
+
 }
 
 input:checked + label {
@@ -282,7 +287,6 @@ input:checked + label {
     left: 0;
     margin-left: 0;
     border-radius: 0;
-    background: #f00;
 }
 
 input {
@@ -297,7 +301,6 @@ input {
     color: white;
     font-size: 30px;
     text-shadow:2px 2px #000924;
-    font-family:  Oswald,Roboto,RobotoDraft,sans-serif ;
 }
 .rightpressure
 {
@@ -307,5 +310,4 @@ input {
     color: white;
     font-size: 30px;
     text-shadow:2px 2px #000924;
-    font-family:  Oswald,Roboto,RobotoDraft,sans-serif ;
 }
