@@ -232,7 +232,7 @@ function UpdateStats(teamArray, indexNum, p, color)
         $(q + " .score").text(teamArray[indexNum]['score']);
 
         //Goals
-        $(q + " .score").text(teamArray[indexNum]['goals']);
+        $(q + " .goals").text(teamArray[indexNum]['goals']);
 
         //Touches
         $(q + " .touches").text(teamArray[indexNum]['touches']);
