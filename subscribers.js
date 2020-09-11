@@ -200,8 +200,8 @@ $(() => {
 
     WsSubscribers.subscribe("game", "replay_will_end", (d) => {
         setTimeout(function() {
-            $('#transitionLogo').removeClass('animate__bounceOutDown');
-            $('#transitionLogo').addClass('animate__bounceInUp');
+            $('#transitionLogo').removeClass('animate__rollOut');
+            $('#transitionLogo').addClass('animate__rollIn');
             $('#transitionBg').addClass('hasBg');
             $('#transitionBg').removeClass('animate__fadeOut');
             $('#transitionBg').addClass('animate__fadeIn');
@@ -212,8 +212,8 @@ $(() => {
         
     })
     WsSubscribers.subscribe("game", "replay_end", (d) => {
-        $('#transitionLogo').removeClass('animate__bounceInUp');
-        $('#transitionLogo').addClass('animate__bounceOutDown');
+        $('#transitionLogo').removeClass('animate__rollIn');
+        $('#transitionLogo').addClass('animate__rollOut');
         $('#transitionBg').removeClass('animate__fadeIn');
         $('#transitionBg').addClass('animate__fadeOut');
         $('#transitionBg').removeClass('hasBg');
