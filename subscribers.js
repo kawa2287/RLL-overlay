@@ -294,7 +294,7 @@ function GetTeam(team)
     });
 
     //return
-    returnsortList[0][0];
+    return sortList[0][0];
 }
 
 
