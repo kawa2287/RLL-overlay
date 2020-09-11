@@ -96,6 +96,7 @@ body
     flex-direction: row;
     font-size: 16px;
     justify-content: space-between;
+    align-items: center;
 }
 
 .name
@@ -111,7 +112,6 @@ body
     float: right;
     color: white;
     font-size: 1.2em;
-    margin-top: 4px;
     margin-right: 8px;
 }
 

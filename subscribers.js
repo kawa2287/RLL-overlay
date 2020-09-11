@@ -144,7 +144,7 @@ $(() => {
         }
 
         //update stats only for actual gameplay
-        if(d['game']['ballSpeed'] != 0 && d['game']['isReplay'] == false)
+        if(d['game']['ballSpeed'] !== 0 && d['game']['isReplay'] === false)
         {
             //Update team time in zone stats
             var curTimeL = parseFloat($(".scorebug .team.left .score").text());
