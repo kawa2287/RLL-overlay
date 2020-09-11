@@ -154,7 +154,7 @@ $(() => {
         var players = d['players'];
 
         for (var key of Object.keys(players)) {
-            if(players[key].team == 0)
+            if(players[key].team === 0)
             {
                 blueTeam.push(players[key]);
             }
@@ -174,13 +174,13 @@ $(() => {
 
             if(d['game']['ballY'] > 0)
             {
-                $(".scorebug .team.left .score").text(curTimeL+0.1);
+                $(".scorebug .team.left .score").text((curTimeL+0.1).toFixed(1));
                 UpdateZoneBar(curTimeL,curTimeR);
         
             }
             else if(d['game']['ballY'] < 0)
             {
-                $(".scorebug .team.right .score").text(curTimeR+0.1);
+                $(".scorebug .team.right .score").text((curTimeR+0.1).toFixed(1));
                 UpdateZoneBar(curTimeL,curTimeR);
 
             }
@@ -198,24 +198,33 @@ $(() => {
      
     })
 
-    WsSubscribers.subscribe("game","replay_will_end", (d) => {
+    WsSubscribers.subscribe("game", "replay_will_end", (d) => {
         setTimeout(function() {
+            $('#transitionLogo').removeClass('animate__bounceOutDown');
+            $('#transitionLogo').addClass('animate__bounceInUp');
+            $('#transitionBg').addClass('hasBg');
+            $('#transitionBg').removeClass('animate__fadeOut');
+            $('#transitionBg').addClass('animate__fadeIn');
             //your code to be executed after 1 second
-            document.getElementById('hidden-checkbox').click();
-             console.log(d)
+            // document.getElementById('hidden-checkbox').click();
+            console.log(d);
           }, 1000);
         
     })
-    WsSubscribers.subscribe("game","replay_end", (d) => {
-        document.getElementById('hidden-checkbox').click();
-        console.log(d)
+    WsSubscribers.subscribe("game", "replay_end", (d) => {
+        $('#transitionLogo').removeClass('animate__bounceInUp');
+        $('#transitionLogo').addClass('animate__bounceOutDown');
+        $('#transitionBg').removeClass('animate__fadeIn');
+        $('#transitionBg').addClass('animate__fadeOut');
+        $('#transitionBg').removeClass('hasBg');
+        // document.getElementById('hidden-checkbox').click();
+        console.log(d);
     })
 })
 
 function UpdateStats(teamArray, indexNum, p, color)
 {
-
-    var q = (color === "blue" ? ".blueTeam " : ".orangeTeam ") + p;
+    const q = `.${color}Team ${p}`;
 
     
     if(teamArray[indexNum] !== undefined)

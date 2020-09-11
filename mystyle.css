@@ -4,6 +4,27 @@ body
     height: 1080px;
     font-size: 20px;
     font-family: Oswald,Roboto,RobotoDraft,sans-serif;
+    overflow-y: hidden;
+}
+
+#transitionLogo {
+    width: 1920px;
+    height: 1080px;
+    background-image: url(assets/RLL_Logo_LARGE.png);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+}
+#transitionBg {
+    width: 1920px;
+    height: 1080px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+#transitionBg.hasBg {
+    background-color: black;
 }
 
 .scorebug
@@ -57,7 +78,7 @@ body
     transition: width .5s ease;
     height: 20px;
     width: 0%;
-    border-radius: 6px;
+    border-radius: 6px 0px 0px 6px;
 	box-shadow: 0 5px 5px rgb(8, 131, 212) inset;
 }
 .progressBarCont
@@ -84,6 +105,7 @@ body
     transition: ease;
     transition: 0.5s;
 }
+
 .hContainer
 {
     display: flex;
