@@ -4,7 +4,7 @@ body
     height: 1080px;
     font-size: 20px;
     font-family: Oswald,Roboto,RobotoDraft,sans-serif;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 #transitionLogo {
@@ -27,6 +27,9 @@ body
     background-color: black;
 }
 
+i { 
+    text-shadow:2px 2px #000924;
+}
 .scorebug
 {
     position:absolute;
