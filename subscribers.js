@@ -230,7 +230,10 @@ function UpdateStats(teamArray, indexNum, p, color)
 
         //Score
         $(q + " .score").text(teamArray[indexNum]['score']);
-        
+
+        //Goals
+        $(q + " .score").text(teamArray[indexNum]['goals']);
+
         //Touches
         $(q + " .touches").text(teamArray[indexNum]['touches']);
 
