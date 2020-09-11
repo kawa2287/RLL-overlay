@@ -178,12 +178,14 @@ $(() => {
 
 
             //Team and logo test
-            GetTeam(blueTeam)
+            let leftTeamName = GetTeam(blueTeam)
+            let rightTeamName = GetTeam(orangeTeam)
             
-            $(".leftTeam .teamName").text(PLAYER_TEAM_MAP["JR"]);
-            $(".rightTeam .teamName").text(PLAYER_TEAM_MAP["JR"]);
-            $(".leftTeam .logo img").attr("src","assets/knights_banner.png");
-            $(".rightTeam .logo img").attr("src","assets/knights_banner.png");
+            
+            $(".leftTeam .teamName").text(leftTeamName);
+            $(".rightTeam .teamName").text(rightTeamName);
+            $(".leftTeam .logo img").attr("src",TEAM_BANNER_MAP[leftTeamName]);
+            $(".rightTeam .logo img").attr("src",TEAM_BANNER_MAP[rightTeamName]);
 
 
         }
@@ -263,11 +265,36 @@ function progress(percent, $element) {
 
 function GetTeam(team)
 {
-    let teams = {};
+    //initial object
+    let teams = 
+    {
+        "Crabs" : 0,
+        "Knights":0,
+        "Pigeons":0,
+        "Queens":0,
+        "LongBows":0,
+        "Samurai":0
+    };
+
+    //loop through players
     for(var i = 0; i < team.length; i++)
     {
-        console.log(team[i]['team']);
+        teams[PLAYER_TEAM_MAP[team[i]]] += 1;
     }
+
+    //push to sortable array
+    var sortList = [];
+    for (var team in teams) {
+        sortList.push([team, teams[team]]);
+    }
+
+    //sort
+    sortList.sort(function(a, b) {
+        return b[1] - a[1];
+    });
+
+    //return
+    returnsortList[0][0];
 }
 
 
