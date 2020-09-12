@@ -172,8 +172,19 @@ $(() => {
         $(".scorebug .right .name").text(rightTeamName);
         $(".scorebug .left .logo img").attr("src",TEAM_BANNER_MAP[leftTeamName]);
         $(".scorebug .right .logo img").attr("src",TEAM_BANNER_MAP[rightTeamName]);
+       
 
+    })
 
+    WsSubscribers.subscribe("game", "goal_scored", (d) => {
+        let goalScorer = d['scorer']['name'];
+        LightLamp(goalScorer,".blueTeam .players .p1");
+        LightLamp(goalScorer,".blueTeam .players .p2");
+        LightLamp(goalScorer,".blueTeam .players .p3");
+        LightLamp(goalScorer,".orangeTeam .players .p1");
+        LightLamp(goalScorer,".orangeTeam .players .p2");
+        LightLamp(goalScorer,".orangeTeam .players .p3");
+        
     })
 
     WsSubscribers.subscribe("game", "replay_will_end", (d) => {
@@ -196,15 +207,17 @@ $(() => {
         $('#transitionBg').addClass('animate__fadeOut');
         $('#transitionBg').removeClass('hasBg');
         // document.getElementById('hidden-checkbox').click();
-        console.log(d);
+        
+        //Remove Goal animation
+        RemoveLamp(".blueTeam .players .p1");
+        RemoveLamp(".blueTeam .players .p2");
+        RemoveLamp(".blueTeam .players .p3");
+        RemoveLamp(".orangeTeam .players .p1");
+        RemoveLamp(".orangeTeam .players .p2");
+        RemoveLamp(".orangeTeam .players .p3");
     })
 })
 
-function CheckDead(teamArray,color)
-{
-
-
-}
 
 function secondsToMS(d) 
 {
@@ -215,6 +228,21 @@ function secondsToMS(d)
     var mDisplay = m ;
     var sDisplay = (s < 10 ? "0" : "") + s;
     return mDisplay +":"+ sDisplay; 
+}
+
+function LightLamp(goalScorer, tile)
+{
+    //check if tile is the goal scorer
+    if ($(tile + " .name").text() === goalScorer)
+    {
+        //Add animation class
+        $(tile).addClass('add_keyframe');
+    }
+}
+
+function RemoveLamp(tile)
+{
+    $(tile).removeClass('add_keyframe');
 }
 
 
@@ -231,10 +259,11 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay)
         //Boost
         if(!isReplay)
         {
-            $(q + " .name").text(teamArray[indexNum]['name']);
-            $(q + " .boost").text(teamArray[indexNum]['boost']+"%");
             progress(teamArray[indexNum]['boost'], $(q+ " .bar"));
         }
+
+        //Name
+        $(q + " .name").text(teamArray[indexNum]['name']);
 
         //Score
         $(q + " .score").text(teamArray[indexNum]['score']);
@@ -248,9 +277,6 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay)
         //Car Bumps
         $(q + " .carBumps").text(teamArray[indexNum]['cartouches']);
         
-        // Demos
-        $(q + " .numDemos").text(teamArray[indexNum]['demos']);
-
         //Check if Dead
         if(teamArray[indexNum]['isDead'])
         {

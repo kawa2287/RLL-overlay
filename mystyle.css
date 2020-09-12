@@ -95,6 +95,7 @@ i {
     flex: 2;
     justify-content: center;
     align-items: center;
+    font-size: 26px;
 }
 
 .scorebug .left .score
@@ -255,6 +256,7 @@ i {
     font-size: 16px;
     justify-content: space-between;
     align-items: center;
+    padding-right: 10px;
 }
 
 .players .name
@@ -426,6 +428,8 @@ i {
     border-radius: 6px;
     box-shadow: 0 5px 5px  #000924;
     min-height: 113px;
+    animation: anim-glow 2s ease infinite;
+    
 }
 
 label {
@@ -458,21 +462,20 @@ input {
    visibility: hidden;
    position: absolute;
 }
-.leftpressure
-{
-    position:absolute;
-    top: 115px;
-    left: 230px;
-    color: white;
-    font-size: 30px;
-    text-shadow:2px 2px #000924;
+
+@keyframes goal-glow {
+	0% {
+		background: rgba(255, 255, 0, 0.789);
+    }
+    50% {
+		background: rgba(0, 0, 0, 0.535);
+	}
+	100% {
+		background:  rgba(255, 255, 0, 0.789);
+	}
 }
-.rightpressure
+
+.add_keyframe
 {
-    position:absolute;
-    top: 115px;
-    left: 1630px;
-    color: white;
-    font-size: 30px;
-    text-shadow:2px 2px #000924;
+    animation: goal-glow 2s ease infinite;
 }
