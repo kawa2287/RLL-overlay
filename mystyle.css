@@ -58,7 +58,6 @@ i {
 {
     display: flex;
     flex:4;
-    background: brown;
     flex-direction: column;
 }
 
@@ -66,7 +65,7 @@ i {
 {
     display: flex;
     flex:1;
-    background: #5a5a5a;
+    background: #2e2e2e;
     justify-content: center;
     align-items: center;
     font-size: 30px;
@@ -78,6 +77,16 @@ i {
     display: flex;
     flex-direction: row;
     max-height: 40px;
+}
+
+.scorebug .team.left 
+{
+    background-image: linear-gradient(to right, black , blue);
+}
+
+.scorebug .team.right 
+{
+    background-image: linear-gradient(to right, black , orange);
 }
 
 .scorebug .score
@@ -344,12 +353,13 @@ i {
     height: 400px;
 }
 
+
 .blueTeam .players .p1
 {
     display: flex;
     flex: 1;
     flex-direction: column;
-    background:rgba(0,0,255,0.8);
+    background:rgba(0,0,255,0.5);
     padding-left: 10px;
     margin: 10px;
     border-radius: 6px;
@@ -361,7 +371,7 @@ i {
     display: flex;
     flex: 1;
     flex-direction: column;
-    background:rgba(0,0,255,0.8);
+    background:rgba(0,0,255,0.5);
     padding-left: 10px;
     margin: 10px;
     border-radius: 6px;
@@ -373,7 +383,7 @@ i {
     display: flex;
     flex: 1;
     flex-direction: column;
-    background:rgba(0,0,255,0.8);
+    background:rgba(0,0,255,0.5);
     padding-left: 10px;
     margin: 10px;
     border-radius: 6px;
@@ -386,7 +396,7 @@ i {
     display: flex;
     flex: 1;
     flex-direction: column;
-    background:rgba(223, 126, 0, 0.8);
+    background:rgba(223, 126, 0, 0.5);
     padding-left: 10px;
     margin: 10px;
     border-radius: 6px;
@@ -398,7 +408,7 @@ i {
     display: flex;
     flex: 1;
     flex-direction: column;
-    background:rgba(223, 126, 0, 0.8);
+    background:rgba(223, 126, 0, 0.5);
     padding-left: 10px;
     margin: 10px;
     border-radius: 6px;
@@ -410,7 +420,7 @@ i {
     display: flex;
     flex: 1;
     flex-direction: column;
-    background:rgba(223, 126, 0, 0.8);
+    background:rgba(223, 126, 0, 0.5);
     padding-left: 10px;
     margin: 10px;
     border-radius: 6px;

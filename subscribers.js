@@ -153,8 +153,6 @@ $(() => {
         $(".scorebug .team.left .score").text(d['game']['teams'][0]['score'] );
         $(".scorebug .team.right .score").text(d['game']['teams'][1]['score'] );
 
-        //Check if Dead
-
         //Update Stats
         let isReplay = d['game']['isReplay'];
 
@@ -205,6 +203,7 @@ $(() => {
 function CheckDead(teamArray,color)
 {
 
+
 }
 
 function secondsToMS(d) 
@@ -251,6 +250,16 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay)
         
         // Demos
         $(q + " .numDemos").text(teamArray[indexNum]['demos']);
+
+        //Check if Dead
+        if(teamArray[indexNum]['isDead'])
+        {
+            $(q).css({"opacity":.5});
+        }
+        else
+        {
+            $(q).css({"opacity":1});
+        }
     
     }
     else
@@ -280,7 +289,7 @@ function GetTeam(team)
     //initial object
     let teams = 
     {
-        "DinoBots":0,
+        "RLL":0,
         "Crabs" : 0,
         "Knights":0,
         "Pigeons":0,
