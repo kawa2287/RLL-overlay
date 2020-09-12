@@ -282,7 +282,7 @@ function GetTeam(team)
     //loop through players
     for(var i = 0; i < team.length; i++)
     {
-        teams[PLAYER_TEAM_MAP[team[i]]] += 1;
+        teams[PLAYER_TEAM_MAP[team[i]['name']]] += 1;
     }
 
     //push to sortable array
