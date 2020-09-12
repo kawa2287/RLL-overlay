@@ -146,50 +146,36 @@ $(() => {
             }
         }
 
-        //update stats only for actual gameplay
-        if(d['game']['ballSpeed'] !== 0 && d['game']['isReplay'] === false)
-        {
-            //Update team time in zone stats
-            let curTimeL = parseFloat($(".scorebug .team.left .score").text());
-            let curTimeR = parseFloat($(".scorebug .team.right .score").text());
-            let percentageFromLeft = 50;
+        //Update Time
+        $(".scorebug .rightcontainer").text(secondsToMS(d['game']['time']));
 
-            if(d['game']['ballY'] > 0)
-            {
-                $(".scorebug .team.left .score").text((curTimeL+0.1).toFixed(1));
-                UpdateZoneBar(curTimeL,curTimeR);
+        //Update Score
+        $(".scorebug .team.left .score").text(d['game']['teams'][0]['score'] );
+        $(".scorebug .team.right .score").text(d['game']['teams'][1]['score'] );
+
+        //Check if Dead
+
+        //Update Stats
+        let isReplay = d['game']['isReplay'];
+
+        UpdateStats(blueTeam, 0, ".p1","blue",isReplay);
+        UpdateStats(blueTeam, 1, ".p2","blue",isReplay);
+        UpdateStats(blueTeam, 2, ".p3","blue",isReplay);
+
+        UpdateStats(orangeTeam, 0, ".p1","orange",isReplay);
+        UpdateStats(orangeTeam, 1, ".p2","orange",isReplay);
+        UpdateStats(orangeTeam, 2, ".p3","orange",isReplay);
         
-            }
-            else if(d['game']['ballY'] < 0)
-            {
-                $(".scorebug .team.right .score").text((curTimeR+0.1).toFixed(1));
-                UpdateZoneBar(curTimeL,curTimeR);
-
-            }
-
-            //Update boost stats
-            UpdateStats(blueTeam, 0, ".p1","blue");
-            UpdateStats(blueTeam, 1, ".p2","blue");
-            UpdateStats(blueTeam, 2, ".p3","blue");
-
-            UpdateStats(orangeTeam, 0, ".p1","orange");
-            UpdateStats(orangeTeam, 1, ".p2","orange");
-            UpdateStats(orangeTeam, 2, ".p3","orange");
+        //Determine Team & Logo
+        let leftTeamName = GetTeam(blueTeam)
+        let rightTeamName = GetTeam(orangeTeam)
+        
+        $(".scorebug .left .name").text(leftTeamName);
+        $(".scorebug .right .name").text(rightTeamName);
+        $(".scorebug .left .logo img").attr("src",TEAM_BANNER_MAP[leftTeamName]);
+        $(".scorebug .right .logo img").attr("src",TEAM_BANNER_MAP[rightTeamName]);
 
 
-            //Team and logo test
-            let leftTeamName = GetTeam(blueTeam)
-            let rightTeamName = GetTeam(orangeTeam)
-            
-            
-            $(".leftTeam .teamName").text(leftTeamName);
-            $(".rightTeam .teamName").text(rightTeamName);
-            $(".leftTeam .logo img").attr("src",TEAM_BANNER_MAP[leftTeamName]);
-            $(".rightTeam .logo img").attr("src",TEAM_BANNER_MAP[rightTeamName]);
-
-
-        }
-     
     })
 
     WsSubscribers.subscribe("game", "replay_will_end", (d) => {
@@ -216,17 +202,40 @@ $(() => {
     })
 })
 
-function UpdateStats(teamArray, indexNum, p, color)
+function CheckDead(teamArray,color)
+{
+
+}
+
+function secondsToMS(d) 
+{
+    d = Math.ceil(Number(d));
+    var m = Math.floor(d % 3600 / 60);
+    var s = Math.floor(d % 3600 % 60);
+
+    var mDisplay = m ;
+    var sDisplay = (s < 10 ? "0" : "") + s;
+    return mDisplay +":"+ sDisplay; 
+}
+
+
+
+function UpdateStats(teamArray, indexNum, p, color, isReplay)
 {
     const q = `.${color}Team ${p}`;
 
     
     if(teamArray[indexNum] !== undefined)
     {
+        $(q).css({"visibility":"visible" });
+
         //Boost
-        $(q + " .name").text(teamArray[indexNum]['name']);
-        $(q + " .boost").text(teamArray[indexNum]['boost']+"%");
-        progress(teamArray[indexNum]['boost'], $(q+ " .bar"));
+        if(!isReplay)
+        {
+            $(q + " .name").text(teamArray[indexNum]['name']);
+            $(q + " .boost").text(teamArray[indexNum]['boost']+"%");
+            progress(teamArray[indexNum]['boost'], $(q+ " .bar"));
+        }
 
         //Score
         $(q + " .score").text(teamArray[indexNum]['score']);
@@ -271,6 +280,7 @@ function GetTeam(team)
     //initial object
     let teams = 
     {
+        "DinoBots":0,
         "Crabs" : 0,
         "Knights":0,
         "Pigeons":0,

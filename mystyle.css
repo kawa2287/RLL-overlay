@@ -30,14 +30,91 @@ body
 i { 
     text-shadow:2px 2px #000924;
 }
+.pressureCounter
+{
+    position:absolute;
+    top: 900px;
+    left: 1500px;
+    color: black;
+    background-color: black;
+    visibility: hidden;
+}
 .scorebug
 {
     position:absolute;
-    top: 15px;
-    left: 30px;
-    color: black;
-    background-color: white;
-    visibility: hidden;
+    top: 20px;
+    left: 20px;
+    color:white;
+    text-shadow:2px 2px #000924;
+    background-color: black;
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    text-transform: uppercase;
+    box-shadow: 2px 5px 5px #000924b8;
+}
+
+.scorebug .leftcontainer
+{
+    display: flex;
+    flex:4;
+    background: brown;
+    flex-direction: column;
+}
+
+.scorebug .rightcontainer
+{
+    display: flex;
+    flex:1;
+    background: #5a5a5a;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border-left: 2px solid whitesmoke;
+}
+
+.scorebug .team
+{
+    display: flex;
+    flex-direction: row;
+    max-height: 40px;
+}
+
+.scorebug .score
+{
+    display: flex;
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+}
+
+.scorebug .left .score
+{
+    background: blue;
+}
+
+.scorebug .right .score
+{
+    background: rgba(223, 126, 0, 1);;
+}
+
+.scorebug .logo
+{
+    display: flex;
+    flex: 3;
+}
+
+.scorebug .logo img
+{
+    width: 100%;
+}
+
+.scorebug .name
+{
+    display: flex;
+    flex: 8;
+    align-items: center;
+    padding-left: 5px;
 }
 
 .leftTeam
@@ -150,7 +227,7 @@ i {
 }
 .bar
 {
-    background: #1cc300  top right;
+    background: linear-gradient(to right, #ffdb3a 0%,#3fffa2  100%);
 	border-radius: 6px;
 	box-shadow: 0 5px 5px #ccc inset;
 	text-indent: 99999px;
@@ -171,12 +248,12 @@ i {
     align-items: center;
 }
 
-.name
+.players .name
 {
     color: white;
     text-shadow:2px 2px #000924;
     opacity: 1;
-    font-size: 26px;
+    font-size: 20px;
     
 }
 
@@ -206,7 +283,7 @@ i {
     flex: 2;
     align-items: center;
 }
-.score
+.players .score
 {
     display: flex;
     color: yellow;
