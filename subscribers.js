@@ -178,18 +178,12 @@ $(() => {
         AddStats(allPlayers);
     })
 
-    /*
     WsSubscribers.subscribe("game", "goal_scored", (d) => {
-        let goalScorer = d['scorer']['name'];
-        LightLamp(goalScorer,".blueTeam .players .p1");
-        LightLamp(goalScorer,".blueTeam .players .p2");
-        LightLamp(goalScorer,".blueTeam .players .p3");
-        LightLamp(goalScorer,".orangeTeam .players .p1");
-        LightLamp(goalScorer,".orangeTeam .players .p2");
-        LightLamp(goalScorer,".orangeTeam .players .p3");
+
+        FlashGoal();
+        
         
     })
-    */
 
     WsSubscribers.subscribe("game", "statfeed_event", (d) => {
         let event = d['type'];
@@ -250,6 +244,26 @@ function LightLamp(goalScorer, tile)
             $(tile).removeClass('goal_anim');
         }, 8000);
     }
+}
+
+function FlashGoal(){
+
+    let q = ".scorebug .overlay";
+
+    $(q).css({"background":"yellow"});
+    PlayAnimation(q,'scoreboard_goal_anim',8000);
+    PlayAnimation(q + ' .g','scoreboard_goal_text',8000);
+    PlayAnimation(q + ' .i','scoreboard_goal_img',8000);
+      
+}
+
+function PlayAnimation(loc, animClass, duration)
+{
+    $(loc).addClass(animClass);
+    //Clear animation
+    setTimeout(function() {
+        $(loc).removeClass(animClass);
+    }, duration);
 }
 
 
