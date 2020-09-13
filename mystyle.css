@@ -215,25 +215,11 @@ i {
 {
     position:absolute;
     top: 250px;
-    left: 1580px;
+    right: 30px;
     color: black;
     text-transform: uppercase;
 }
 
-.t-in-zone
-{
-    position:absolute;
-    top: 130px;
-    left: 310px;
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: orange;
-    width: 1300px;
-    height: 20px;
-    border-radius: 6px;
-	box-shadow: 0 5px 5px #ccc inset;
-
-}
 
 
 
@@ -246,41 +232,9 @@ i {
     border-radius: 6px 0px 0px 6px;
 	box-shadow: 0 5px 5px rgb(8, 131, 212) inset;
 }
-.progressBarCont
-{
-    border-radius: 10px;
-	padding: 5px;
-	background: #000924;
-	border: 1px solid #111;
-    box-shadow: 0 2px 3px #333;
-    width: 200px;
-    height: 10px;
-    display: flex;
-    flex: 4;
-}
-.bar
-{
-    background: linear-gradient(to right, #ffdb3a 0%,#3fffa2  100%);
-	border-radius: 6px;
-	box-shadow: 0 5px 5px #ccc inset;
-	text-indent: 99999px;
-    overflow: hidden;
-    width: 0px;
-    height: 100%;
-    transition: ease;
-    transition: 0.5s;
-}
 
-.hContainer
-{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    font-size: 16px;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 10px;
-}
+
+
 
 .players .name
 {
@@ -291,78 +245,6 @@ i {
     
 }
 
-.demos {
-    float: right;
-    color: white;
-    font-size: 1.2em;
-    margin-right: 8px;
-}
-
-.boost 
-{
-    width: 40px;
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    color: greenyellow;
-    text-shadow:2px 2px #000924;
-    opacity: 1;
-}
-
-.scoreText
-{
-    display: flex;
-    color: white;
-    text-shadow:2px 2px #000924;
-    flex: 2;
-    align-items: center;
-}
-.players .score
-{
-    display: flex;
-    color: yellow;
-    text-shadow:2px 2px #000924;
-    flex: 2;
-    padding-left: 4px;
-    align-items: center;
-}
-.icon
-{
-    display: flex;
-    color: white;
-    text-shadow:2px 2px #000924;
-    flex: 2;
-    justify-content: flex-end;
-    align-items: center;
-}
-.goals
-{
-    display: flex;
-    color: rgb(0, 174, 255);
-    text-shadow:2px 2px #000924;
-    flex: 2;
-    padding-left: 4px;
-    align-items: center;
-}
-.touches
-{
-    display: flex;
-    color: rgb(0, 174, 255);
-    text-shadow:2px 2px #000924;
-    flex: 2;
-    padding-left: 4px;
-    align-items: center;
-}
-
-.carBumps
-{
-    display: flex;
-    color: rgb(255, 155, 152);
-    text-shadow:2px 2px #000924;
-    flex: 2;
-    padding-left: 4px;
-    align-items: center;
-}
 
 .border
 {
@@ -373,132 +255,125 @@ i {
 .players
 {
     display: flex;
-    width: 310px;
+    width: 240px;
     flex-direction: column;
-    height: 400px;
 }
 
-.blueTeam .players .stats
+.players .box
 {
     display: flex;
-    flex-direction: column;
-    flex: 4
-
-}
-
-.blueTeam .players .event
-{
-    display: flex;
-    flex: 1;
-    color: white;
-    align-items: center;
-    justify-content: center;
-    font-size: xx-large;
-    transition: all .5s;
-}
-
-
-.blueTeam .players .p1
-{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    background:rgba(0,0,255,0.5);
-    padding-left: 10px;
+    flex:1;
+    height: 60px;
     margin: 10px;
-    border-radius: 6px;
     box-shadow: 0 5px 5px  #000924;
-    min-height: 113px;
-    transition: all .5s;
-}
-
-.blueTeam .players .p2
-{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    background:rgba(0,0,255,0.5);
-    padding-left: 10px;
-    margin: 10px;
-    border-radius: 6px;
-    box-shadow: 0 5px 5px  #000924;
-    min-height: 113px;
-    transition: all .5s;
-}
-.blueTeam .players .p3
-{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    background:rgba(0,0,255,0.5);
-    padding-left: 10px;
-    margin: 10px;
-    border-radius: 6px;
-    box-shadow: 0 5px 5px  #000924;
-    min-height: 113px;
-    transition: all .5s;
-}
-
-
-.orangeTeam .players .stats
-{
-    display: flex;
-    flex-direction: column;
-    flex: 4
-
-}
-
-.orangeTeam .players .event
-{
-    display: flex;
-    flex: 1;
-    color: white;
-    align-items: center;
-    justify-content: center;
-    font-size: xx-large;
-    transition: all .5s;
-}
-
-.orangeTeam .players .p1
-{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    background:rgba(223, 126, 0, 0.5);
-    padding-left: 10px;
-    margin: 10px;
-    border-radius: 6px;
-    box-shadow: 0 5px 5px  #000924;
-    min-height: 113px;
-    transition: all .5s;
-}
-.orangeTeam .players .p2
-{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    background:rgba(223, 126, 0, 0.5);
-    padding-left: 10px;
-    margin: 10px;
-    border-radius: 6px;
-    box-shadow: 0 5px 5px  #000924;
-    min-height: 113px;
-    transition: all .5s;
-}
-.orangeTeam .players .p3
-{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    background:rgba(223, 126, 0, 0.5);
-    padding-left: 10px;
-    margin: 10px;
-    border-radius: 6px;
-    box-shadow: 0 5px 5px  #000924;
-    min-height: 113px;
-    transition: all .5s;
     
+    transition: all .5s;
 }
+
+.blueTeam .players .box
+{
+    background:rgb(51, 51, 255);
+}
+.orangeTeam .players .box
+{
+    background:rgb(191, 133, 58);
+}
+
+.bar
+{
+    transition: ease;
+    transition: 0.5s;
+    width: 1%;
+}
+
+.blueTeam .bar
+{
+    background: linear-gradient(to right, blue 0%,blue 50%,rgb(134, 134, 255)  100%);
+
+}
+.orangeTeam .bar
+{
+    background: linear-gradient(to left, rgba(223, 126, 0, 1), 0%,rgba(223, 126, 0, 1), 50%,rgb(255, 204, 136) 100%);
+}
+
+.players .box .name
+{
+    position: absolute;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.orangeTeam .players .box .name
+{
+    right: 20px;
+}
+
+.players .box .stats
+{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.players .box .stats .progressBarCont
+{
+    display: flex;
+    flex: 1;
+	padding: 1px;
+	background: #000924;
+
+}
+
+.players .box .stats .icon
+{
+    display: flex;
+    color: white;
+    text-shadow:2px 2px #000924;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+}
+.players .box .stats .counter
+{
+    display: flex;
+    color: greenyellow;
+    text-shadow:2px 2px #000924;
+    flex: 1;
+    justify-content: flex-start;
+    padding-left: 5px;
+    align-items: center;
+}
+
+.hContainer
+{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    font-size: 16px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.players .box .event
+{
+    position: absolute;
+    color: white;
+    font-size: 50px;
+    padding-top: 5px;
+    z-index: -1;
+}
+
+
+.blueTeam .players .box .event
+{
+    right: 15px;
+}
+
+
+.orangeTeam .players .box .event
+{
+    left: 15px;
+}
+
 
 label {
     display: block;
@@ -533,25 +408,58 @@ input {
 
 @keyframes goal-glow {
 	0% {
-		background: rgba(255, 255, 0, 0.789);
+		background: rgb(255, 255, 0);
     }
     50% {
-		background: rgba(0, 0, 0, 0.535);
+		background: rgb(0, 0, 0);
 	}
 	100% {
-		background:  rgba(255, 255, 0, 0.789);
+		background:  rgb(255, 255, 0);
 	}
 }
 
 @keyframes stat-flash{
 	0% {
-		background: rgba(224, 233, 231, 0.789);
+        background: rgb(224, 233, 231);
+        box-shadow: 0px 0px 20px #fff;
     }
     50% {
-		background: rgba(0, 0, 0, 0.535);
+        background: rgb(0, 0, 0);
+        box-shadow: 0px 0px 0px #fff;
 	}
 	100% {
-		background:  rgba(224, 233, 231, 0.789);
+        background:  rgb(224, 233, 231);
+        box-shadow: 0px 0px 20px #fff;
+	}
+}
+
+@keyframes right_stat-slide{
+	0% {
+		right: 15px;
+    }
+    10% {
+		right: -50px;
+    }
+    90% {
+		right: -50px;
+	}
+	100% {
+		right: 15px;
+	}
+}
+
+@keyframes left_stat-slide{
+	0% {
+		left: 15px;
+    }
+    10% {
+		left: -50px;
+    }
+    90% {
+		left: -50px;
+	}
+	100% {
+		left: 15px;
 	}
 }
 
@@ -562,5 +470,14 @@ input {
 
 .stat_anim
 {
-    animation: stat-flash 0.5s ease;
+    animation: stat-flash 1s ease;
+}
+.right_slide_anim
+{
+    animation: right_stat-slide 8s ease;
+}
+
+.left_slide_anim
+{
+    animation: left_stat-slide 8s ease;
 }

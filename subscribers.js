@@ -194,12 +194,12 @@ $(() => {
     WsSubscribers.subscribe("game", "statfeed_event", (d) => {
         let event = d['type'];
         let player = d['main_target']['name'];
-        ShowStat(event,player,".blueTeam .players .p1");
-        ShowStat(event,player,".blueTeam .players .p2");
-        ShowStat(event,player,".blueTeam .players .p3");
-        ShowStat(event,player,".orangeTeam .players .p1");
-        ShowStat(event,player,".orangeTeam .players .p2");
-        ShowStat(event,player,".orangeTeam .players .p3");
+        ShowStat(event,player,".blueTeam .players .p1", "blue");
+        ShowStat(event,player,".blueTeam .players .p2", "blue");
+        ShowStat(event,player,".blueTeam .players .p3", "blue");
+        ShowStat(event,player,".orangeTeam .players .p1", "orange");
+        ShowStat(event,player,".orangeTeam .players .p2", "orange");
+        ShowStat(event,player,".orangeTeam .players .p3", "orange");
         
     })
 
@@ -253,7 +253,7 @@ function LightLamp(goalScorer, tile)
 }
 
 
-function ShowStat(event, player,tile)
+function ShowStat(event, player,tile, color)
 {
     //check if tile is the goal scorer
     if ($(tile + " .name").text() === player)
@@ -266,7 +266,23 @@ function ShowStat(event, player,tile)
             $(tile).addClass('stat_anim');
             setTimeout(function() {
                 $(tile).removeClass('stat_anim');
-            }, 500);
+            }, 1000);
+            
+            if(color === "blue")
+            {
+                $(tile + " .event").addClass('right_slide_anim');
+                setTimeout(function() {
+                    $(tile + " .event").removeClass('right_slide_anim');
+                }, 8000);
+            }
+            else
+            {
+                $(tile + " .event").addClass('left_slide_anim');
+                setTimeout(function() {
+                    $(tile+  " .event").removeClass('left_slide_anim');
+                }, 8000);
+            }
+            
         }
         if(event === "Goal")
         {
@@ -307,17 +323,17 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay)
         //Name
         $(q + " .name").text(teamArray[indexNum]['name']);
 
-        //Score
-        $(q + " .score").text(teamArray[indexNum]['score']);
+        //Shots
+        $(q + " .shots").text(teamArray[indexNum]['shots']);
 
         //Goals
         $(q + " .goals").text(teamArray[indexNum]['goals']);
 
-        //Touches
-        $(q + " .touches").text(teamArray[indexNum]['touches']);
+        //Assists
+        $(q + " .assists").text(teamArray[indexNum]['assists']);
 
-        //Car Bumps
-        $(q + " .carBumps").text(teamArray[indexNum]['cartouches']);
+        //Saves
+        $(q + " .saves").text(teamArray[indexNum]['saves']);
         
         //Check if Dead
         if(teamArray[indexNum]['isDead'])
@@ -406,10 +422,6 @@ function AddStats(players)
     {
         SetDiv(sortList[i], ".p" + (i+1).toString());
     }
-
-
-
-   
     
 }
 
