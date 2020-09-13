@@ -132,6 +132,7 @@ $(() => {
         //store team info
         let blueTeam = [];
         let orangeTeam = [];
+        let allPlayers = [];
 
         let players = d['players'];
 
@@ -144,6 +145,7 @@ $(() => {
             {
                 orangeTeam.push(players[key]);
             }
+            allPlayers.push(players[key]);
         }
 
         //Update Time
@@ -172,10 +174,11 @@ $(() => {
         $(".scorebug .right .name").text(rightTeamName);
         $(".scorebug .left .logo img").attr("src",TEAM_BANNER_MAP[leftTeamName]);
         $(".scorebug .right .logo img").attr("src",TEAM_BANNER_MAP[rightTeamName]);
-       
 
+        AddStats(allPlayers);
     })
 
+    /*
     WsSubscribers.subscribe("game", "goal_scored", (d) => {
         let goalScorer = d['scorer']['name'];
         LightLamp(goalScorer,".blueTeam .players .p1");
@@ -184,6 +187,19 @@ $(() => {
         LightLamp(goalScorer,".orangeTeam .players .p1");
         LightLamp(goalScorer,".orangeTeam .players .p2");
         LightLamp(goalScorer,".orangeTeam .players .p3");
+        
+    })
+    */
+
+    WsSubscribers.subscribe("game", "statfeed_event", (d) => {
+        let event = d['type'];
+        let player = d['main_target']['name'];
+        ShowStat(event,player,".blueTeam .players .p1");
+        ShowStat(event,player,".blueTeam .players .p2");
+        ShowStat(event,player,".blueTeam .players .p3");
+        ShowStat(event,player,".orangeTeam .players .p1");
+        ShowStat(event,player,".orangeTeam .players .p2");
+        ShowStat(event,player,".orangeTeam .players .p3");
         
     })
 
@@ -196,7 +212,6 @@ $(() => {
             $('#transitionBg').addClass('animate__fadeIn');
             //your code to be executed after 1 second
             // document.getElementById('hidden-checkbox').click();
-            console.log(d);
           }, 1000);
         
     })
@@ -207,14 +222,6 @@ $(() => {
         $('#transitionBg').addClass('animate__fadeOut');
         $('#transitionBg').removeClass('hasBg');
         // document.getElementById('hidden-checkbox').click();
-        
-        //Remove Goal animation
-        RemoveLamp(".blueTeam .players .p1");
-        RemoveLamp(".blueTeam .players .p2");
-        RemoveLamp(".blueTeam .players .p3");
-        RemoveLamp(".orangeTeam .players .p1");
-        RemoveLamp(".orangeTeam .players .p2");
-        RemoveLamp(".orangeTeam .players .p3");
     })
 })
 
@@ -236,14 +243,49 @@ function LightLamp(goalScorer, tile)
     if ($(tile + " .name").text() === goalScorer)
     {
         //Add animation class
-        $(tile).addClass('add_keyframe');
+        $(tile).addClass('goal_anim');
+
+        //Clear animation
+        setTimeout(function() {
+            $(tile).removeClass('goal_anim');
+        }, 8000);
     }
 }
 
-function RemoveLamp(tile)
+
+function ShowStat(event, player,tile)
 {
-    $(tile).removeClass('add_keyframe');
+    //check if tile is the goal scorer
+    if ($(tile + " .name").text() === player)
+    {
+        //Add animation class
+        $(tile + " .event i").addClass(EVENT_MAP[event]);
+
+        if(event !== "Goal" && event !== "Assist")
+        {
+            $(tile).addClass('stat_anim');
+            setTimeout(function() {
+                $(tile).removeClass('stat_anim');
+            }, 500);
+        }
+        if(event === "Goal")
+        {
+            $(tile).addClass('goal_anim');
+            //Clear animation
+            setTimeout(function() {
+                $(tile).removeClass('goal_anim');
+            }, 8000);
+        }
+        
+
+        //Clear Icon
+        setTimeout(function() {
+            $(tile + " .event i").removeClass(EVENT_MAP[event]);
+            $(tile).removeClass('stat_anim');
+        }, 8000);
+    }
 }
+
 
 
 
@@ -344,6 +386,43 @@ function GetTeam(team)
     //return
     return sortList[0][0];
 }
+
+function AddStats(players)
+{
+
+    //push to sorting array
+    let sortList = [];
+    for (var p in players) {
+        sortList.push([players[p]['name'], players[p]['score']]);
+    }
+
+    //sort
+    sortList.sort(function(a, b) {
+        return b[1] - a[1];
+    });
+
+    //set to divs
+    for(var i = 0; i < sortList.length; i++)
+    {
+        SetDiv(sortList[i], ".p" + (i+1).toString());
+    }
+
+
+
+   
+    
+}
+
+function SetDiv(playerInfo, p)
+{
+    let q = ".scoreChart .driver" + p;
+    //Set Values
+    $(q + " .name").text(playerInfo[0]);
+    $(q + " .score").text(playerInfo[1]);
+    //Set ID
+    $(q).attr('id', playerInfo[0]);
+}
+
 
 
 

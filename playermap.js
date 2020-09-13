@@ -16,7 +16,26 @@ const PLAYER_TEAM_MAP = {
     "Elissa": "Crabs",
     "Kurtzy P00": "Knights",
     "Snakes on a Microplane": "Queens",
-    "Evergreen6258": "Pigeons"
+    "Evergreen6258": "Pigeons",
+
+    "Squall": "Crabs",
+    "Shepard": "Crabs",
+    "Storm": "LongBows",
+    "Caveman": "LongBows",
+    "Cougar": "Queens",
+    "Viper": "LongBows",
+    "Heater": "Samurai",
+    "Raja": "Samurai",
+    "pnkrockjock26": "Queens",
+    "Hootenannies": "Pigeons",
+    "ofthemoon16": "Pigeons",
+    "AwesomeX": "Knights",
+    "GolfJBC89": "Samurai",
+    "JMyrv": "Knights",
+    "Elissa": "Crabs",
+    "Kurtzy P00": "Knights",
+    "Snakes on a Microplane": "Queens",
+    "Evergreen6258": "Pigeons",
 };
 
 const TEAM_BANNER_MAP = {

@@ -30,15 +30,38 @@ body
 i { 
     text-shadow:2px 2px #000924;
 }
-.pressureCounter
+
+.scoreChart
 {
-    position:absolute;
-    top: 900px;
-    left: 1500px;
-    color: black;
-    background-color: black;
-    visibility: hidden;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 120px;
+    font-size: 16px;
+    left:1500px;
+    color:  white;
+    text-shadow:2px 2px #000924;
+
 }
+.scoreChart .driver
+{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.scoreChart .driver .name
+{
+    display: flex;
+    flex: 1;
+}
+.scoreChart .driver .score
+{
+    display: flex;
+    flex: 1;
+}
+
 .scorebug
 {
     position:absolute;
@@ -355,80 +378,125 @@ i {
     height: 400px;
 }
 
+.blueTeam .players .stats
+{
+    display: flex;
+    flex-direction: column;
+    flex: 4
+
+}
+
+.blueTeam .players .event
+{
+    display: flex;
+    flex: 1;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    transition: all .5s;
+}
+
 
 .blueTeam .players .p1
 {
     display: flex;
     flex: 1;
-    flex-direction: column;
+    flex-direction: row;
     background:rgba(0,0,255,0.5);
     padding-left: 10px;
     margin: 10px;
     border-radius: 6px;
     box-shadow: 0 5px 5px  #000924;
     min-height: 113px;
+    transition: all .5s;
 }
+
 .blueTeam .players .p2
 {
     display: flex;
     flex: 1;
-    flex-direction: column;
+    flex-direction: row;
     background:rgba(0,0,255,0.5);
     padding-left: 10px;
     margin: 10px;
     border-radius: 6px;
     box-shadow: 0 5px 5px  #000924;
     min-height: 113px;
+    transition: all .5s;
 }
 .blueTeam .players .p3
 {
     display: flex;
     flex: 1;
-    flex-direction: column;
+    flex-direction: row;
     background:rgba(0,0,255,0.5);
     padding-left: 10px;
     margin: 10px;
     border-radius: 6px;
     box-shadow: 0 5px 5px  #000924;
     min-height: 113px;
+    transition: all .5s;
+}
+
+
+.orangeTeam .players .stats
+{
+    display: flex;
+    flex-direction: column;
+    flex: 4
+
+}
+
+.orangeTeam .players .event
+{
+    display: flex;
+    flex: 1;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    transition: all .5s;
 }
 
 .orangeTeam .players .p1
 {
     display: flex;
     flex: 1;
-    flex-direction: column;
+    flex-direction: row;
     background:rgba(223, 126, 0, 0.5);
     padding-left: 10px;
     margin: 10px;
     border-radius: 6px;
     box-shadow: 0 5px 5px  #000924;
     min-height: 113px;
+    transition: all .5s;
 }
 .orangeTeam .players .p2
 {
     display: flex;
     flex: 1;
-    flex-direction: column;
+    flex-direction: row;
     background:rgba(223, 126, 0, 0.5);
     padding-left: 10px;
     margin: 10px;
     border-radius: 6px;
     box-shadow: 0 5px 5px  #000924;
     min-height: 113px;
+    transition: all .5s;
 }
 .orangeTeam .players .p3
 {
     display: flex;
     flex: 1;
-    flex-direction: column;
+    flex-direction: row;
     background:rgba(223, 126, 0, 0.5);
     padding-left: 10px;
     margin: 10px;
     border-radius: 6px;
     box-shadow: 0 5px 5px  #000924;
     min-height: 113px;
-    animation: anim-glow 2s ease infinite;
+    transition: all .5s;
     
 }
 
@@ -475,7 +543,24 @@ input {
 	}
 }
 
-.add_keyframe
+@keyframes stat-flash{
+	0% {
+		background: rgba(224, 233, 231, 0.789);
+    }
+    50% {
+		background: rgba(0, 0, 0, 0.535);
+	}
+	100% {
+		background:  rgba(224, 233, 231, 0.789);
+	}
+}
+
+.goal_anim
 {
     animation: goal-glow 2s ease infinite;
+}
+
+.stat_anim
+{
+    animation: stat-flash 0.5s ease;
 }
