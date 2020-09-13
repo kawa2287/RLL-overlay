@@ -1,4 +1,7 @@
-
+let previousData;
+let globPlayerTmsArr = [];
+let leftTeamName;
+let rightTeamName;
 
 
 const WsSubscribers = {
@@ -126,9 +129,10 @@ const WsSubscribers = {
 $(() => {
     WsSubscribers.init(49322,true);
     WsSubscribers.subscribe("game","update_state", (d) => {
-        
-        //Check if not replay
-        
+  
+        //Set Global Player Teams Array
+        globPlayerTmsArr = GetPlayerTeamArray(d);
+
         //store team info
         let blueTeam = [];
         let orangeTeam = [];
@@ -167,20 +171,45 @@ $(() => {
         UpdateStats(orangeTeam, 2, ".p3","orange",isReplay);
         
         //Determine Team & Logo
-        let leftTeamName = GetTeam(blueTeam)
-        let rightTeamName = GetTeam(orangeTeam)
+        leftTeamName = GetTeam(blueTeam)
+        rightTeamName = GetTeam(orangeTeam)
         
         $(".scorebug .left .name").text(leftTeamName);
         $(".scorebug .right .name").text(rightTeamName);
         $(".scorebug .left .logo img").attr("src",TEAM_BANNER_MAP[leftTeamName]);
         $(".scorebug .right .logo img").attr("src",TEAM_BANNER_MAP[rightTeamName]);
 
+
+        // Update Player Scores
         AddStats(allPlayers);
+
+        //Save State
+        previousData = d;
     })
 
     WsSubscribers.subscribe("game", "goal_scored", (d) => {
 
+        //Determine which team scored
+        let gScoringTm = DetermineGoalScoringTeam(d['scorer']['name']);
+        let scoredAgainst = (gScoringTm === 'blue' ? 'orange' : 'blue');
+
+        //Set Team Goal Icon and Colors
+        let teamName =  (gScoringTm === 'blue' ? leftTeamName : rightTeamName);
+        let logo = TEAM_LOGO_MAP[teamName] ;
+        let colors = TEAM_COLOR_MAP[teamName];
+
+        $(".scorebug .overlay .i img").attr("src", logo);
+        $(".scorebug .overlay").css({"background": colors.primary});
+        $(".scorebug .overlay .g").css({"color":colors.secondary});
+        $(".scorebug .overlay .g").css({"text-shadow":"2px 2px 6px "+colors.shadow});
+
+
+
+        //Flash Scoreboard Goal Animation
         FlashGoal();
+
+        //Determine Last Man Back
+        
         
         
     })
@@ -250,12 +279,13 @@ function FlashGoal(){
 
     let q = ".scorebug .overlay";
 
-    $(q).css({"background":"yellow"});
     PlayAnimation(q,'scoreboard_goal_anim',8000);
     PlayAnimation(q + ' .g','scoreboard_goal_text',8000);
     PlayAnimation(q + ' .i','scoreboard_goal_img',8000);
       
 }
+
+
 
 function PlayAnimation(loc, animClass, duration)
 {
@@ -277,37 +307,22 @@ function ShowStat(event, player,tile, color)
 
         if(event !== "Goal" && event !== "Assist")
         {
-            $(tile).addClass('stat_anim');
-            setTimeout(function() {
-                $(tile).removeClass('stat_anim');
-            }, 1000);
+            PlayAnimation(tile,'stat_anim',1000);
             
             if(color === "blue")
             {
-                $(tile + " .event").addClass('right_slide_anim');
-                setTimeout(function() {
-                    $(tile + " .event").removeClass('right_slide_anim');
-                }, 8000);
+                PlayAnimation(tile + " .event",'right_slide_anim',8000);
             }
             else
             {
-                $(tile + " .event").addClass('left_slide_anim');
-                setTimeout(function() {
-                    $(tile+  " .event").removeClass('left_slide_anim');
-                }, 8000);
+                PlayAnimation(tile + " .event",'left_slide_anim',8000);
             }
             
         }
         if(event === "Goal")
         {
-            $(tile).addClass('goal_anim');
-            //Clear animation
-            setTimeout(function() {
-                $(tile).removeClass('goal_anim');
-            }, 8000);
+            PlayAnimation(tile,'goal_anim',8000);
         }
-        
-
         //Clear Icon
         setTimeout(function() {
             $(tile + " .event i").removeClass(EVENT_MAP[event]);
@@ -315,9 +330,6 @@ function ShowStat(event, player,tile, color)
         }, 8000);
     }
 }
-
-
-
 
 function UpdateStats(teamArray, indexNum, p, color, isReplay)
 {
@@ -358,23 +370,11 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay)
         {
             $(q).css({"opacity":1});
         }
-    
     }
     else
     {
         $(q).css({"visibility":"hidden" });
     }
-};
-
-function UpdateZoneBar(lTime,rTime)
-{
-    //Update Bar
-    let val = 100 * lTime / (lTime + rTime)
-    $(".t-in-zone .fill-from-left").css({"width":val+"%"});
-    //Update percentages
-    $(".leftpressure").text(Math.round(100*lTime/(lTime+rTime))+"%");
-    $(".rightpressure").text(Math.round(100*rTime/(lTime+rTime))+"%");
-
 };
 
 function progress(percent, $element) {
@@ -447,6 +447,106 @@ function SetDiv(playerInfo, p)
     $(q + " .score").text(playerInfo[1]);
     //Set ID
     $(q).attr('id', playerInfo[0]);
+}
+
+function DetermineGoalScoringTeam(scorer)
+{   
+    for(var i = 0; i < globPlayerTmsArr.length; i ++ )
+    {
+        if(scorer=== globPlayerTmsArr[i][0]['name'])
+        {
+            return globPlayerTmsArr[i][1];
+        }
+    }
+    return 'unknown';
+}
+
+function GetLastManBack(d,teamColor)
+{
+    //function to determine closest player to ball when scored on
+    let playerTeamArray = GetPlayerTeamArray(d);
+    let ballInfo = GetBallInfo(d);
+    let closestPlayer;
+    let minDist;
+
+    //Loop through players
+    for(var i = 0; i<playerTeamArray.length; i++)
+    {
+        //Check team that was scored on
+        if(teamColor === playerTeamArray[i][1])
+        {
+            //get player info
+            let playerInfo = GetPlayerInfo(playerTeamArray[i][0]);
+
+            //Get distance
+            let dist = GetDistanceFromBall(ballInfo,playerInfo);
+
+            //check if player is closest
+            if (i === 0)
+            {
+                closestPlayer = playerTeamArray[i][0];
+                minDist = dist;
+            }
+            else
+            {
+                if(dist < minDist)
+                {
+                    minDist = dist;
+                    closestPlayer = playerTeamArray[i][0];
+                }
+            }
+        } 
+    }
+
+    return closestPlayer;
+}
+
+function GetPlayerTeamArray(d)
+{
+    let players = d['players'];
+    let playerTeamArray = [];
+
+    for (var key of Object.keys(players)) {
+        if(players[key].team === 0)
+        {
+            playerTeamArray.push([players[key],"blue"]);
+        }
+        else
+        {
+            playerTeamArray.push([players[key],"orange"]);
+        }
+    }
+
+    return playerTeamArray;
+}
+
+function GetBallInfo(d)
+{
+    let ball = {
+        x:d['game']['ballX'],
+        y:d['game']['ballY'],
+        z:d['game']['ballZ'],
+        speed:d['game']['ballSpeed']
+    }
+    return ball;
+}
+
+function GetPlayerInfo(p)
+{
+    let player = {
+        x:p['x'],
+        y:p['y'],
+        z:p['z'],
+        speed:d['speed']
+    }
+}
+function GetDistanceFromBall(ball, player)
+{
+    let deltaX = ball.x - player.x;
+    let deltaY = ball.y - player.y;
+    let deltaZ = ball.z - player.z;
+
+    return Math.pow(Math.pow(deltaX,2)+Math.pow(deltaY,2)+Math.pow(deltaZ,2),0.5);
 }
 
 

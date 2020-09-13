@@ -1,0 +1,136 @@
+
+@keyframes scoreboard-goal{
+	0% {
+        width:0%;
+    }
+    20% {
+		width:100%;
+    }
+    80% {
+		width:100%;
+	}
+	100% {
+		width:0%;
+	}
+}
+.scoreboard_goal_anim
+{
+    animation: scoreboard-goal 8s ease;
+}
+
+@keyframes goal-glow {
+	0% {
+		background: rgb(255, 255, 0);
+    }
+    50% {
+		background: rgb(0, 0, 0);
+	}
+	100% {
+		background:  rgb(255, 255, 0);
+	}
+}
+.goal_anim
+{
+    animation: goal-glow 2s ease infinite;
+}
+
+@keyframes stat-flash{
+	0% {
+        background: rgb(224, 233, 231);
+        box-shadow: 0px 0px 20px #fff;
+    }
+    50% {
+        background: rgb(0, 0, 0);
+        box-shadow: 0px 0px 0px #fff;
+	}
+	100% {
+        background:  rgb(224, 233, 231);
+        box-shadow: 0px 0px 20px #fff;
+	}
+}
+.stat_anim
+{
+    animation: stat-flash 1s ease;
+}
+
+@keyframes right_stat-slide{
+	0% {
+		right: 15px;
+    }
+    10% {
+		right: -50px;
+    }
+    90% {
+		right: -50px;
+	}
+	100% {
+		right: 15px;
+	}
+}
+.right_slide_anim
+{
+    animation: right_stat-slide 8s ease;
+}
+
+@keyframes left_stat-slide{
+	0% {
+		left: 15px;
+    }
+    10% {
+		left: -50px;
+    }
+    90% {
+		left: -50px;
+	}
+	100% {
+		left: 15px;
+	}
+}
+.left_slide_anim
+{
+    animation: left_stat-slide 8s ease;
+}
+
+@keyframes goaltext{
+	0% {
+		transform: translateX(0);
+    }
+	80% {
+		transform: translateX(-250px);
+    }
+    100% {
+		transform: translateX(100px);
+	}
+}
+.scoreboard_goal_text
+{
+    animation : goaltext 8s ease;
+}
+
+
+@keyframes goalimg{
+	0% {
+		transform: translateX(0);
+    }
+	80% {
+		transform: translateX(50px);
+    }
+    100% {
+		transform: translateX(-100px);
+	}
+}
+.scoreboard_goal_img
+{
+    animation: goalimg 8s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
