@@ -36,6 +36,7 @@ const PLAYER_TEAM_MAP = {
     "Foamer": "Knights",
     "Samara": "Queens",
     "Marley": "Pigeons",
+    "Roundhouse": "Knights",
 };
 
 const TEAM_BANNER_MAP = {

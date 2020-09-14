@@ -36,6 +36,21 @@ function ShowStat(event, player,tile, color)
         {
             PlayAnimation(tile,'goal_anim',8000);
         }
+        /*
+        if(event === "Assist")
+        {
+            let gScoringTm = DetermineGoalScoringTeam(player);
+            let teamName =  (gScoringTm === 'blue' ? leftTeamName : rightTeamName);
+            let logo = TEAM_LOGO_MAP[teamName] ;
+            let colors = TEAM_COLOR_MAP[teamName];
+            $(".replay .assist img").attr("src", logo);
+            $(".replay .assist .name").text(player);
+            $(".replay .assist .name").css({"background":colors.primary});
+            $(".replay .assist .name").css({"color":colors.secondary});
+            $(".replay .assist .name").css({"text-shadow":"2px 2px 8px "+ colors.shadow});
+        }
+        */
+
         //Clear Icon
         setTimeout(function() {
             $(tile + " .event i").removeClass(EVENT_MAP[event]);

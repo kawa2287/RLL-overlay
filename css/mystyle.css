@@ -62,6 +62,94 @@ i {
     flex: 1;
 }
 
+
+
+.replay
+{
+    background: rgba(20,20,20,.7);
+    position: absolute;
+    height: 100%;
+    width: 400px;
+    left:-400px;
+    transition: all 0.5s ease ;
+
+}
+.replay .box
+{
+    position: absolute;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    box-shadow: 2px 2px 10px black;
+    color: white;
+    height: 100px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px black;
+}
+
+.replay .box.scorer
+{
+    top: 500px;
+    left: 20px;
+}
+
+.replay .box.assist
+{
+    top: 620px;
+    left: 20px;
+}
+
+.replay .box.lastMan
+{
+    top: 800px;
+    left: 20px;
+}
+.replay .box .title
+{
+    display: flex;
+    flex: 1;
+    padding-left: 10px;
+    font-size: 18px;
+    align-content: center;
+    background-color: black;
+    border-bottom: 1px solid white;
+}
+
+.replay .box .name
+{
+    display: flex;
+    flex: 4;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 20px;
+    box-shadow: inset 1px 4px 9px -6px #fff;
+}
+.replay .box .h
+{
+    display: flex;
+    flex-direction: row;
+    flex: 2;
+}
+
+.replay .box .logo
+{
+    display: flex;
+    flex: 1;
+}
+
+
+
+
+.replay img{
+    height: 100%;
+    object-fit: scale-down;
+}
+
+
+
+
+
 .scorebug
 {
     position:absolute;
@@ -304,7 +392,7 @@ i {
 {
     display: flex;
     flex:1;
-    height: 60px;
+    min-height: 60px;
     margin: 10px;
     box-shadow: 0 5px 5px  #000924;
     

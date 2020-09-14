@@ -6,8 +6,11 @@ function GoalScoredMain(d)
 
     //Set Team Goal Icon and Colors
     let teamName =  (gScoringTm === 'blue' ? leftTeamName : rightTeamName);
+    let oppName = (scoredAgainst === 'blue' ? leftTeamName : rightTeamName);
     let logo = TEAM_LOGO_MAP[teamName] ;
+    let oppLogo = TEAM_LOGO_MAP[oppName] ;
     let colors = TEAM_COLOR_MAP[teamName];
+    let oppColors = TEAM_COLOR_MAP[oppName];
 
     $(".scorebug .overlay .i img").attr("src", logo);
     $(".scorebug .overlay").css({"background": colors.primary});
@@ -19,9 +22,24 @@ function GoalScoredMain(d)
     //Flash Scoreboard Goal Animation
     FlashGoal();
 
+    //Set Scorer
+    $(".replay .scorer img").attr("src", logo);
+    $(".replay .scorer .name").text(d['scorer']['name']);
+    $(".replay .scorer .h").css({"background":colors.primary});
+    $(".replay .scorer .name").css({"color":colors.secondary});
+    $(".replay .scorer .name").css({"text-shadow":"2px 2px 8px "+ colors.shadow});
+
+
     //Determine Last Man Back
     let lastMan = GetLastManBack(previousData,scoredAgainst);
+    let lManName = (lastMan===undefined? 'undetermined':lastMan['name']);
     console.log(lastMan);
+    $(".replay .lastMan img").attr("src", oppLogo);
+    $(".replay .lastMan .name").text(lManName);
+    $(".replay .lastMan .h").css({"background":oppColors.primary});
+    $(".replay .lastMan .name").css({"color":oppColors.secondary});
+    $(".replay .lastMan .name").css({"text-shadow":"2px 2px 8px "+ oppColors.shadow});
+
 }
 
 
@@ -42,18 +60,19 @@ function DetermineGoalScoringTeam(scorer)
 function GetLastManBack(d,teamColor)
 {
     //function to determine closest player to ball when scored on
+    let playerTeamArray = GetPlayerTeamArray(d);
     let ballInfo = GetBallInfo(d);
-    let closestPlayer;
+    let closestPlayer = 'UNDEFINED';
     let minDist;
 
     //Loop through players
-    for(var i = 0; i<globPlayerTmsArr.length; i++)
+    for(var i = 0; i<playerTeamArray.length; i++)
     {
         //Check team that was scored on
-        if(teamColor === globPlayerTmsArr[i][1])
+        if(teamColor === playerTeamArray[i][1])
         {
             //get player info
-            let playerInfo = GetPlayerInfo(globPlayerTmsArr[i][0]);
+            let playerInfo = GetPlayerInfo(playerTeamArray[i][0]);
 
             //Get distance
             let dist = GetDistanceFromBall(ballInfo,playerInfo);
@@ -61,7 +80,7 @@ function GetLastManBack(d,teamColor)
             //check if player is closest
             if (i === 0)
             {
-                closestPlayer = globPlayerTmsArr[i][0];
+                closestPlayer = playerTeamArray[i][0];
                 minDist = dist;
             }
             else
@@ -69,7 +88,7 @@ function GetLastManBack(d,teamColor)
                 if(dist < minDist)
                 {
                     minDist = dist;
-                    closestPlayer = globPlayerTmsArr[i][0];
+                    closestPlayer = playerTeamArray[i][0];
                 }
             }
         } 

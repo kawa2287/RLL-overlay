@@ -10,4 +10,6 @@ function ReplayEndMain(d)
         //move player tiles back
         $(".blueTeam ").css({"transform": "translateX(0px)"});
         $(".orangeTeam ").css({"transform": "translateX(0px)"});
+        $(".scoreChart ").css({"transform": "translateX(0px)"});
+        $(".replay ").css({"transform": "translateX(0px)"});
 }
