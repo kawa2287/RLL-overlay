@@ -5,6 +5,9 @@
         <link rel="stylesheet" href="css/animations.css">
 
         <link href="fontawesome-free-5.14.0-web/css/all.css" rel="stylesheet">
+
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
         
         <link rel="stylesheet" type="text/css" href="lib/animate.min.css" />
 
@@ -13,28 +16,28 @@
 
         <div class= "scoreChart">
             <div class="driver p1">
-                <div class ="name">player1</div>
-                <div class ="score">254</div>
+                <div class="name">player1</div>
+                <div class="score">254</div>
             </div>
             <div class="driver p2">
-                <div class ="name">player2</div>
-                <div class ="score">743</div>
+                <div class="name">player2</div>
+                <div class="score">743</div>
             </div>
             <div class="driver p3">
-                <div class ="name">player3</div>
-                <div class ="score">168</div>
+                <div class="name">player3</div>
+                <div class="score">168</div>
             </div>
             <div class="driver p4">
-                <div class ="name">player4</div>
-                <div class ="score">244</div>
+                <div class="name">player4</div>
+                <div class="score">244</div>
             </div>
             <div class="driver p5">
-                <div class ="name">player5</div>
-                <div class ="score">472</div>
+                <div class="name">player5</div>
+                <div class="score">472</div>
             </div>
             <div class="driver p6">
-                <div class ="name">player6</div>
-                <div class ="score">487</div>
+                <div class="name">player6</div>
+                <div class="score">487</div>
             </div>
         </div>
 
@@ -209,6 +212,8 @@
             <div class="rightcontainer">0:00</div>
         </div>
 
+        <div id="ball_heatmap"></div>
+
         <input id="hidden-checkbox" type="checkbox"></input>
         <label for="hidden-checkbox"></label> 
 
@@ -220,6 +225,7 @@
         <script type="text/javascript" src="js/ReplayWillEnd_Main.js"></script>
         <script type="text/javascript" src="js/ReplayEnd_Main.js"></script>
         <script type="text/javascript" src="js/HelperFunctions.js"></script>
+        <script type="text/javascript" src="js/BallHeatMap.js"></script>
         <script type="text/javascript" src="playermap.js"></script>
         <script type="text/javascript" src="events.js"></script>
     </body>

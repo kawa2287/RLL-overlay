@@ -5,6 +5,17 @@ body
     font-size: 20px;
     font-family: Oswald,Roboto,RobotoDraft,sans-serif;
     overflow: hidden;
+    background-color: grey;
+}
+
+#ball_heatmap {
+    position: absolute;
+    left: 600px;
+    top: 10px;
+    background-image: url("../assets/stadium_overhead.png");
+    background-size: 450px 300px;
+    width: 450px;
+    height: 300px;
 }
 
 #transitionLogo {

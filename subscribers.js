@@ -31,7 +31,7 @@ const WsSubscribers = {
             let event_event = eventSplit[1];
             if (debug) {
                 if (!debugFilters) {
-                    console.log(channel, event_event, jEvent);
+                    console.debug(channel, event_event, jEvent);
                 } else if (debugFilters && debugFilters.indexOf(jEvent.event) < 0) {
                     console.log(channel, event_event, jEvent);
                 }
