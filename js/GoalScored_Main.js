@@ -63,7 +63,7 @@ function GetLastManBack(d,teamColor)
     let playerTeamArray = GetPlayerTeamArray(d);
     let ballInfo = GetBallInfo(d);
     let closestPlayer = 'UNDEFINED';
-    let minDist;
+    let minDist = -1;
 
     //Loop through players
     for(var i = 0; i<playerTeamArray.length; i++)
@@ -78,7 +78,7 @@ function GetLastManBack(d,teamColor)
             let dist = GetDistanceFromBall(ballInfo,playerInfo);
 
             //check if player is closest
-            if (i === 0)
+            if (minDist === -1)
             {
                 closestPlayer = playerTeamArray[i][0];
                 minDist = dist;
