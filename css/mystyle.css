@@ -37,12 +37,15 @@ i {
     position: fixed;
     display: flex;
     flex-direction: column;
-    width: 500px;
-    height: 120px;
+    width: 400px;
+    min-height: 100px;
+    padding:10px;;
     font-size: 16px;
-    left:1500px;
+    right: 20px;
     color:  white;
     text-shadow:2px 2px #000924;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 2px 5px 5px #000924b8;
 
 }
 .scoreChart .driver
@@ -332,7 +335,7 @@ i {
 {
     position:absolute;
     top: 250px;
-    left: 30px;
+    left: 20px;
     color: black;
     text-transform: uppercase;
     transition: all 0.5s ease;
@@ -342,7 +345,7 @@ i {
 {
     position:absolute;
     top: 250px;
-    right: 30px;
+    right: 20px;
     color: black;
     text-transform: uppercase;
     transition: all 0.5s ease;
@@ -423,7 +426,7 @@ i {
 }
 .orangeTeam .bar
 {
-    background: linear-gradient(to left, rgba(223, 126, 0, 1), 0%,rgba(223, 126, 0, 1), 50%,rgb(255, 204, 136) 100%);
+    background: linear-gradient(to right, rgba(223, 126, 0, 1), 0%,rgba(223, 126, 0, 1), 50%,rgb(255, 204, 136) 100%);
 }
 
 .players .box .name
@@ -436,6 +439,7 @@ i {
 .orangeTeam .players .box .name
 {
     right: 20px;
+    z-index: 1;
 }
 
 .players .box .stats
@@ -449,8 +453,12 @@ i {
     display: flex;
     flex: 1;
 	padding: 1px;
-	background: #000924;
+    background: #000924;
+}
 
+.orangeTeam .players .box .stats .progressBarCont
+{
+    transform: scaleX(-1);
 }
 
 .players .box .stats .icon
