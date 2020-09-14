@@ -1,6 +1,8 @@
-// const ballHistory = [];
+let counter = 0;
+let ballHistory = [];
 function GameUpdateMain(d)
 {
+    counter++;
     //Set Global Player Teams Array
     globPlayerTmsArr = GetPlayerTeamArray(d);
 
@@ -51,13 +53,24 @@ function GameUpdateMain(d)
     $(".scorebug .right .logo img").attr("src",TEAM_BANNER_MAP[rightTeamName]);
 
     // if (d['game']['ballSpeed'] !== 0) {
+    if (counter < 50) {
         const ballPos = {
             "x": d['game']['ballX'],
             "y": d['game']['ballY']
         };
-        // ballHistory.push(ballPos);
-        updateHeatmap(ballPos);
-    // }
+        ballHistory.push(ballPos);
+    } else {
+        const ballPos = {
+            "x": d['game']['ballX'],
+            "y": d['game']['ballY']
+        };
+        ballHistory.push(ballPos);
+        updateHeatmap(ballHistory);
+        counter = 0;
+        ballHistory = [];
+    }
+
+    // updateHeatmap(ballPos);
 
     // Update Player Scores
     AddStats(allPlayers);
