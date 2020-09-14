@@ -20,6 +20,8 @@ function GoalScoredMain(d)
     FlashGoal();
 
     //Determine Last Man Back
+    let lastMan = GetLastManBack(previousData,scoredAgainst);
+    console.log(lastMan);
 }
 
 
@@ -40,19 +42,18 @@ function DetermineGoalScoringTeam(scorer)
 function GetLastManBack(d,teamColor)
 {
     //function to determine closest player to ball when scored on
-    let playerTeamArray = GetPlayerTeamArray(d);
     let ballInfo = GetBallInfo(d);
     let closestPlayer;
     let minDist;
 
     //Loop through players
-    for(var i = 0; i<playerTeamArray.length; i++)
+    for(var i = 0; i<globPlayerTmsArr.length; i++)
     {
         //Check team that was scored on
-        if(teamColor === playerTeamArray[i][1])
+        if(teamColor === globPlayerTmsArr[i][1])
         {
             //get player info
-            let playerInfo = GetPlayerInfo(playerTeamArray[i][0]);
+            let playerInfo = GetPlayerInfo(globPlayerTmsArr[i][0]);
 
             //Get distance
             let dist = GetDistanceFromBall(ballInfo,playerInfo);
@@ -60,7 +61,7 @@ function GetLastManBack(d,teamColor)
             //check if player is closest
             if (i === 0)
             {
-                closestPlayer = playerTeamArray[i][0];
+                closestPlayer = globPlayerTmsArr[i][0];
                 minDist = dist;
             }
             else
@@ -68,7 +69,7 @@ function GetLastManBack(d,teamColor)
                 if(dist < minDist)
                 {
                     minDist = dist;
-                    closestPlayer = playerTeamArray[i][0];
+                    closestPlayer = globPlayerTmsArr[i][0];
                 }
             }
         } 
@@ -94,8 +95,9 @@ function GetPlayerInfo(p)
         x:p['x'],
         y:p['y'],
         z:p['z'],
-        speed:d['speed']
+        speed:p['speed']
     }
+    return player;
 }
 function GetDistanceFromBall(ball, player)
 {
