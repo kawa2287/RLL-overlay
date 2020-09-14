@@ -156,7 +156,7 @@ $(() => {
     })
     WsSubscribers.subscribe("game", "replay_end", (d) => 
     {
-        ReplayWillEndMain(d);    
+        ReplayEndMain(d);    
     })
 })
 

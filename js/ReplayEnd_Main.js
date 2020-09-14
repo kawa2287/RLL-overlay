@@ -1,4 +1,4 @@
-function ReplayWillEndMain(d)
+function ReplayEndMain(d)
 {
     $('#transitionLogo').removeClass('animate__rollIn');
         $('#transitionLogo').addClass('animate__rollOut');
@@ -6,4 +6,8 @@ function ReplayWillEndMain(d)
         $('#transitionBg').addClass('animate__fadeOut');
         $('#transitionBg').removeClass('hasBg');
         // document.getElementById('hidden-checkbox').click();
+
+        //move player tiles back
+        $(".blueTeam ").css({"transform": "translateX(0px)"});
+        $(".orangeTeam ").css({"transform": "translateX(0px)"});
 }
