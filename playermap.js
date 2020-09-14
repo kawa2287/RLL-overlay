@@ -37,6 +37,10 @@ const PLAYER_TEAM_MAP = {
     "Samara": "Queens",
     "Marley": "Pigeons",
     "Roundhouse": "Knights",
+    "Dude": "Queens",
+    "Stinger": "Pigeons",
+    "Maverick": "Knights",
+
 };
 
 const TEAM_BANNER_MAP = {

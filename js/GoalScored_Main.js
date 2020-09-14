@@ -29,11 +29,18 @@ function GoalScoredMain(d)
     $(".replay .scorer .name").css({"color":colors.secondary});
     $(".replay .scorer .name").css({"text-shadow":"2px 2px 8px "+ colors.shadow});
 
+    //set assister
+    $(".replay .box.assist").css({"visibility":"hidden"});
+    $(".replay .assist img").attr("src", logo);
+    $(".replay .assist .name").text('Unassisted');
+    $(".replay .assist .h").css({"background":colors.primary});
+    $(".replay .assist .name").css({"color":colors.secondary});
+    $(".replay .assist .name").css({"text-shadow":"2px 2px 8px "+ colors.shadow});
 
     //Determine Last Man Back
     let lastMan = GetLastManBack(previousData,scoredAgainst);
     let lManName = (lastMan===undefined? 'undetermined':lastMan['name']);
-    console.log(lastMan);
+    console.log(oppLogo);
     $(".replay .lastMan img").attr("src", oppLogo);
     $(".replay .lastMan .name").text(lManName);
     $(".replay .lastMan .h").css({"background":oppColors.primary});

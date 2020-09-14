@@ -3,7 +3,7 @@ const EVENT_MAP = {
     "Shot on Goal": "fas fa-crosshairs",
     "Save": "fas fa-shield-alt",
     "Goal": "fas fa-futbol",
-    "Assist": "far fa-thumbs-up",
+    "Assist":"fab fa-autoprefixer",
     "Aerial Goal":"fas fa-plane",
     "Epic Save": "fas fa-shield-alt",
 }
