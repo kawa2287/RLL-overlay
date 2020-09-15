@@ -53,7 +53,7 @@ function GameUpdateMain(d)
     $(".scorebug .right .logo img").attr("src",TEAM_BANNER_MAP[rightTeamName]);
 
     // if (d['game']['ballSpeed'] !== 0) {
-    if (counter < 50) {
+    if (counter < 50 && d['game']['ballSpeed'] !== 0) {
         const ballPos = {
             "x": d['game']['ballX'],
             "y": d['game']['ballY']

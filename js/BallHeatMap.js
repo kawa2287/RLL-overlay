@@ -99,6 +99,7 @@ svg.selectAll()
     .attr("y", (d) => y(d.variable))
     .attr("width", x.bandwidth() )
     .attr("height", y.bandwidth() )
+    .attr("opacity", "0.7")
     .style("fill",  (d) => d.value === 0 ? 'rgba(0,0,0,0)' : myColor(d.value) )
 
 // original example
@@ -167,7 +168,7 @@ console.log(positionBins);
 // }
 
 function updateHeatmap(ballHistory) {
-  console.log('updateHeatmap');
+  // console.log('updateHeatmap');
   
   for (let i = 0; i < ballHistory.length; i++) {
     const ballPos = ballHistory[i];
@@ -185,7 +186,7 @@ function updateHeatmap(ballHistory) {
         break;
       }
     }
-    console.log(`got bin: ${binX} ${binY}`);
+    // console.log(`got bin: ${binX} ${binY}`);
     const curBinCount = binsByPos[`${binX}${binY}`]++;
     const count = curBinCount;
 
@@ -196,8 +197,8 @@ function updateHeatmap(ballHistory) {
 
     const posIdx = (binX - 1) * (yBins.length) + (binY) - 1;
 
-    console.log('got idx', posIdx);
-    console.log(positionBins[posIdx]);
+    // console.log('got idx', posIdx);
+    // console.log(positionBins[posIdx]);
 
     positionBins[posIdx].value = count;
   }
@@ -207,6 +208,8 @@ function updateHeatmap(ballHistory) {
   myColor = d3.scaleSequential(d3.interpolateSpectral)
     .domain([0, biggestBinCount]);
 
+  console.log(binsByPos);
+
   svg.selectAll()
     .data(positionBins, (d) => `${d.group}:${d.variable}`)
     .enter()
@@ -215,5 +218,6 @@ function updateHeatmap(ballHistory) {
     .attr("y", function(d) { return y(d.variable) })
     .attr("width", x.bandwidth() )
     .attr("height", y.bandwidth() )
+    .attr("opacity", "0.7")
     .style("fill", (d) => d.value === 0 ? 'rgba(0,0,0,0)' : myColor(d.value));
 }
