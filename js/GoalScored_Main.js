@@ -11,13 +11,10 @@ function GoalScoredMain(d)
     let oppLogo = TEAM_LOGO_MAP[oppName] ;
     let colors = TEAM_COLOR_MAP[teamName];
     let oppColors = TEAM_COLOR_MAP[oppName];
-
     $(".scorebug .overlay .i img").attr("src", logo);
     $(".scorebug .overlay").css({"background": colors.primary});
     $(".scorebug .overlay .g").css({"color":colors.secondary});
     $(".scorebug .overlay .g").css({"text-shadow":"2px 2px 6px "+colors.shadow});
-
-
 
     //Flash Scoreboard Goal Animation
     FlashGoal();
@@ -40,16 +37,73 @@ function GoalScoredMain(d)
     //Determine Last Man Back
     let lastMan = GetLastManBack(previousData,scoredAgainst);
     let lManName = (lastMan===undefined? 'undetermined':lastMan['name']);
-    console.log(oppLogo);
     $(".replay .lastMan img").attr("src", oppLogo);
     $(".replay .lastMan .name").text(lManName);
     $(".replay .lastMan .h").css({"background":oppColors.primary});
     $(".replay .lastMan .name").css({"color":oppColors.secondary});
     $(".replay .lastMan .name").css({"text-shadow":"2px 2px 8px "+ oppColors.shadow});
 
+    //Determine where on net the goal was
+    GetGoalNetPosition(previousData,scoredAgainst);
+
 }
 
+function GetGoalNetPosition(d, scoredOn)
+{
+    //divDim is how big the div is that holds the image (anchor is top left)
+    let ball = GetBallInfo(d);
+    let divDim = 30;
+    let rlW = 800;
+    let rlH = 440;
+    let cssW = 100;
+    let cssH = 75;
 
+    console.log("BALLX= " + ball.x + " BALLZ= " + ball.z + " SPEED = " +ball.speed)
+    let xScaled = Scale(rlW,cssW,ball.x);
+    let zScaled = Scale(rlH,cssH, ball.z );
+
+    let xTrans = 0;
+    let zTrans = 0;
+    //check field positioning
+    if(scoredOn === 'blue')
+    {
+        if(ball.x >=0)
+        {
+            xTrans = cssW + Math.abs(xScaled) -divDim/2;
+        }
+        else
+        {
+            xTrans = cssW-Math.abs(xScaled) -divDim/2;
+        }
+    }
+    else
+    {
+        if(ball.x <=0)
+        {
+            xTrans = cssW + Math.abs(xScaled) -divDim/2;
+        }
+        else
+        {
+            xTrans = cssW-Math.abs(xScaled) -divDim/2;
+        }
+    }
+    zTrans = (cssH-divDim/2) - zScaled - divDim/2 + Scale(rlH,cssH,96 );
+
+    console.log(xTrans);
+    console.log(zTrans);
+    
+    //set position
+    $(".replay .goal .in b").css({"transform": "translate("+ xTrans +"px,"+ zTrans +"px)"});
+    $(".replay .goal .in i").css({"transform": "translate("+ xTrans +"px,"+ zTrans +"px)"});
+    $(".replay .speed").text(ball.speed+" MPH");
+
+
+}
+
+function Scale(rlScale, cssScale, value)
+{
+    return Math.floor((cssScale/rlScale)*value);
+}
 
 
 function DetermineGoalScoringTeam(scorer)
@@ -110,7 +164,7 @@ function GetBallInfo(d)
         x:d['game']['ballX'],
         y:d['game']['ballY'],
         z:d['game']['ballZ'],
-        speed:d['game']['ballSpeed']
+        speed:Math.ceil(d['game']['ballSpeed']*0.621371)
     }
     return ball;
 }
