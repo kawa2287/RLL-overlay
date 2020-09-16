@@ -1,8 +1,34 @@
 const WebSocket = require('ws');
+const fs = require('fs');
 
-const wss = new WebSocket.Server({ port: 49322 });
+const PORT = 49322;
+
+const wss = new WebSocket.Server({ port: PORT });
 let connections = {};
 
+//a wsClient for sending fake RL/BM messages
+const wsClient = new WebSocket("ws://localhost:" + PORT);
+/**
+ * this interval is for the gamestate messages
+ * 
+ * NOTE: call clearInterval on the intervals in ws.on('close'... below
+ */
+const gsInterval = setInterval(() => {
+    const gamestate = fs.readFileSync('update_state-sample.json', 'utf-8');
+    const gamestateMsg = JSON.stringify({
+        event: 'game:update_state',
+        data: gamestate
+    });
+    wsClient.send(gamestateMsg);
+    // console.log(gamestate);
+    console.log('sent gamestate');
+}, 2000);
+
+
+/**
+ * below here is ws-relay but without the RL/BM hooks
+ * it should just provide a WS server that relays messages
+ */
 wss.on('connection', function connection(ws) {
     console.log('WSS init');
     let id = (+ new Date()).toString();
@@ -25,6 +51,8 @@ wss.on('connection', function connection(ws) {
         // Might run into race conditions with accessing connections for sending, but cant be arsed to account for this.
         // If a connection closes something will be fucked anyway
         delete connections[id];
+        
+        clearInterval(gsInterval);
     });
 });
 
@@ -51,7 +79,9 @@ function sendRelayMessage(senderConnectionId, message) {
         }
         return;
     }
+    console.log('sendRelayMessage1');
     for (let k in connections) {
+        console.log('sendRelayMessage2', connections[k].registeredFunctions);
         if (senderConnectionId === k) {
             continue;
         }
@@ -59,6 +89,7 @@ function sendRelayMessage(senderConnectionId, message) {
             continue;
         }
         if (connections[k].registeredFunctions.indexOf(json['event']) > -1) {
+            console.log('got a registered connection');
             setTimeout(() => {
                 try {
                     connections[k].connection.send(message);
