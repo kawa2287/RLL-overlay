@@ -14,7 +14,7 @@ const wsClient = new WebSocket("ws://localhost:" + PORT);
  * NOTE: call clearInterval on the intervals in ws.on('close'... below
  */
 const gsInterval = setInterval(() => {
-    const gamestate = fs.readFileSync('update_state-sample.json', 'utf-8');
+    const gamestate = JSON.parse(fs.readFileSync('update_state-sample.json', 'utf-8'));
     const gamestateMsg = JSON.stringify({
         event: 'game:update_state',
         data: gamestate
@@ -79,9 +79,7 @@ function sendRelayMessage(senderConnectionId, message) {
         }
         return;
     }
-    console.log('sendRelayMessage1');
     for (let k in connections) {
-        console.log('sendRelayMessage2', connections[k].registeredFunctions);
         if (senderConnectionId === k) {
             continue;
         }
@@ -89,7 +87,6 @@ function sendRelayMessage(senderConnectionId, message) {
             continue;
         }
         if (connections[k].registeredFunctions.indexOf(json['event']) > -1) {
-            console.log('got a registered connection');
             setTimeout(() => {
                 try {
                     connections[k].connection.send(message);
