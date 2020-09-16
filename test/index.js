@@ -13,8 +13,38 @@ const wsClient = new WebSocket("ws://localhost:" + PORT);
  * 
  * NOTE: call clearInterval on the intervals in ws.on('close'... below
  */
+const gamestateInterval = 1000; // milliseconds
+let timeCounter = gamestateInterval / 1000; // seconds
 const gsInterval = setInterval(() => {
-    const gamestate = JSON.parse(fs.readFileSync('update_state-sample.json', 'utf-8'));
+    let gamestate = JSON.parse(fs.readFileSync('update_state-sample.json', 'utf-8'));
+
+    // do some modifications 
+    // GAME TIME
+    gamestate.game.time += timeCounter;
+    timeCounter += gamestateInterval / 1000;
+
+    // BALL POSITIONING
+    const x = (Math.random() * 7000) - 3500; // random number between -3500 and 3500
+    const y = (Math.random() * 10000) - 5000; // random number between -5000 and 5000
+    gamestate.game.ballX = x;
+    gamestate.game.ballY = y;
+
+    // PLAYER SCORES / BOOSTS / x/y/z
+    gamestate.players = Object.keys(gamestate.players).map((playerName) => {
+        const player = gamestate.players[playerName];
+        const newScore = Math.random() * 1000;
+        const newBoost = Math.random() * 100;
+        const newSpeed = Math.random() * 100;
+
+        player.score = newScore;
+        player.boost = newBoost;
+        player.speed = newSpeed;
+
+        return player;
+    });
+
+    // console.log(gamestate.players);
+
     const gamestateMsg = JSON.stringify({
         event: 'game:update_state',
         data: gamestate
@@ -22,8 +52,22 @@ const gsInterval = setInterval(() => {
     wsClient.send(gamestateMsg);
     // console.log(gamestate);
     console.log('sent gamestate');
-}, 2000);
+}, gamestateInterval);
 
+/**
+ * TODO: handle other types of messages
+ * 
+ * idea 1: create a new interval for each type
+ * idea 2: one interval at smallest period with counters for others to track when to go
+ * 
+ * 'game:update_state',     100ms
+ * 'game:goal_scored',      random interval
+ * 'game:statfeed_event',   10sec?
+ * 'game:replay_start',     right after goal_scored
+ * 'game:replay_will_end',  ~10sec after replay_start
+ * 'game:replay_end'        ~1sec after replay_will_end
+ * 
+ */
 
 /**
  * below here is ws-relay but without the RL/BM hooks

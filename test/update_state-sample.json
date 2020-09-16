@@ -14,19 +14,19 @@
     "teams": [
       {
         "name": "BLUE",
-        "score": 17
+        "score": 1
       },
       {
         "name": "ORANGE",
-        "score": 15
+        "score": 0
       }
     ],
-    "time": 1094.336426,
+    "time": 0,
     "winner": ""
   },
   "hasGame": true,
   "players": {
-    "Centice_5": {
+    "kawa_5": {
       "assists": 3,
       "attacker": "",
       "boost": 1,
@@ -34,10 +34,10 @@
       "demos": 0,
       "goals": 2,
       "hasCar": true,
-      "id": "Centice_5",
+      "id": "kawa_5",
       "isDead": false,
       "isSonic": false,
-      "name": "Centice",
+      "name": "kawa",
       "primaryID": "0",
       "saves": 0,
       "score": 765,
@@ -49,7 +49,7 @@
       "y": -131.091095,
       "z": 17.01
     },
-    "Chipper_7": {
+    "elffaW_7": {
       "assists": 3,
       "attacker": "",
       "boost": 0,
@@ -57,10 +57,10 @@
       "demos": 0,
       "goals": 5,
       "hasCar": true,
-      "id": "Chipper_7",
+      "id": "elffaW_7",
       "isDead": false,
       "isSonic": true,
-      "name": "Chipper",
+      "name": "elffaW",
       "primaryID": "0",
       "saves": 2,
       "score": 1204,
@@ -72,7 +72,7 @@
       "y": -4063.586914,
       "z": 57.448273
     },
-    "Merlin_6": {
+    "pnkrockjock26_6": {
       "assists": 2,
       "attacker": "",
       "boost": 0,
@@ -80,10 +80,10 @@
       "demos": 0,
       "goals": 8,
       "hasCar": true,
-      "id": "Merlin_6",
+      "id": "pnkrockjock26_6",
       "isDead": false,
       "isSonic": false,
-      "name": "Merlin",
+      "name": "pnkrockjock26",
       "primaryID": "0",
       "saves": 1,
       "score": 1463,
@@ -95,7 +95,7 @@
       "y": 3588.284424,
       "z": 18.639999
     },
-    "Scout_3": {
+    "Snakes on a Microplane_3": {
       "assists": 2,
       "attacker": "",
       "boost": 0,
@@ -103,10 +103,10 @@
       "demos": 0,
       "goals": 5,
       "hasCar": true,
-      "id": "Scout_3",
+      "id": "Snakes on a Microplane_3",
       "isDead": false,
       "isSonic": false,
-      "name": "Scout",
+      "name": "Snakes on a Microplane",
       "primaryID": "0",
       "saves": 4,
       "score": 1281,
@@ -118,7 +118,7 @@
       "y": -974.576477,
       "z": 17.059999
     },
-    "Sultan_1": {
+    "GolfJBC89_1": {
       "assists": 3,
       "attacker": "",
       "boost": 57,
@@ -126,10 +126,10 @@
       "demos": 0,
       "goals": 5,
       "hasCar": true,
-      "id": "Sultan_1",
+      "id": "GolfJBC89_1",
       "isDead": false,
       "isSonic": false,
-      "name": "Sultan",
+      "name": "GolfJBC89",
       "primaryID": "0",
       "saves": 6,
       "score": 1450,
@@ -141,7 +141,7 @@
       "y": -822.891174,
       "z": 18.65
     },
-    "Wolfman_2": {
+    "ofthemoon16_2": {
       "assists": 2,
       "attacker": "",
       "boost": 0,
@@ -149,10 +149,10 @@
       "demos": 0,
       "goals": 7,
       "hasCar": true,
-      "id": "Wolfman_2",
+      "id": "ofthemoon16_2",
       "isDead": false,
       "isSonic": false,
-      "name": "Wolfman",
+      "name": "ofthemoon16",
       "primaryID": "0",
       "saves": 2,
       "score": 1474,
