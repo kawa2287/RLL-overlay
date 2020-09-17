@@ -6,7 +6,7 @@ function GameUpdateMain(d)
         //store team info
         let blueTeam = [];
         let orangeTeam = [];
-        let allPlayers = [];
+        let allPlayers = []; 
 
         let players = d['players'];
 
@@ -49,9 +49,14 @@ function GameUpdateMain(d)
         $(".scorebug .left .logo img").attr("src",TEAM_BANNER_MAP[leftTeamName]);
         $(".scorebug .right .logo img").attr("src",TEAM_BANNER_MAP[rightTeamName]);
 
-        
         // Update Player Scores
         AddStats(allPlayers,d);
+
+        //Show Target Player Stats if focused
+        TargetStats(allPlayers,d);
+
+        //test
+        console.log(playerAdvStats);
 
         //Save State
         previousData = d;
@@ -72,7 +77,6 @@ function GetPlayerTeamArray(d)
             playerTeamArray.push([players[key],"orange"]);
         }
     }
-
     return playerTeamArray;
 }
 
@@ -115,6 +119,22 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay)
         {
             $(q).css({"opacity":1});
         }
+
+        //check if player exists in the adv stats obj
+        if(playerAdvStats[teamArray[indexNum]['name']] === undefined)
+        {
+            //add player to adv stats
+            playerAdvStats[teamArray[indexNum]['name']] = {
+                airTime:0,
+                airHits:0
+            }
+        }
+        else
+        {
+            //player exists --> add adv stats
+            AirStats(teamArray[indexNum]);
+        }
+
     }
     else
     {
@@ -163,13 +183,14 @@ function GetTeam(team)
 }
 
 
-function AddStats(players)
+function AddStats(players,d)
 {
-
     //push to sorting array
     let sortList = [];
-    for (var p in players) {
-        sortList.push([players[p]['name'], players[p]['score']]);
+    for (var p in players) 
+    {
+        let sortStat = PickStat(players,p,d['game']['time']);
+        sortList.push([players[p]['name'],sortStat]);
     }
 
     //sort
@@ -182,7 +203,6 @@ function AddStats(players)
     {
         SetDiv(sortList[i], ".p" + (i+1).toString());
     }
-    
 }
 
 function SetDiv(playerInfo, p)
@@ -193,4 +213,117 @@ function SetDiv(playerInfo, p)
     $(q + " .score").text(playerInfo[1]);
     //Set ID
     $(q).attr('id', playerInfo[0]);
+}
+
+function PickStat(players,p,gameTime)
+{
+    
+    let s = GetSeconds(gameTime);
+    if (s < 60 && s>= 50)
+    {
+        $(".scoreChart .title").text("SCORE");
+        return players[p]['score'];
+    };
+    if (s < 50 && s>= 40)
+    {
+        $(".scoreChart .title").text("BALL TOUCHES");
+        return players[p]['touches']};
+    if (s < 40 && s>= 30)
+    {
+        $(".scoreChart .title").text("CAR BUMPS");
+        return players[p]['cartouches'];
+    };
+    if (s < 30 && s>= 20)
+    {
+        $(".scoreChart .title").text("POINTS");
+        return players[p]['goals'] + players[p]['assists'];
+    };
+    if (s < 20 && s>= 10)
+    {
+        $(".scoreChart .title").text("SCORE POINTS/TOUCH");
+        if(players[p]['touches'] === 0)
+        {
+            return 0;
+        }
+        else
+        {
+            return (players[p]['score']/players[p]['touches']).toFixed(2);;
+        }
+        
+    };
+    if (s < 10 && s>= 0)
+    {
+        $(".scoreChart .title").text("SCORE RANKINGS");
+        return  players[p]['score'];
+    };
+    return  players[p]['score'];
+}
+
+function TargetStats(players, d)
+{
+    //Check if director has player targeted
+    if(d['game']['hasTarget'])
+    {
+        //make targetDisplay Visible
+        $(".targetDisplay").css({"visibility":"visible"})
+        //fill out stats
+        let target = d['game']['target'];
+        for(let i = 0; i < players.length; i++)
+        {
+            if(players[i]['id'] === target)
+            {
+                //set stats
+                $(".targetDisplay .player .name").text(players[i]['name']);
+                $(".targetDisplay .player .score").text(players[i]['score']);
+                $(".targetDisplay .player .stat.points .value").text(players[i]['goals']+players[i]['assists']);
+                $(".targetDisplay .player .stat.goals .value").text(players[i]['goals']);
+                $(".targetDisplay .player .stat.assists .value").text(players[i]['assists']);
+                $(".targetDisplay .player .stat.shots .value").text(players[i]['shots']);
+                $(".targetDisplay .player .stat.saves .value").text(players[i]['saves']);
+                $(".targetDisplay .player .stat.touches .value").text(players[i]['touches']);
+                $(".targetDisplay .player .stat.bumps .value").text(players[i]['cartouches']);
+                $(".targetDisplay .side.speed .middle").text(Math.ceil(players[i]['speed']*0.621371));
+                progress(players[i]['boost'],$(".targetDisplay .player .bar"))
+
+                //debug
+                $(".targetDisplay .debugstats .x").text("X: "+players[i]['x']);
+                $(".targetDisplay .debugstats .y").text("Y: "+players[i]['y']);
+                $(".targetDisplay .debugstats .z").text("Z: "+players[i]['z']);
+                
+                //set colors and logos
+                let team = players['team'];
+
+                //Set Team Goal Icon and Colors
+                let teamName =  (team === 0 ? leftTeamName : rightTeamName);
+                let logo = TEAM_LOGO_MAP[teamName] ;
+                let colors = TEAM_COLOR_MAP[teamName];
+                let barColor;
+                if(players[i]['team'] === 0)
+                {
+                    barColor = "linear-gradient(to right, blue 0%,blue 50%,rgb(134, 134, 255)  100%)";
+                }
+                else
+                {
+                    barColor = "linear-gradient(to right, rgba(223, 126, 0, 1), 0%,rgba(223, 126, 0, 1), 50%,rgb(255, 204, 136) 100%)";
+                }
+
+                //apply
+                $(".targetDisplay img").attr("src", logo);
+                $(".targetDisplay").css({"background":colors.primary});
+                $(".targetDisplay .scoreTitle").css({"color":colors.secondary});
+                $(".targetDisplay .side.speed .text").css({"color":colors.secondary});
+                $(".targetDisplay .lowerCont").css({"color":colors.secondary});
+                $(".targetDisplay .lowerCont").css({"background":colors.shadow});
+                $(".targetDisplay .lowerCont .title").css({"background":colors.primary});
+                $(".targetDisplay .progressBarCont .bar").css({"background" : barColor});
+                
+            }
+        }
+
+    }
+    else
+    {
+        //hide targetDisplay
+        $(".targetDisplay").css({"visibility":"hidden"})
+    }
 }

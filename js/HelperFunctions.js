@@ -9,6 +9,12 @@ function secondsToMS(d)
     return mDisplay +":"+ sDisplay; 
 }
 
+function GetSeconds(d) 
+{
+    d = Math.ceil(Number(d));
+    return s = Math.floor(d % 3600 % 60);
+}
+
 function PlayAnimation(loc, animClass, duration)
 {
     $(loc).addClass(animClass);

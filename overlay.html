@@ -13,6 +13,7 @@
     <body>
 
         <div class= "scoreChart">
+            <div class="title">RANKINGS</div>
             <div class="driver p1">
                 <div class ="name"></div>
                 <div class ="score"></div>
@@ -72,7 +73,6 @@
                     <div class="name">PLAYER</div>
                 </div>
             </div>
-            
         </div>
 
         <div class="blueTeam">
@@ -125,6 +125,7 @@
                 </div> 
 
                 <div class="box p3">
+                    
                     <div class = "name"> </div>
                     <div class="event">
                         <i></i>
@@ -222,6 +223,63 @@
                 </div>          
             </div>
         </div>
+
+        <div class ="targetDisplay">
+            <div class="debugstats" style="font-size: 15px; color: white;position: absolute;right:-100px">
+                <div class ="x">0</div>
+                <div class ="y">0</div>
+                <div class ="z">0</div>
+            </div>
+            <div class="side logo">
+                <img src="assets/RLL_logo.png"/>
+            </div>
+            <div class = "player">
+                <div class="upperCont">
+                    <div class ="name">-</div>
+                    <div class="progressBarCont">
+                        <div class="bar" style="width:80%"></div>
+                    </div>  
+                    <div class ="scoreTitle">SCORE:</div>
+                    <div class ="score">-</div>
+                       
+                </div>
+                <div class="lowerCont">
+                    <div class="stat points">
+                        <div class="title">PTS</div>
+                        <div class="value">-</div>
+                    </div>
+                    <div class="stat goals">
+                        <div class="title">G</div>
+                        <div class="value">-</div>
+                    </div>
+                    <div class="stat assists">
+                        <div class="title">A</div>
+                        <div class="value">-</div>
+                    </div>
+                    <div class="stat shots">
+                        <div class="title">SH</div>
+                        <div class="value">-</div>
+                    </div>
+                    <div class="stat saves">
+                        <div class="title">SV</div>
+                        <div class="value">-</div>
+                    </div>
+                    <div class="stat touches">
+                        <div class="title">T</div>
+                        <div class="value">-</div>
+                    </div>
+                    <div class="stat bumps">
+                        <div class="title">B</div>
+                        <div class="value">-</div>
+                    </div>
+                </div>
+            </div>
+            <div class = "side speed">
+                <div class="text upper">SPEED</div>
+                <div class="middle">-</div>
+                <div class="text lower">MPH</div>
+            </div>
+        </div>
         
         <div id="transitionLogo" class="animate__animated animate__rollOut"></div>
         <div id="transitionBg" class="animate__animated animate_fadeOut"></div>
@@ -246,17 +304,349 @@
             <div class="rightcontainer">0:00</div>
         </div>
 
+        <div class ="postGame">
+            <div class= "left team">
+                <div class = "tmscore"></div>
+                <div class ="upperArea">
+                    <img src="assets/LOGO_PIGEONS.png"/>
+                </div>
+                <div class = "lowerArea">
+
+                    <div class ="postDisplay p1">
+                        <div class="side logo">
+                            <img src="assets/LOGO_PIGEONS.png"/>
+                        </div>
+                        <div class = "player">
+                            <div class="upperCont">
+                                <div class ="name">SNAKES ON A MICROPLANE</div>
+                                <div class ="scoreTitle">SCORE:</div>
+                                <div class ="score">856</div>
+                            </div>
+                            <div class="lowerCont">
+                                <div class="stat points">
+                                    <div class="title">PTS</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat goals">
+                                    <div class="title">G</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat assists">
+                                    <div class="title">A</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat shots">
+                                    <div class="title">SH</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat saves">
+                                    <div class="title">SV</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat touches">
+                                    <div class="title">T</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat bumps">
+                                    <div class="title">B</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat airTime">
+                                    <div class="title">AT</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat airHits">
+                                    <div class="title">AH</div>
+                                    <div class="value">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class ="postDisplay p2">
+                        <div class="side logo">
+                            <img src="assets/LOGO_PIGEONS.png"/>
+                        </div>
+                        <div class = "player">
+                            <div class="upperCont">
+                                <div class ="name">SNAKES ON A MICROPLANE</div>
+                                <div class ="scoreTitle">SCORE:</div>
+                                <div class ="score">856</div>
+                            </div>
+                            <div class="lowerCont">
+                                <div class="stat points">
+                                    <div class="title">PTS</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat goals">
+                                    <div class="title">G</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat assists">
+                                    <div class="title">A</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat shots">
+                                    <div class="title">SH</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat saves">
+                                    <div class="title">SV</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat touches">
+                                    <div class="title">T</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat bumps">
+                                    <div class="title">B</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat airTime">
+                                    <div class="title">AT</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat airHits">
+                                    <div class="title">AH</div>
+                                    <div class="value">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class ="postDisplay p3">
+                        <div class="side logo">
+                            <img src="assets/LOGO_PIGEONS.png"/>
+                        </div>
+                        <div class = "player">
+                            <div class="upperCont">
+                                <div class ="name">SNAKES ON A MICROPLANE</div>
+                                <div class ="scoreTitle">SCORE:</div>
+                                <div class ="score">856</div>
+                            </div>
+                            <div class="lowerCont">
+                                <div class="stat points">
+                                    <div class="title">PTS</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat goals">
+                                    <div class="title">G</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat assists">
+                                    <div class="title">A</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat shots">
+                                    <div class="title">SH</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat saves">
+                                    <div class="title">SV</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat touches">
+                                    <div class="title">T</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat bumps">
+                                    <div class="title">B</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat airTime">
+                                    <div class="title">AT</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat airHits">
+                                    <div class="title">AH</div>
+                                    <div class="value">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="right team">
+                <div class = "tmscore"></div>
+                <div class ="upperArea">
+                    <img src="assets/LOGO_PIGEONS.png"/>
+                </div>
+                <div class = "lowerArea">
+
+                    <div class ="postDisplay p1">
+                        <div class="side logo">
+                            <img src="assets/LOGO_PIGEONS.png"/>
+                        </div>
+                        <div class = "player">
+                            <div class="upperCont">
+                                <div class ="name">SNAKES ON A MICROPLANE</div>
+                                <div class ="scoreTitle">SCORE:</div>
+                                <div class ="score">856</div>
+                            </div>
+                            <div class="lowerCont">
+                                <div class="stat points">
+                                    <div class="title">PTS</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat goals">
+                                    <div class="title">G</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat assists">
+                                    <div class="title">A</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat shots">
+                                    <div class="title">SH</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat saves">
+                                    <div class="title">SV</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat touches">
+                                    <div class="title">T</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat bumps">
+                                    <div class="title">B</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat airTime">
+                                    <div class="title">AT</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat airHits">
+                                    <div class="title">AH</div>
+                                    <div class="value">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class ="postDisplay p2">
+                        <div class="side logo">
+                            <img src="assets/LOGO_PIGEONS.png"/>
+                        </div>
+                        <div class = "player">
+                            <div class="upperCont">
+                                <div class ="name">SNAKES ON A MICROPLANE</div>
+                                <div class ="scoreTitle">SCORE:</div>
+                                <div class ="score">856</div>
+                            </div>
+                            <div class="lowerCont">
+                                <div class="stat points">
+                                    <div class="title">PTS</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat goals">
+                                    <div class="title">G</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat assists">
+                                    <div class="title">A</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat shots">
+                                    <div class="title">SH</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat saves">
+                                    <div class="title">SV</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat touches">
+                                    <div class="title">T</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat bumps">
+                                    <div class="title">B</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat airTime">
+                                    <div class="title">AT</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat airHits">
+                                    <div class="title">AH</div>
+                                    <div class="value">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class ="postDisplay p3">
+                        <div class="side logo">
+                            <img src="assets/LOGO_PIGEONS.png"/>
+                        </div>
+                        <div class = "player">
+                            <div class="upperCont">
+                                <div class ="name">SNAKES ON A MICROPLANE</div>
+                                <div class ="scoreTitle">SCORE:</div>
+                                <div class ="score">856</div>
+                            </div>
+                            <div class="lowerCont">
+                                <div class="stat points">
+                                    <div class="title">PTS</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat goals">
+                                    <div class="title">G</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat assists">
+                                    <div class="title">A</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat shots">
+                                    <div class="title">SH</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat saves">
+                                    <div class="title">SV</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat touches">
+                                    <div class="title">T</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat bumps">
+                                    <div class="title">B</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat airTime">
+                                    <div class="title">AT</div>
+                                    <div class="value">-</div>
+                                </div>
+                                <div class="stat airHits">
+                                    <div class="title">AH</div>
+                                    <div class="value">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
         <input id="hidden-checkbox" type="checkbox"></input>
         <label for="hidden-checkbox"></label> 
 
         <script type="text/javascript" src="subscribers.js"></script>
+        <script type="text/javascript" src="js/GameInit_Main.js"></script>
+        <script type="text/javascript" src="js/MatchCreated_Main.js"></script>
         <script type="text/javascript" src="js/GameUpdate_Main.js"></script>
         <script type="text/javascript" src="js/GoalScored_Main.js"></script>
         <script type="text/javascript" src="js/StatFeed_Main.js"></script>
         <script type="text/javascript" src="js/ReplayStart_Main.js"></script>
         <script type="text/javascript" src="js/ReplayWillEnd_Main.js"></script>
         <script type="text/javascript" src="js/ReplayEnd_Main.js"></script>
+        <script type="text/javascript" src="js/PostGame_Main.js"></script>
         <script type="text/javascript" src="js/HelperFunctions.js"></script>
+        <script type="text/javascript" src="js/AirMethods.js"></script>
         <script type="text/javascript" src="playermap.js"></script>
         <script type="text/javascript" src="events.js"></script>
     </body>

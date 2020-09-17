@@ -12,4 +12,5 @@ function ReplayEndMain(d)
         $(".orangeTeam ").css({"transform": "translateX(0px)"});
         $(".scoreChart ").css({"transform": "translateX(0px)"});
         $(".replay ").css({"transform": "translateX(0px)"});
+        $(".targetDisplay ").css({"transform": "translateX(0px)"});
 }

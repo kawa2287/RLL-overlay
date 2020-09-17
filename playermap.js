@@ -24,7 +24,9 @@ const PLAYER_TEAM_MAP = {
     "Beast": "LongBows",
     "Cougar": "Queens",
     "Viper": "LongBows",
+    "Tex": "LongBows",
     "Heater": "Samurai",
+    "Sticks":"Knights",
     "Raja": "Samurai",
     "Sabertooth": "Queens",
     "Merlin": "Pigeons",
@@ -35,6 +37,7 @@ const PLAYER_TEAM_MAP = {
     "Armstrong": "Crabs",
     "Foamer": "Knights",
     "Samara": "Queens",
+    "Iceman" :"LongBows",
     "Marley": "Pigeons",
     "Roundhouse": "Knights",
     "Dude": "Queens",
@@ -64,12 +67,12 @@ const TEAM_LOGO_MAP = {
 };
 
 const TEAM_COLOR_MAP = {
-    "RLL": {primary:"black", secondary:"white", shadow: "white"},
-    "Crabs": {primary:"orange", secondary:"white", shadow: "black"},
-    "LongBows": {primary:"green", secondary:"yellow", shadow: "darkgreen"},
-    "Samurai": {primary:"black", secondary:"white", shadow: "gray"},
-    "Knights": {primary:"red", secondary:"white", shadow: "black"},
-    "Queens": {primary:"blue", secondary:"yellow", shadow: "black"},
-    "Pigeons": {primary:"yellow", secondary:"black", shadow: "teal"},
+    "RLL": {primary:"crimson", secondary:"white", shadow: "white", tertiary: "black"},
+    "Crabs": {primary:"#CC5500", secondary:"#ffb76b", shadow: "black",tertiary: "black"},
+    "LongBows": {primary:"#0d3000", secondary:"#f6b11b", shadow: "darkgreen",tertiary: "black"},
+    "Samurai": {primary:"#202020", secondary:"#c8c8c8", shadow: "gray",tertiary: "black"},
+    "Knights": {primary:"#930513", secondary:"#e1cb88", shadow: "black",tertiary: "black"},
+    "Queens": {primary:"#224ed5", secondary:"ffff00", shadow: "black",tertiary: "black"},
+    "Pigeons": {primary:"#00a8C0", secondary:"#f0d830", shadow: "teal",tertiary: "black"},
 };
 

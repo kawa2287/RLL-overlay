@@ -2,6 +2,7 @@ let previousData;
 let globPlayerTmsArr = [];
 let leftTeamName;
 let rightTeamName;
+let playerAdvStats = {};
 
 
 const WsSubscribers = {
@@ -129,6 +130,17 @@ const WsSubscribers = {
 $(() => {
     WsSubscribers.init(49322,true);
 
+
+    WsSubscribers.subscribe("game","match_created", (d) => 
+    {
+        MatchCreatedMain(d);
+    })
+
+    WsSubscribers.subscribe("game","initialized", (d) => 
+    {
+        GameInit(d);
+    })
+
     WsSubscribers.subscribe("game","update_state", (d) => 
     {
         GameUpdateMain(d);
@@ -158,6 +170,11 @@ $(() => {
     {
         ReplayEndMain(d);    
     })
+    WsSubscribers.subscribe("game", "podium_start", (d) => 
+    {
+        PostGameMain();
+    })
+
 })
 
 
