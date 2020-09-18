@@ -46,8 +46,8 @@ function GameUpdateMain(d)
         
         $(".scorebug .left .name").text(leftTeamName);
         $(".scorebug .right .name").text(rightTeamName);
-        $(".scorebug .left .logo img").attr("src",TEAM_BANNER_MAP[leftTeamName]);
-        $(".scorebug .right .logo img").attr("src",TEAM_BANNER_MAP[rightTeamName]);
+        $(".scorebug .left .logo img").attr("src",TEAM_LOGO_MAP[leftTeamName]);
+        $(".scorebug .right .logo img").attr("src",TEAM_LOGO_MAP[rightTeamName]);
 
         // Update Player Scores
         AddStats(allPlayers,d);

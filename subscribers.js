@@ -172,7 +172,7 @@ $(() => {
     })
     WsSubscribers.subscribe("game", "podium_start", (d) => 
     {
-        PostGameMain();
+        PostGameMain(d);
     })
 
 })

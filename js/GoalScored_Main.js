@@ -87,7 +87,7 @@ function GetGoalNetPosition(d, scoredOn)
             xTrans = cssW-Math.abs(xScaled) -divDim/2;
         }
     }
-    zTrans = (cssH-divDim/2) - zScaled - divDim/2 + Scale(rlH,cssH,96 );
+    zTrans = cssH - zScaled - divDim/2;
 
     console.log(xTrans);
     console.log(zTrans);
