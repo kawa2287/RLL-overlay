@@ -17,7 +17,7 @@ function IsInAir(player)
     let maxX = 3500;  //3500
     let minY = -4600; //4600
     let maxY = 4600;  //4600
-    let zReq = 500;  //500
+    let zReq = 400;  //500
     let x = player['x'];
     let y = player['y'];
     let z = player['z'];

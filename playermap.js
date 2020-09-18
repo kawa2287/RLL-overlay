@@ -76,3 +76,9 @@ const TEAM_COLOR_MAP = {
     "Pigeons": {primary:"#00a8C0", secondary:"#f0d830", shadow: "teal",tertiary: "black"},
 };
 
+const COLOR_MAP = 
+{
+    "orangeTeam" :rgba(223, 126, 0, 1),
+    "blueTeam" : "blue"
+};
+

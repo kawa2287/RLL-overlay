@@ -32,13 +32,13 @@ function GameUpdateMain(d)
         //Update Stats
         let isReplay = d['game']['isReplay'];
 
-        UpdateStats(blueTeam, 0, ".p1","blue",isReplay);
-        UpdateStats(blueTeam, 1, ".p2","blue",isReplay);
-        UpdateStats(blueTeam, 2, ".p3","blue",isReplay);
+        UpdateStats(blueTeam, 0, ".p1","blue",isReplay,d);
+        UpdateStats(blueTeam, 1, ".p2","blue",isReplay,d);
+        UpdateStats(blueTeam, 2, ".p3","blue",isReplay,d);
 
-        UpdateStats(orangeTeam, 0, ".p1","orange",isReplay);
-        UpdateStats(orangeTeam, 1, ".p2","orange",isReplay);
-        UpdateStats(orangeTeam, 2, ".p3","orange",isReplay);
+        UpdateStats(orangeTeam, 0, ".p1","orange",isReplay,d);
+        UpdateStats(orangeTeam, 1, ".p2","orange",isReplay,d);
+        UpdateStats(orangeTeam, 2, ".p3","orange",isReplay,d);
         
         //Determine Team & Logo
         leftTeamName = GetTeam(blueTeam)
@@ -80,7 +80,7 @@ function GetPlayerTeamArray(d)
     return playerTeamArray;
 }
 
-function UpdateStats(teamArray, indexNum, p, color, isReplay)
+function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
 {
     const q = `.${color}Team ${p}`;
 
@@ -93,6 +93,7 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay)
         if(!isReplay)
         {
             progress(teamArray[indexNum]['boost'], $(q+ " .bar"));
+            
         }
 
         //Name
@@ -131,10 +132,18 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay)
         }
         else
         {
-            //player exists --> add adv stats
-            AirStats(teamArray[indexNum]);
-        }
+            if(previousData !== undefined)
+            {
+                //check if game clock is running still
+                if(d['game']['time'] !== previousData['game']['time'])
+                {
+                    //player exists --> add adv stats
+                    AirStats(teamArray[indexNum]);
+                } 
 
+            }
+            
+        }
     }
     else
     {
@@ -190,7 +199,7 @@ function AddStats(players,d)
     for (var p in players) 
     {
         let sortStat = PickStat(players,p,d['game']['time']);
-        sortList.push([players[p]['name'],sortStat]);
+        sortList.push([players[p],sortStat]);
     }
 
     //sort
@@ -207,9 +216,19 @@ function AddStats(players,d)
 
 function SetDiv(playerInfo, p)
 {
+    //set colors and logos
+    let team = playerInfo[0]['team'];
+
+    //Set Team Goal Icon and Colors
+    let teamName =  (team === 0 ? leftTeamName : rightTeamName);
+    let logo = TEAM_LOGO_MAP[teamName] ;
+    let color = (team === 0 ? "blue" :  "rgba(223, 126, 0, 1)");
+
     let q = ".scoreChart .driver" + p;
     //Set Values
-    $(q + " .name").text(playerInfo[0]);
+    $(q).css({"background":color});
+    $(q + " .logo img").attr("src", logo);
+    $(q + " .name").text(playerInfo[0]['name']);
     $(q + " .score").text(playerInfo[1]);
     //Set ID
     $(q).attr('id', playerInfo[0]);
@@ -265,7 +284,7 @@ function TargetStats(players, d)
     if(d['game']['hasTarget'])
     {
         //make targetDisplay Visible
-        $(".targetDisplay").css({"visibility":"visible"})
+        $(".targetDisplay").css({"visibility":"visible"});
         //fill out stats
         let target = d['game']['target'];
         for(let i = 0; i < players.length; i++)
@@ -285,10 +304,7 @@ function TargetStats(players, d)
                 $(".targetDisplay .side.speed .middle").text(Math.ceil(players[i]['speed']*0.621371));
                 progress(players[i]['boost'],$(".targetDisplay .player .bar"))
 
-                //debug
-                $(".targetDisplay .debugstats .x").text("X: "+players[i]['x']);
-                $(".targetDisplay .debugstats .y").text("Y: "+players[i]['y']);
-                $(".targetDisplay .debugstats .z").text("Z: "+players[i]['z']);
+            
                 
                 //set colors and logos
                 let team = players['team'];

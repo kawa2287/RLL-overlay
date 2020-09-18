@@ -47,21 +47,45 @@ i {
     background: rgba(0, 0, 0, 0.6);
     box-shadow: 2px 5px 5px #000924b8;
     justify-content: flex-end;
+    text-transform: uppercase;
 }
 .scoreChart .driver
 {
+    max-height: 20px;
     display: flex;
     flex-direction: row;
     flex: 1;
+    background: crimson;
+    margin: 2px;
+    box-shadow: 2px 2px 2px black;
 }
-
-.scoreChart .driver .name
+.scoreChart .driver .logo
 {
     display: flex;
     flex: 1;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+.scoreChart .driver .logo img
+{
+    display: flex;
+    flex: 1;
+    width:100px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.scoreChart .driver .name
+{
+    align-items: center;
+    display: flex;
+    flex: 2;
 }
 .scoreChart .driver .score
 {
+    align-items: center;
     display: flex;
     flex: 1;
 }
@@ -918,8 +942,17 @@ i {
     display: flex;
     flex: 1;
     flex-direction: column;
-    font-size: 12px;
+    font-size: 15px;
     
+}
+
+.postGame .postDisplay .player .stat.points
+{ 
+    border-right: 1px solid black;
+}
+.postGame .postDisplay .player .stat.saves
+{ 
+    border-right: 1px solid black;
 }
 .postGame .postDisplay .player .title
 {
