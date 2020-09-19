@@ -1,3 +1,4 @@
+
 const PLAYER_TEAM_MAP = {
     "kawa": "Crabs",
     "JR": "Crabs",
@@ -42,19 +43,78 @@ const PLAYER_TEAM_MAP = {
     "Roundhouse": "Knights",
     "Dude": "Queens",
     "Stinger": "Pigeons",
-    "Maverick": "Knights",
+    "Maverick": "Knights"
 
 };
 
-const TEAM_BANNER_MAP = {
+
+/*
+const PLAYER_TEAM_MAP = {
+    "kawa": "Crabs",
+    "JR": "Crabs",
+    "dethorne": "LongBows",
+    "elffaW": "LongBows",
+    "Andy Mac": "Queens",
+    "Twerp": "LongBows",
+    "mattaux": "Samurai",
+    "kawa2796": "Samurai",
+    "pnkrockjock26": "Queens",
+    "Hootenannies": "Pigeons",
+    "ofthemoon16": "Pigeons",
+    "AwesomeX": "Knights",
+    "GolfJBC89": "Samurai",
+    "JMyrv": "Knights",
+    "Elissa": "Crabs",
+    "Kurtzy P00": "Knights",
+    "Snakes on a Microplane": "Queens",
+    "Evergreen6258": "Pigeons",
+
+    "Squall": "belgium",
+    "Shepard": "belgium",
+    "Rainmaker": "belgium",
+    "Storm": "belgium",
+    "Beast": "belgium",
+    "Cougar": "botswana",
+    "Viper": "botswana",
+    "Tex": "botswana",
+    "Scout": "botswana",
+    "Heater": "botswana",
+    "Sticks":"colombia",
+    "Raja": "colombia",
+    "Sabertooth": "colombia",
+    "Merlin": "colombia",
+    "Sundown": "colombia",
+    "Storm": "japan",
+    "Myrtle": "japan",
+    "Casper": "japan",
+    "Rex": "japan",
+    "Cougar": "japan",
+    "Armstrong": "mexico",
+    "Foamer": "mexico",
+    "Samara": "mexico",
+    "Iceman" :"mexico",
+    "Jester" :"mexico",
+    "Marley": "norway",
+    "Roundhouse": "norway",
+    "Dude": "norway",
+    "Stinger": "norway",
+    "Maverick": "norway",
+    "Swabbie": "norway",
+
+
+};
+
+
+const TEAM_LOGO_MAP = {
     "RLL": "assets/RLL_logo.png",
-    "Crabs": "assets/crabs_banner.png",
-    "LongBows": "assets/longbows_banner.png",
-    "Samurai": "assets/samurai_banner.png",
-    "Knights": "assets/knights_banner.png",
-    "Queens": "assets/queens_banner.png",
-    "Pigeons": "assets/pigeons_banner.png"
+    "belgium": "assets/belgium.png",
+    "botswana": "assets/botswana.png",
+    "colombia": "assets/colombia.png",
+    "japan": "assets/japan.png",
+    "mexico": "assets/mexico.png",
+    "norway": "assets/norway.png"
 };
+*/
 
 const TEAM_LOGO_MAP = {
     "RLL": "assets/RLL_logo.png",
@@ -66,6 +126,7 @@ const TEAM_LOGO_MAP = {
     "Pigeons": "assets/LOGO_PIGEONS.png"
 };
 
+
 const TEAM_COLOR_MAP = {
     "RLL": {primary:"crimson", secondary:"white", shadow: "white", tertiary: "black"},
     "Crabs": {primary:"#CC5500", secondary:"#ffb76b", shadow: "black",tertiary: "black"},
@@ -74,6 +135,13 @@ const TEAM_COLOR_MAP = {
     "Knights": {primary:"#930513", secondary:"#e1cb88", shadow: "black",tertiary: "black"},
     "Queens": {primary:"#224ed5", secondary:"ffff00", shadow: "black",tertiary: "black"},
     "Pigeons": {primary:"#00a8C0", secondary:"#f0d830", shadow: "teal",tertiary: "black"},
+
+    "belgium": {primary:"#202020", secondary:"#ffe000", shadow: "white",tertiary: "black"},
+    "botswana": {primary:"#3db4ea", secondary:"#202020", shadow: "white",tertiary: "black"},
+    "colombia": {primary:"#ffe000", secondary:"#ed1f34", shadow: "black",tertiary: "black"},
+    "japan": {primary:"#ed1f34", secondary:"white", shadow: "black",tertiary: "black"},
+    "mexico": {primary:"#259245", secondary:"white", shadow: "black",tertiary: "black"},
+    "norway": {primary:"#259245", secondary:"#164fce", shadow: "white",tertiary: "black"},
 };
 
 const COLOR_MAP = 

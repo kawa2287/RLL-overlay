@@ -41,8 +41,8 @@ function GameUpdateMain(d)
         UpdateStats(orangeTeam, 2, ".p3","orange",isReplay,d);
         
         //Determine Team & Logo
-        leftTeamName = GetTeam(blueTeam)
-        rightTeamName = GetTeam(orangeTeam)
+        leftTeamName = GetTeam(blueTeam);
+        rightTeamName = GetTeam(orangeTeam);
         
         $(".scorebug .left .name").text(leftTeamName);
         $(".scorebug .right .name").text(rightTeamName);
@@ -54,9 +54,6 @@ function GameUpdateMain(d)
 
         //Show Target Player Stats if focused
         TargetStats(allPlayers,d);
-
-        //test
-        console.log(playerAdvStats);
 
         //Save State
         previousData = d;
@@ -159,6 +156,7 @@ function progress(percent, $element)
 function GetTeam(team)
 {
     //initial object
+    
     let teams = 
     {
         "RLL":0,
@@ -169,6 +167,19 @@ function GetTeam(team)
         "LongBows":0,
         "Samurai":0
     };
+    /*
+   let teams = 
+   {
+        "RLL":0,
+        "belgium" : 0,
+        "botswana":0,
+        "colombia":0,
+        "japan":0,
+        "mexico":0,
+        "norway":0
+    };
+    */
+
 
     //loop through players
     for(var i = 0; i < team.length; i++)
@@ -307,7 +318,9 @@ function TargetStats(players, d)
             
                 
                 //set colors and logos
-                let team = players['team'];
+                let team = players[i]['team'];
+
+                console.log(players);
 
                 //Set Team Goal Icon and Colors
                 let teamName =  (team === 0 ? leftTeamName : rightTeamName);
@@ -322,6 +335,8 @@ function TargetStats(players, d)
                 {
                     barColor = "linear-gradient(to right, rgba(223, 126, 0, 1), 0%,rgba(223, 126, 0, 1), 50%,rgb(255, 204, 136) 100%)";
                 }
+
+                
 
                 //apply
                 $(".targetDisplay img").attr("src", logo);

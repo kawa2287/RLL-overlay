@@ -21,8 +21,6 @@ function PostGameMain(d)
 
     //Fill Max Stats
     GetMaxStats(maxStats);
-    console.log("-------------");
-    console.log(maxStats);
 
 
 
@@ -128,8 +126,8 @@ function SetStatGlow(pStat, stat, divClass,q, maxStats)
     if(stat === 'score')
     {
         if(pStat === maxStats[stat] && maxStats[stat] !== 0){
-            $(q +" .player .score").css({"color":"yellow"});
-            $(q +" .player .score").css({"text-shadow":"0px 0px 4px black"});
+            $(q +" .player .score").css({"color":"goldenrod"});
+            $(q +" .player .score").css({"text-shadow":"1px 1px 1px black"});
         }
         else{
             $(q +" .player .score").css({"color":"white"});
@@ -140,8 +138,8 @@ function SetStatGlow(pStat, stat, divClass,q, maxStats)
     {
         if(pStat === maxStats[stat] && maxStats[stat] !== 0){
             //$(q +" .player .stat."+divClass+" .value").css({"animation":"statGlow 3s ease infinte"});
-            $(q +" .player .stat."+divClass+" .value").css({"color":"yellow"});
-            $(q +" .player .stat."+divClass+" .value").css({"text-shadow":"0px 0px 4px black"});
+            $(q +" .player .stat."+divClass+" .value").css({"color":"goldenrod"});
+            $(q +" .player .stat."+divClass+" .value").css({"text-shadow":"1px 1px 1px black"});
         }
         else{
             //$(q +" .player .stat."+divClass+" .value").css({"animation":""});
