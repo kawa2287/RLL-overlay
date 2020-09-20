@@ -326,13 +326,16 @@ function TargetStats(players, d)
                 let teamName =  (team === 0 ? leftTeamName : rightTeamName);
                 let logo = TEAM_LOGO_MAP[teamName] ;
                 let colors = TEAM_COLOR_MAP[teamName];
+                let basicColor;
                 let barColor;
                 if(players[i]['team'] === 0)
                 {
+                    basicColor = "blue";
                     barColor = "linear-gradient(to right, blue 0%,blue 50%,rgb(134, 134, 255)  100%)";
                 }
                 else
                 {
+                    basicColor = "rgba(223, 126, 0, 1)";
                     barColor = "linear-gradient(to right, rgba(223, 126, 0, 1), 0%,rgba(223, 126, 0, 1), 50%,rgb(255, 204, 136) 100%)";
                 }
 
@@ -340,13 +343,26 @@ function TargetStats(players, d)
 
                 //apply
                 $(".targetDisplay img").attr("src", logo);
+                $(".targetDisplay .progressBarCont .bar").css({"background" : barColor});
+
+                /*
                 $(".targetDisplay").css({"background":colors.primary});
                 $(".targetDisplay .scoreTitle").css({"color":colors.secondary});
                 $(".targetDisplay .side.speed .text").css({"color":colors.secondary});
                 $(".targetDisplay .lowerCont").css({"color":colors.secondary});
                 $(".targetDisplay .lowerCont").css({"background":colors.shadow});
                 $(".targetDisplay .lowerCont .title").css({"background":colors.primary});
-                $(".targetDisplay .progressBarCont .bar").css({"background" : barColor});
+                */
+
+               $(".targetDisplay").css({"background":basicColor});
+               $(".targetDisplay .scoreTitle").css({"color":"white"});
+               $(".targetDisplay .score").css({"color":"yellow"});
+               $(".targetDisplay .side.speed .text").css({"color":"white"});
+               $(".targetDisplay .side.speed .middle").css({"color":"yellow"});
+               $(".targetDisplay .lowerCont").css({"color":"white"});
+               $(".targetDisplay .lowerCont").css({"background":"black"});
+               $(".targetDisplay .lowerCont .title").css({"background":basicColor});
+                
                 
             }
         }

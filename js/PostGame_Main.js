@@ -66,6 +66,17 @@ function PostGameMain(d)
 
 
                 //set stats
+                $(q +" .player .stat.touches .title").text("BALL TOUCHES");
+                $(q +" .player .stat.touches .title").css({"font-size":"10px"});
+                $(q +" .player .stat.bumps .title").text("CAR BUMPS");
+                $(q +" .player .stat.bumps .title").css({"font-size":"10px"});
+                $(q +" .player .stat.airTime .title").text("AIR TIME");
+                $(q +" .player .stat.airTime .title").css({"font-size":"10px"});
+                $(q +" .player .stat.airTime .value").css({"text-transform":""});
+                $(q +" .player .stat.airHits .title").text("AIR HITS");
+                $(q +" .player .stat.airHits .title").css({"font-size":"10px"});
+                
+
                 let pts = x['goals'] + x['assists']; 
                 $(q +" .player .name").text(x['name']);
                 $(q +" .player .score").text(x['score']);
@@ -76,7 +87,7 @@ function PostGameMain(d)
                 $(q +" .player .stat.saves .value").text(x['saves']);
                 $(q +" .player .stat.touches .value").text(x['touches']);
                 $(q +" .player .stat.bumps .value").text(x['cartouches']);
-                $(q +" .player .stat.airTime .value").text(aTime.toFixed(2));
+                $(q +" .player .stat.airTime .value").text(aTime.toFixed(1)+"s");
                 $(q +" .player .stat.airHits .value").text(playerAdvStats[x['name']]['airHits']);
                 
                 
@@ -126,7 +137,7 @@ function SetStatGlow(pStat, stat, divClass,q, maxStats)
     if(stat === 'score')
     {
         if(pStat === maxStats[stat] && maxStats[stat] !== 0){
-            $(q +" .player .score").css({"color":"goldenrod"});
+            $(q +" .player .score").css({"color":"yellow"});
             $(q +" .player .score").css({"text-shadow":"1px 1px 1px black"});
         }
         else{
@@ -138,7 +149,7 @@ function SetStatGlow(pStat, stat, divClass,q, maxStats)
     {
         if(pStat === maxStats[stat] && maxStats[stat] !== 0){
             //$(q +" .player .stat."+divClass+" .value").css({"animation":"statGlow 3s ease infinte"});
-            $(q +" .player .stat."+divClass+" .value").css({"color":"goldenrod"});
+            $(q +" .player .stat."+divClass+" .value").css({"color":"yellow"});
             $(q +" .player .stat."+divClass+" .value").css({"text-shadow":"1px 1px 1px black"});
         }
         else{
