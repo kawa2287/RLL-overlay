@@ -3,6 +3,10 @@ let globPlayerTmsArr = [];
 let leftTeamName;
 let rightTeamName;
 let playerAdvStats = {};
+let teamShots = [];
+let teamScore = [];
+let teamTouches = [];
+let teamBumps = [];
 
 
 const WsSubscribers = {

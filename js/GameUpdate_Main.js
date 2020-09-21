@@ -7,6 +7,12 @@ function GameUpdateMain(d)
         let blueTeam = [];
         let orangeTeam = [];
         let allPlayers = []; 
+        
+        //Clear team Arrays
+        teamShots = [0,0];
+        teamScore = [0,0];
+        teamTouches = [0,0];
+        teamBumps = [0,0];
 
         let players = d['players'];
 
@@ -48,12 +54,17 @@ function GameUpdateMain(d)
         $(".scorebug .right .name").text(rightTeamName);
         $(".scorebug .left .logo img").attr("src",TEAM_LOGO_MAP[leftTeamName]);
         $(".scorebug .right .logo img").attr("src",TEAM_LOGO_MAP[rightTeamName]);
+        $(".scorebug .left .shots .value").text(teamShots[0]);
+        $(".scorebug .right .shots .value").text(teamShots[1]);
+        $(".scorebug .left .touches .value").text(teamTouches[0]);
+        $(".scorebug .right .touches .value").text(teamTouches[1]);
 
         // Update Player Scores
         AddStats(allPlayers,d);
 
         //Show Target Player Stats if focused
         TargetStats(allPlayers,d);
+
 
         //Save State
         previousData = d;
@@ -80,7 +91,7 @@ function GetPlayerTeamArray(d)
 function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
 {
     const q = `.${color}Team ${p}`;
-
+    let tm = (color === 'blue' ? 0 : 1 );
     
     if(teamArray[indexNum] !== undefined)
     {
@@ -98,6 +109,7 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
 
         //Shots
         $(q + " .shots").text(teamArray[indexNum]['shots']);
+        teamShots[tm] += teamArray[indexNum]['shots'];
 
         //Goals
         $(q + " .goals").text(teamArray[indexNum]['goals']);
@@ -107,6 +119,16 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
 
         //Saves
         $(q + " .saves").text(teamArray[indexNum]['saves']);
+
+        //Score
+        teamScore[tm] += teamArray[indexNum]['score'];
+
+        //Bumps 
+        teamBumps[tm] += teamArray[indexNum]['cartouches'];
+
+        //Touches
+        teamTouches[tm] += teamArray[indexNum]['touches'];
+
         
         //Check if Dead
         if(teamArray[indexNum]['isDead'])
