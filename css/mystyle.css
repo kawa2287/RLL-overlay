@@ -377,7 +377,7 @@ i {
     color: beige;
     text-shadow: 1px 1px black;
     display: flex;
-    flex: 3;
+    flex: 2;
     align-items: center;
     padding-left: 5px;
     flex-direction: column;
@@ -388,14 +388,15 @@ i {
     justify-content: center;
     display: flex;
     flex: 1;
+    font-size: 8px;
 }
 .scorebug .shots .value
 {
     align-items: center;
     justify-content: center;
     display: flex;
-    flex: 1;
-    font-size: 14px;
+    flex: 3;
+    font-size: 18px;
     color: white;
 }
 .scorebug .touches .title
@@ -403,6 +404,7 @@ i {
     align-items: center;
     justify-content: center;
     display: flex;
+    font-size: 8px;
     flex: 1;
 }
 .scorebug .touches .value
@@ -410,8 +412,8 @@ i {
     align-items: center;
     justify-content: center;
     display: flex;
-    flex: 1;
-    font-size: 14px;
+    flex: 3;
+    font-size: 18px;
     color: white;
 }
 .scorebug .touches
@@ -420,7 +422,7 @@ i {
     color: beige;
     text-shadow: 1px 1px black;
     display: flex;
-    flex: 3;
+    flex: 2;
     align-items: center;
     padding-left: 5px;
     flex-direction: column;
@@ -636,7 +638,7 @@ i {
     display: flex;
     flex-direction: row;
     height: 90px;
-    width: 500px;
+    width: 450px;
     position: absolute;
     left: 20px;
     bottom: 150px;
@@ -759,6 +761,14 @@ i {
     flex-direction: column;
     font-size: 12px;
     
+}
+.targetDisplay .player .stat.points
+{
+    border-right: 1px solid black;
+}
+.targetDisplay .player .stat.saves
+{
+    border-right: 1px solid black;
 }
 .targetDisplay .player .title
 {
