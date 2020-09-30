@@ -9,7 +9,7 @@ function StatFeedMain(d)
     ShowStat(event,player,".orangeTeam .players .p2", "orange");
     ShowStat(event,player,".orangeTeam .players .p3", "orange");
 
-    if(event === "Shot on Goal")
+    if(event === "Shot on Goal" || event === "Goal")
     {
         //save shot
         SaveShot(player);
