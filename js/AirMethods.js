@@ -42,5 +42,5 @@ function AirHit(player)
             }
         }
     }
-    
 }
+

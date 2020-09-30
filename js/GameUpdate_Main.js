@@ -65,6 +65,9 @@ function GameUpdateMain(d)
         //Show Target Player Stats if focused
         TargetStats(allPlayers,d);
 
+        //Shot map shots
+        MapShots();
+
 
         //Save State
         previousData = d;
@@ -128,7 +131,6 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
 
         //Touches
         teamTouches[tm] += teamArray[indexNum]['touches'];
-
         
         //Check if Dead
         if(teamArray[indexNum]['isDead'])
@@ -146,7 +148,12 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
             //add player to adv stats
             playerAdvStats[teamArray[indexNum]['name']] = {
                 airTime:0,
-                airHits:0
+                airHits:0,
+                lastHit:{
+                    x:0,
+                    y:0,
+                    z:0
+                }
             }
         }
         else
@@ -158,10 +165,11 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
                 {
                     //player exists --> add adv stats
                     AirStats(teamArray[indexNum]);
-                } 
 
+                    //Check if player hit ball, if yes- save position
+                    LastHit(teamArray[indexNum]);
+                } 
             }
-            
         }
     }
     else
@@ -341,8 +349,6 @@ function TargetStats(players, d)
                 
                 //set colors and logos
                 let team = players[i]['team'];
-
-                console.log(players);
 
                 //Set Team Goal Icon and Colors
                 let teamName =  (team === 0 ? leftTeamName : rightTeamName);

@@ -7,6 +7,8 @@ let teamShots = [];
 let teamScore = [];
 let teamTouches = [];
 let teamBumps = [];
+let leftShots = [];
+let rightShots = [];
 
 
 const WsSubscribers = {

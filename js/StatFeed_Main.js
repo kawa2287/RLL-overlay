@@ -1,13 +1,23 @@
 function StatFeedMain(d)
 {
     let event = d['type'];
-        let player = d['main_target']['name'];
-        ShowStat(event,player,".blueTeam .players .p1", "blue");
-        ShowStat(event,player,".blueTeam .players .p2", "blue");
-        ShowStat(event,player,".blueTeam .players .p3", "blue");
-        ShowStat(event,player,".orangeTeam .players .p1", "orange");
-        ShowStat(event,player,".orangeTeam .players .p2", "orange");
-        ShowStat(event,player,".orangeTeam .players .p3", "orange");
+    let player = d['main_target']['name'];
+    ShowStat(event,player,".blueTeam .players .p1", "blue");
+    ShowStat(event,player,".blueTeam .players .p2", "blue");
+    ShowStat(event,player,".blueTeam .players .p3", "blue");
+    ShowStat(event,player,".orangeTeam .players .p1", "orange");
+    ShowStat(event,player,".orangeTeam .players .p2", "orange");
+    ShowStat(event,player,".orangeTeam .players .p3", "orange");
+
+    if(event === "Shot on Goal")
+    {
+        //save shot
+        SaveShot(player);
+        console.log("------------");
+        console.log(leftShots);
+        console.log(rightShots);
+        console.log("------------");
+    }
 }
 
 function ShowStat(event, player,tile, color)
@@ -49,5 +59,31 @@ function ShowStat(event, player,tile, color)
             $(tile + " .event i").removeClass(EVENT_MAP[event]);
             $(tile).removeClass('stat_anim');
         }, 8000);
+    }
+}
+
+function SaveShot(player)
+{
+    //determine which team player is on
+    for (let m in  previousData['players'])
+    {
+        if(previousData['players'][m]['name'] === player)
+        {
+            console.log(playerAdvStats[player]);
+            let tm = previousData['players'][m]['team'] ;
+            let coord = [];
+            coord[0] = playerAdvStats[player]['lastHit']['x'];
+            coord[1] = playerAdvStats[player]['lastHit']['y'];
+            coord[2] = playerAdvStats[player]['lastHit']['z'];
+
+            if (tm === 0)
+            {
+                leftShots.push(coord);
+            }
+            else
+            {
+                rightShots.push(coord);
+            }
+        }
     }
 }

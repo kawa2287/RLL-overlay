@@ -11,4 +11,8 @@ function MatchCreatedMain()
     {
         delete playerAdvStats[p];
     }
+
+    //Clear Shots
+    leftShots = [];
+    rightShots = [];
 }

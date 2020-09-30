@@ -89,8 +89,6 @@ function GetGoalNetPosition(d, scoredOn)
     }
     zTrans = cssH - zScaled - divDim/2;
 
-    console.log(xTrans);
-    console.log(zTrans);
     
     //set position
     $(".replay .goal .in b").css({"transform": "translate("+ xTrans +"px,"+ zTrans +"px)"});
