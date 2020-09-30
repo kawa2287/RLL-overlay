@@ -28,6 +28,10 @@ function GameUpdateMain(d)
             allPlayers.push(players[key]);
         }
 
+        //Determine Team & Logo
+        leftTeamName = GetTeam(blueTeam);
+        rightTeamName = GetTeam(orangeTeam);
+
         //Update Time
         $(".scorebug .rightcontainer").text(secondsToMS(d['game']['time']));
 
@@ -46,9 +50,7 @@ function GameUpdateMain(d)
         UpdateStats(orangeTeam, 1, ".p2","orange",isReplay,d);
         UpdateStats(orangeTeam, 2, ".p3","orange",isReplay,d);
         
-        //Determine Team & Logo
-        leftTeamName = GetTeam(blueTeam);
-        rightTeamName = GetTeam(orangeTeam);
+        
         
         $(".scorebug .left .name").text(leftTeamName);
         $(".scorebug .right .name").text(rightTeamName);
@@ -66,7 +68,10 @@ function GameUpdateMain(d)
         TargetStats(allPlayers,d);
 
         //Shot map shots
-        MapShots();
+        //MapShots();
+
+        //Map player positions
+        MapPositions(d);
 
 
         //Save State
@@ -153,7 +158,14 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
                     x:0,
                     y:0,
                     z:0
-                }
+                },
+                position:{
+                    x:0,
+                    y:0,
+                    z:0
+                },
+                team: ""
+                
             }
         }
         else
@@ -167,8 +179,20 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
                     AirStats(teamArray[indexNum]);
 
                     //Check if player hit ball, if yes- save position
-                    LastHit(teamArray[indexNum]);
+                    //LastHit(teamArray[indexNum]);
                 } 
+
+                //update player position
+                let px = teamArray[indexNum]['x'];
+                let py = teamArray[indexNum]['y'];
+                let pz = teamArray[indexNum]['z'];
+
+                
+
+                playerAdvStats[teamArray[indexNum]['name']]['position']['x'] = px;
+                playerAdvStats[teamArray[indexNum]['name']]['position']['y'] = py;
+                playerAdvStats[teamArray[indexNum]['name']]['position']['z'] = pz;
+                playerAdvStats[teamArray[indexNum]['name']]['team'] = color==='blue'?leftTeamName :rightTeamName;
             }
         }
     }

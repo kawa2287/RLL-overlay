@@ -36,14 +36,17 @@ const PLAYER_TEAM_MAP = {
     "Casper": "Samurai",
     "Cougar": "Knights",
     "Armstrong": "Crabs",
-    "Foamer": "Knights",
+    "Foamer": "LongBows",
     "Samara": "Queens",
     "Iceman" :"LongBows",
     "Marley": "Pigeons",
+    "Rainmaker": "LongBows",
     "Roundhouse": "Knights",
     "Dude": "Queens",
     "Stinger": "Pigeons",
-    "Maverick": "Knights"
+    "Maverick": "Knights",
+    "Chipper": "Queens",
+    "Rex": "Queens",
 
 };
 
