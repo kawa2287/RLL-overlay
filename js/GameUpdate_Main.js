@@ -73,6 +73,10 @@ function GameUpdateMain(d)
         //Map player positions
         MapPositions(d);
 
+        //Update map pics
+        $(".mappics .team.left img").attr("src",TEAM_LOGO_MAP[leftTeamName]);
+        $(".mappics .team.right img").attr("src",TEAM_LOGO_MAP[rightTeamName]);
+
 
         //Save State
         previousData = d;
@@ -337,8 +341,8 @@ function PickStat(players,p,gameTime)
     };
     if (s < 10 && s>= 0)
     {
-        $(".scoreChart .title").text("SCORE RANKINGS");
-        return  players[p]['score'];
+        $(".scoreChart .title").text("AIR TIME (IN SECONDS)");
+        return  playerAdvStats[players[p]['name']]['airTime'];
     };
     return  players[p]['score'];
 }
