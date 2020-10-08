@@ -2,6 +2,7 @@ function StatFeedMain(d)
 {
     let event = d['type'];
     let player = d['main_target']['name'];
+    let target = d['secondary_target']['name'];
     ShowStat(event,player,".blueTeam .players .p1", "blue");
     ShowStat(event,player,".blueTeam .players .p2", "blue");
     ShowStat(event,player,".blueTeam .players .p3", "blue");
@@ -9,15 +10,34 @@ function StatFeedMain(d)
     ShowStat(event,player,".orangeTeam .players .p2", "orange");
     ShowStat(event,player,".orangeTeam .players .p3", "orange");
 
-    if(event === "Shot on Goal" || event === "Goal")
+    console.log(event);
+
+    if(event === "Goal")
     {
-        //save shot
-        SaveShot(player);
-        console.log("------------");
-        console.log(leftShots);
-        console.log(rightShots);
-        console.log("------------");
+        //save speed
+        let curSpd = playerAdvStats[player]['goalSpeed'];
+        let ballSpeed = previousData['game']['ballSpeed'];
+        if(curSpd < ballSpeed)
+        {
+            playerAdvStats[player]['goalSpeed'] = ballSpeed;
+        }
     }
+
+    if(event === "Demolition")
+    {
+        playerAdvStats[player]['demos']+=1;
+        playerAdvStats[target]['demoed']+=1;
+    }
+    if(event === "Aerial Goal")
+    {
+        playerAdvStats[player]['aerialGoals']+=1;
+    }
+    if(event ==="Epic Save")
+    {
+        playerAdvStats[player]['epicSaves']+=1;
+    }
+
+    
 }
 
 function ShowStat(event, player,tile, color)

@@ -1,8 +1,40 @@
 function PostGameMain(d)
 {
+    console.log(playerAdvStats);
+    
     //show post game scores
     $(".postGame .left.team").css({"transform":"translateX(960px)"});
     $(".postGame .right.team").css({"transform":"translateX(-960px)"});
+
+    //Create export array
+    let exportContent = [];
+    let headers = 
+    [
+        "PLAYER",
+        "TM",
+        "OPP",
+        "GP",
+        "TM SC",
+        "OPP SC",
+        "SCORE",
+        "G",
+        "A",
+        "SV",
+        "SH",
+        "MVP",
+        "PTS",
+        "W",
+        "L",
+        "TM TOT SC",
+        "TM AVG SCORE",
+        "TM%",
+        "RATING",
+        "TYPE",
+        "TOUCHES",
+        "BUMPS",
+        "AIR TIME",
+        "AIR HITS"
+    ]
 
     //Get Max Stats
     let maxStats =
@@ -122,10 +154,6 @@ function PostGameMain(d)
                 SetStatGlow(x['cartouches'], 'cartouches', 'bumps',q,maxStats);
                 SetStatGlow(x['airTime'], 'airTime', 'airTime',q,maxStats);
                 SetStatGlow(x['airHits'], 'airHits', 'airHits',q,maxStats);
-                
-                
-
-                
                
             }
         }
@@ -224,3 +252,7 @@ function CheckStat(maxStats, source, stat)
     
 }
 
+function ExportCSV()
+{
+    let csvContent = "data:text/csv;charset=utf-8,";
+}

@@ -168,8 +168,20 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
                     y:0,
                     z:0
                 },
-                team: ""
-                
+                team: "",
+                demos:0,
+                demoed:0,
+                timeDhalf:0,
+                timeOhalf:0,
+                scoreDhalf:0,
+                scoreOhalf:0,
+                timeInDefGoal:0,
+                timeInOffGoal:0,
+                ballProx:0,
+                nLMB:0,
+                goalSpeed:0,
+                epicSaves:0,
+                aerialGoals:0
             }
         }
         else
@@ -184,6 +196,9 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
 
                     //Check if player hit ball, if yes- save position
                     //LastHit(teamArray[indexNum]);
+
+                    //Zone stats
+                    ZoneStats(teamArray[indexNum]);
                 } 
 
                 //update player position
@@ -342,7 +357,7 @@ function PickStat(players,p,gameTime)
     if (s < 10 && s>= 0)
     {
         $(".scoreChart .title").text("AIR TIME (IN SECONDS)");
-        return  playerAdvStats[players[p]['name']]['airTime'];
+        return  playerAdvStats[players[p]['name']]['airTime'].toFixed(2);
     };
     return  players[p]['score'];
 }
