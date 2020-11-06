@@ -181,7 +181,8 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
                 nLMB:0,
                 goalSpeed:0,
                 epicSaves:0,
-                aerialGoals:0
+                aerialGoals:0,
+                bicycleHits:0
             }
         }
         else
@@ -233,12 +234,12 @@ function GetTeam(team)
     let teams = 
     {
         "RLL":0,
-        "Crabs" : 0,
-        "Knights":0,
-        "Pigeons":0,
-        "Queens":0,
-        "LongBows":0,
-        "Samurai":0
+        "Pilgrims" : 0,
+        "Turkeys":0,
+        "Pumkins":0,
+        "Death":0,
+        "Team Santa":0,
+        "Reindeer":0
     };
     /*
    let teams = 
@@ -257,7 +258,7 @@ function GetTeam(team)
     //loop through players
     for(var i = 0; i < team.length; i++)
     {
-        teams[PLAYER_TEAM_MAP[team[i]['name']]] += 1;
+        teams[PLAYER_TEAM_MAP[team[i]['name'].toUpperCase()]] += 1;
     }
 
     //push to sortable array

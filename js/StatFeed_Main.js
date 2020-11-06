@@ -36,6 +36,10 @@ function StatFeedMain(d)
     {
         playerAdvStats[player]['epicSaves']+=1;
     }
+    if(event ==="Bicycle Hit")
+    {
+        playerAdvStats[player]['bicycleHits'] += 1;
+    }
 
     
 }
