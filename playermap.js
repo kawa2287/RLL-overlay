@@ -14,7 +14,9 @@ const PLAYER_TEAM_MAP = {
     "GNOMIE, DONT YA KNOW ME?": "Death",
     "GOLFJBC89": "Turkeys",
     "JMYRV": "Turkeys",
+    "MADSCOUTFAN": "Death",
     "MADSCOUT": "Death",
+    "KURTZYP00": "Team Santa",
     "KURTZY P00": "Team Santa",
     "SNAKES ON A MICROPLANE": "Reindeer",
     "EVERGREEN6258": "Team Santa"
