@@ -61,9 +61,6 @@ function GameUpdateMain(d)
         $(".scorebug .left .touches .value").text(teamTouches[0]);
         $(".scorebug .right .touches .value").text(teamTouches[1]);
 
-        // Update Player Scores
-        AddStats(allPlayers,d);
-
         //Show Target Player Stats if focused
         TargetStats(allPlayers,d);
 
@@ -276,92 +273,6 @@ function GetTeam(team)
     return sortList[0][0];
 }
 
-
-function AddStats(players,d)
-{
-    //push to sorting array
-    let sortList = [];
-    for (var p in players) 
-    {
-        let sortStat = PickStat(players,p,d['game']['time']);
-        sortList.push([players[p],sortStat]);
-    }
-
-    //sort
-    sortList.sort(function(a, b) {
-        return b[1] - a[1];
-    });
-
-    //set to divs
-    for(var i = 0; i < sortList.length; i++)
-    {
-        SetDiv(sortList[i], ".p" + (i+1).toString());
-    }
-}
-
-function SetDiv(playerInfo, p)
-{
-    //set colors and logos
-    let team = playerInfo[0]['team'];
-
-    //Set Team Goal Icon and Colors
-    let teamName =  (team === 0 ? leftTeamName : rightTeamName);
-    let logo = TEAM_LOGO_MAP[teamName] ;
-    let color = (team === 0 ? "blue" :  "rgba(223, 126, 0, 1)");
-
-    let q = ".scoreChart .driver" + p;
-    //Set Values
-    $(q).css({"background":color});
-    $(q + " .logo img").attr("src", logo);
-    $(q + " .name").text(playerInfo[0]['name']);
-    $(q + " .score").text(playerInfo[1]);
-    //Set ID
-    $(q).attr('id', playerInfo[0]);
-}
-
-function PickStat(players,p,gameTime)
-{
-    
-    let s = GetSeconds(gameTime);
-    if (s < 60 && s>= 50)
-    {
-        $(".scoreChart .title").text("SCORE");
-        return players[p]['score'];
-    };
-    if (s < 50 && s>= 40)
-    {
-        $(".scoreChart .title").text("BALL TOUCHES");
-        return players[p]['touches']};
-    if (s < 40 && s>= 30)
-    {
-        $(".scoreChart .title").text("CAR BUMPS");
-        return players[p]['cartouches'];
-    };
-    if (s < 30 && s>= 20)
-    {
-        $(".scoreChart .title").text("POINTS");
-        return players[p]['goals'] + players[p]['assists'];
-    };
-    if (s < 20 && s>= 10)
-    {
-        $(".scoreChart .title").text("SCORE POINTS/TOUCH");
-        if(players[p]['touches'] === 0)
-        {
-            return 0;
-        }
-        else
-        {
-            return (players[p]['score']/players[p]['touches']).toFixed(2);;
-        }
-        
-    };
-    if (s < 10 && s>= 0)
-    {
-        $(".scoreChart .title").text("AIR TIME (IN SECONDS)");
-        return  playerAdvStats[players[p]['name']]['airTime'].toFixed(2);
-    };
-    return  players[p]['score'];
-}
 
 function TargetStats(players, d)
 {

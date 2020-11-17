@@ -32,66 +32,6 @@ i {
     text-shadow:2px 2px #000924;
 }
 
-.scoreChart
-{
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    min-height: 100px;
-    padding:10px;;
-    font-size: 20px;
-    right: 20px;
-    color:  white;
-    text-shadow:2px 2px #000924;
-    background: rgba(0, 0, 0, 0.6);
-    box-shadow: 2px 5px 5px #000924b8;
-    justify-content: flex-end;
-    text-transform: uppercase;
-}
-.scoreChart .driver
-{
-    max-height: 20px;
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    background: crimson;
-    margin: 2px;
-    box-shadow: 2px 2px 2px black;
-}
-.scoreChart .driver .logo
-{
-    display: flex;
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-}
-.scoreChart .driver .logo img
-{
-    display: flex;
-    flex: 1;
-    width:80px;
-    height: 80px;
-    align-items: center;
-    justify-content: center;
-}
-.scoreChart .driver .name
-{
-    align-items: center;
-    display: flex;
-    flex: 3;
-    font-size: 16px;
-    padding-left: 20px;
-}
-.scoreChart .driver .score
-{
-    align-items: center;
-    display: flex;
-    flex: 1;
-    font-size: 18px;
-}
 
 
 
@@ -254,15 +194,15 @@ i {
 {
     position:absolute;
     top: 20px;
-    left: 20px;
+    left: 260px;
     color:white;
     text-shadow:2px 2px #000924;
-    background-color: black;
-    width: 450px;
+    width: 1400px;
+    height: 120px;
     display: flex;
     flex-direction: row;
-    text-transform: uppercase;
-    box-shadow: 2px 5px 5px #000924b8;
+    text-transform: uppercase; 
+    
 }
 
 .scorebug .overlay
@@ -274,7 +214,6 @@ i {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     text-align: center;
-    color: rgba(0, 0, 0, 0.878);
     text-shadow:  2px 2px 5px #fff;
     overflow: hidden;
 }
@@ -302,141 +241,156 @@ i {
 
 
 
-.scorebug .leftcontainer
+.scorebug .left.container
 {
+    flex: 1;
+    transform: skew(20deg);
+    background: white;
+    box-shadow: 2px 5px 5px #000924b8;
+    height: 80px;
     display: flex;
-    flex:4;
-    flex-direction: column;
+}
+.scorebug .container .logo
+{
+    flex: 1;
+    background: black;
+    border: whitesmoke solid 1px;
+}
+.scorebug .container .team
+{
+    flex: 4;
+    border: whitesmoke solid 1px;
+    font-size: 40px;
 }
 
-.scorebug .rightcontainer
+
+.scorebug .container  span 
 {
-    display: flex;
-    flex:1;
-    background: #2e2e2e;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    border-left: 2px solid whitesmoke;
+    display: block;
+    margin: auto;
+    width: 50%;
+    padding-top: 5px;
+    text-align: center;
+}
+.scorebug .left.container  span 
+{
+    transform: skew(-20deg);
+}
+.scorebug .right.container  span 
+{
+    transform: skew(20deg);
+}
+.scorebug .left.container .team  span 
+{
+    padding-left: 0px;
+}
+.scorebug .left.container .score span 
+{
+    padding-right: 90px;
+    padding-top: 0px;
+}
+.scorebug .right.container .team  span 
+{
+    padding-left: 0px;
+}
+.scorebug .right.container .score span 
+{
+    padding-left: 90px;
+    padding-top: 0px;
 }
 
-.scorebug .team
-{
-    display: flex;
-    flex-direction: row;
-    max-height: 40px;
-}
 
-.scorebug .team.left 
-{
-    background-image: linear-gradient(to right, black , blue);
-}
 
-.scorebug .team.right 
+.scorebug .container .score
 {
-    background-image: linear-gradient(to right, black , orange);
-}
-
-.scorebug .score
-{
-    display: flex;
     flex: 2;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
+    border: whitesmoke solid 1px;
+    color: #ffffc6;
+    font-size: 50px;
+}
+.scorebug .left.container .team
+{
+    background:  linear-gradient(to left, darkblue 0%,blue 50%,rgb(134, 134, 255)  100%);
+}
+.scorebug .left.container .score
+{
+    background: linear-gradient(to left, darkblue 30%,black  100%);
 }
 
-.scorebug .left .score
+.scorebug .right.container .team
 {
-    background: blue;
+    background:  linear-gradient(to right, rgb(179, 101, 0) 0%,rgb(223, 126, 0) 50%,rgb(255, 204, 136) 100%);
 }
-
-.scorebug .right .score
+.scorebug .right.container .score
 {
-    background: rgba(223, 126, 0, 1);;
+    background: linear-gradient(to right,  rgb(179, 101, 0) 30%,black  100%);
 }
 
 .scorebug .logo
 {
-    display: flex;
-    flex: 3;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+.scorebug .logo img
+{
+    height: 190%;
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+}
+.scorebug .left .logo img
+{
+    transform: skew(-20deg);
+}
+.scorebug .right .logo img
+{
+    transform: skew(20deg);
 }
 
-.scorebug .name
+
+.scorebug .mid.container
 {
+    position: absolute;
+    left: 600;
+    height: 120;
+    width: 200px;
     display: flex;
-    flex: 8;
-    align-items: center;
-    padding-left: 5px;
-}
-.scorebug .shots
-{
-    font-size: 11px;
-    color: beige;
-    text-shadow: 1px 1px black;
-    display: flex;
-    flex: 2;
-    align-items: center;
-    padding-left: 5px;
     flex-direction: column;
+    z-index: 1;
+    box-shadow: 0px 0px 15px #000924b8;
+    border: gray solid 1px;
 }
-.scorebug .shots .title
+.scorebug .mid.container .top
 {
+    display: flex;
+    flex:3;
+    background: linear-gradient(to right,  rgb(48, 48, 48) 0%,black  50%,  rgb(48, 48, 48) 100%);
     align-items: center;
     justify-content: center;
+    font-size: 50px;
+    border: gray solid 1px;
+}
+.scorebug .mid.container .bot
+{
     display: flex;
+    flex:2;
+    background: rgb(31, 31, 31);
+    border: gray solid 1px;
+}
+
+.scorebug .right.container
+{
+    transform: skew(-20deg);
+    background: white;
     flex: 1;
-    font-size: 8px;
-}
-.scorebug .shots .value
-{
-    align-items: center;
-    justify-content: center;
+    box-shadow: 2px 5px 5px #000924b8;
+    height: 80px;
     display: flex;
-    flex: 3;
-    font-size: 18px;
-    color: white;
 }
-.scorebug .touches .title
-{
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    font-size: 8px;
-    flex: 1;
-}
-.scorebug .touches .value
-{
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex: 3;
-    font-size: 18px;
-    color: white;
-}
-.scorebug .touches
-{
-    font-size: 11px;
-    color: beige;
-    text-shadow: 1px 1px black;
-    display: flex;
-    flex: 2;
-    align-items: center;
-    padding-left: 5px;
-    flex-direction: column;
-}
- .scorebug .logo
- {
-     position: relative;
-     overflow: hidden;
- }
- .scorebug .logo img
- {
-    width: 70px;
-    height: 70px;
- }
+
 
 .logo
 {
