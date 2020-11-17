@@ -457,59 +457,37 @@ i {
 
 }
 
-.blueTeam
+
+
+.blue.team
 {
     position:absolute;
     top: 250px;
     left: 20px;
-    color: black;
     text-transform: uppercase;
     transition: all 0.5s ease;
 }
 
-.orangeTeam
+.orange.team
 {
     position:absolute;
     top: 250px;
     right: 20px;
-    color: black;
     text-transform: uppercase;
     transition: all 0.5s ease;
 }
 
 
-
-
-.fill-from-left
-{
-    background-color: blue;
-    transition: width .5s ease;
-    height: 20px;
-    width: 0%;
-    border-radius: 6px 0px 0px 6px;
-	box-shadow: 0 5px 5px rgb(8, 131, 212) inset;
-}
-
-
-
-
-.players .name
+.team .players .name
 {
     color: white;
     text-shadow:2px 2px #000924;
     opacity: 1;
-    font-size: 20px;
-    
+    font-size: 16px;
+    padding-left: 5px;
 }
 
-
-.border
-{
-    width: 200px;
-}
-
-
-.players
+.team .players
 {
     display: flex;
     width: 240px;
@@ -517,125 +495,103 @@ i {
     transition: ease;
 }
 
-.players .box
+.team .players .box
 {
     display: flex;
-    flex:1;
-    min-height: 60px;
+    flex:2;
     height: 60px;
     margin: 10px;
-    box-shadow: 0 5px 5px  #000924;
     transition: all .5s;
-}
-
-.blueTeam .players .box
-{
-    background:rgb(51, 51, 255);
-}
-.orangeTeam .players .box
-{
-    background:rgb(191, 133, 58);
-}
-
-.bar
-{
-    transition: ease;
-    transition: 0.5s;
-    width: 1%;
-}
-
-.blueTeam .bar
-{
-    background: linear-gradient(to right, blue 0%,blue 50%,rgb(134, 134, 255)  100%);
-
-}
-.orangeTeam .bar
-{
-    background: linear-gradient(to right, rgba(223, 126, 0, 1), 0%,rgba(223, 126, 0, 1), 50%,rgb(255, 204, 136) 100%);
-}
-
-.players .box .name
-{
-    position: absolute;
-    font-size: 16px;
-    padding-left: 10px;
-}
-
-.orangeTeam .players .box .name
-{
-    right: 20px;
-    z-index: 1;
-}
-
-.players .box .stats
-{
-    display: flex;
     flex-direction: column;
-    flex: 1;
-}
-.players .box .stats .progressBarCont
-{
-    display: flex;
-    flex: 1;
-	padding: 1px;
-    background: #000924;
 }
 
-.orangeTeam .players .box .stats .progressBarCont
-{
-    transform: scaleX(-1);
-}
-
-.players .box .stats .icon
+.team .players .box .stats
 {
     display: flex;
-    color: white;
-    text-shadow:2px 2px #000924;
-    flex: 1;
-    justify-content: flex-end;
-    align-items: center;
-}
-.players .box .stats .counter
-{
-    display: flex;
-    color: greenyellow;
-    text-shadow:2px 2px #000924;
-    flex: 1;
-    justify-content: flex-start;
-    padding-left: 5px;
-    align-items: center;
-}
-
-.hContainer
-{
-    display: flex;
-    flex: 1;
     flex-direction: row;
-    font-size: 16px;
-    justify-content: space-between;
-    align-items: center;
+    flex: 3;
 }
 
-.players .box .event
+.team .players .box .stats .logo
+{
+    display: flex;
+    flex: 1;
+    background:black;
+    position: relative;
+    overflow: hidden;
+}
+.team .players .stats .logo img
+{
+    height: 190%;
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+}
+
+.team .players .box .stats .score
+{
+    display: flex;
+    flex: 4;
+}
+.blue.team .players .box .stats .score
+{
+    background: linear-gradient(to right,  blue 0%,darkblue  100%);
+}
+.blue.team .players .box .stats .points
+{
+    display: flex;
+    flex: 2;
+    background: linear-gradient(to right,blue 0%, darkblue 80%);
+}
+.orange.team .players .box .stats .score
+{
+    background: linear-gradient(to left,  rgb(223, 126, 0)  0%,rgb(179, 101, 0)  100%);
+}
+.orange.team .players .box .stats .points
+{
+    display: flex;
+    flex: 2;
+    background: linear-gradient(to left,rgb(223, 126, 0)  0%, rgb(179, 101, 0) 80%);
+}
+.team .players .box .stats .value
+{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: white;
+    padding-right: 10px;
+}
+.blue.team.team .players .box .stats .points .value
+{
+    color: rgb(189, 188, 255);
+}
+
+.team .players .box .stats .score .title
 {
     position: absolute;
+    font-size: 12px;
     color: white;
-    font-size: 50px;
-    padding-top: 5px;
-    z-index: -1;
+    opacity: .5;
+    padding-left: 90px;
+    padding-top: 22px;
 }
-
-
-.blueTeam .players .box .event
+.team .players .box .stats .points .title
 {
-    right: 15px;
+    position: absolute;
+    font-size: 12px;
+    color: white;
+    opacity: .5;
+    padding-left: 40px;
+    padding-top: 22px;
 }
 
 
-.orangeTeam .players .box .event
-{
-    left: 15px;
-}
+
 
 .targetDisplay
 {
