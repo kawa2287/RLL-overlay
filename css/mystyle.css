@@ -362,6 +362,8 @@ i {
     z-index: 1;
     box-shadow: 0px 0px 15px #000924b8;
     border: gray solid 1px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 .scorebug .mid.container .top
 {
@@ -379,6 +381,54 @@ i {
     flex:2;
     background: rgb(31, 31, 31);
     border: gray solid 1px;
+    flex-direction: row;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.scorebug .mid.container .bot .shots
+{
+    display: flex;
+    flex:2;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.scorebug .mid.container .bot .logo
+{
+    display: flex;
+    flex:1;
+    border: gray solid 0px;
+}
+.scorebug .mid.container .bot .logo img
+{
+    height: 100%;
+}
+.scorebug .mid.container .bot .shots .value
+{
+    display: flex;
+    flex:2;
+    align-items: center;
+    justify-content: center;
+}
+.scorebug .mid.container .bot .shots .title
+{
+    display: flex;
+    flex:1;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+.scorebug .mid.container .bot .shots.left
+{
+    border-bottom-left-radius: 20px;
+    background:  linear-gradient(to right,  darkblue 0%,black  100%);
+}
+.scorebug .mid.container .bot .shots.right
+{
+    
+    border-bottom-right-radius: 20px;
+    background:  linear-gradient(to left,  rgb(179, 101, 0) 0%,black  100%);
 }
 
 .scorebug .right.container
