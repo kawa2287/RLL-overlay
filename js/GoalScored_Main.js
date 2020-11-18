@@ -4,6 +4,8 @@ function GoalScoredMain(d)
     let gScoringTm = DetermineGoalScoringTeam(d['scorer']['name']);
     let scoredAgainst = (gScoringTm === 'blue' ? 'orange' : 'blue');
 
+    let side = (gScoringTm === 'blue' ? 'left' : 'right');
+
     //Set Team Goal Icon and Colors
     let teamName =  (gScoringTm === 'blue' ? leftTeamName : rightTeamName);
     let oppName = (scoredAgainst === 'blue' ? leftTeamName : rightTeamName);
@@ -11,13 +13,13 @@ function GoalScoredMain(d)
     let oppLogo = TEAM_LOGO_MAP[oppName] ;
     let colors = TEAM_COLOR_MAP[teamName];
     let oppColors = TEAM_COLOR_MAP[oppName];
-    $(".scorebug .overlay .i img").attr("src", logo);
-    $(".scorebug .overlay").css({"background": colors.primary});
-    $(".scorebug .overlay .g").css({"color":colors.secondary});
-    $(".scorebug .overlay .g").css({"text-shadow":"2px 2px 6px "+colors.shadow});
+    $(".scorebug ." + side + " .overlay .i img").attr("src", logo);
+    $(".scorebug ." + side + " .overlay").css({"background": colors.primary});
+    $(".scorebug ." + side + " .overlay .g").css({"color":colors.secondary});
+    $(".scorebug ." + side + " .overlay .g").css({"text-shadow":"2px 2px 6px "+colors.shadow});
 
     //Flash Scoreboard Goal Animation
-    FlashGoal();
+    FlashGoal(side);
 
     //Set Scorer
     $(".replay .scorer img").attr("src", logo);
@@ -186,9 +188,9 @@ function GetDistanceFromBall(ball, player)
     return Math.pow(Math.pow(deltaX,2)+Math.pow(deltaY,2)+Math.pow(deltaZ,2),0.5);
 }
 
-function FlashGoal(){
+function FlashGoal(side){
 
-    let q = ".scorebug .overlay";
+    let q = ".scorebug ."+side+" .overlay";
 
     PlayAnimation(q,'scoreboard_goal_anim',8000);
     PlayAnimation(q + ' .g','scoreboard_goal_text',8000);

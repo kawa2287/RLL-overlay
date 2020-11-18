@@ -21,8 +21,8 @@ const PLAYER_TEAM_MAP = {
     "SNAKES ON A MICROPLANE": "Reindeer",
     "EVERGREEN6258": "Team Santa",
 
-    "YURI":"Pilgrims",
-    "SLIDER":"Death"
+    "YURI":"Turkeys",
+    "SLIDER":"Pumkins"
 };
 
 
