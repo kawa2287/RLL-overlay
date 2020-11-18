@@ -33,11 +33,11 @@ function GameUpdateMain(d)
         rightTeamName = GetTeam(orangeTeam);
 
         //Update Time
-        $(".scorebug .rightcontainer").text(secondsToMS(d['game']['time']));
+        $(".scorebug .mid.container .top").text(secondsToMS(d['game']['time']));
 
         //Update Score
-        $(".scorebug .team.left .score").text(d['game']['teams'][0]['score'] );
-        $(".scorebug .team.right .score").text(d['game']['teams'][1]['score'] );
+        $(".scorebug .left.container .score span").text(d['game']['teams'][0]['score'] );
+        $(".scorebug .right.container .score span").text(d['game']['teams'][1]['score'] );
 
         //Update Stats
         let isReplay = d['game']['isReplay'];
@@ -51,15 +51,13 @@ function GameUpdateMain(d)
         UpdateStats(orangeTeam, 2, ".p3","orange",isReplay,d);
         
         
-        
-        $(".scorebug .left .name").text(leftTeamName);
-        $(".scorebug .right .name").text(rightTeamName);
+        //Update Scorebug
+        $(".scorebug .left .team span").text(leftTeamName);
+        $(".scorebug .right .team span").text(rightTeamName);
         $(".scorebug .left .logo img").attr("src",TEAM_LOGO_MAP[leftTeamName]);
         $(".scorebug .right .logo img").attr("src",TEAM_LOGO_MAP[rightTeamName]);
-        $(".scorebug .left .shots .value").text(teamShots[0]);
-        $(".scorebug .right .shots .value").text(teamShots[1]);
-        $(".scorebug .left .touches .value").text(teamTouches[0]);
-        $(".scorebug .right .touches .value").text(teamTouches[1]);
+        $(".scorebug .mid .shots .value").text(teamShots[0]);
+        $(".scorebug .mid .shots .value").text(teamShots[1]);
 
         //Show Target Player Stats if focused
         TargetStats(allPlayers,d);
@@ -99,7 +97,7 @@ function GetPlayerTeamArray(d)
 
 function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
 {
-    const q = `.${color}Team ${p}`;
+    const q = `.${color} ${p}`;
     let tm = (color === 'blue' ? 0 : 1 );
     
     if(teamArray[indexNum] !== undefined)
@@ -107,46 +105,29 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
         $(q).css({"visibility":"visible" });
 
         //Boost
+        /*
         if(!isReplay)
         {
             progress(teamArray[indexNum]['boost'], $(q+ " .bar"));
-            
         }
+        */
+
+        //Shots
+        teamShots[tm] += teamArray[indexNum]['shots'];
 
         //Name
         $(q + " .name").text(teamArray[indexNum]['name']);
 
-        //Shots
-        $(q + " .shots").text(teamArray[indexNum]['shots']);
-        teamShots[tm] += teamArray[indexNum]['shots'];
-
-        //Goals
-        $(q + " .goals").text(teamArray[indexNum]['goals']);
-
-        //Assists
-        $(q + " .assists").text(teamArray[indexNum]['assists']);
-
-        //Saves
-        $(q + " .saves").text(teamArray[indexNum]['saves']);
+        //Points
+        let points = teamArray[indexNum]['goals'] + teamArray[indexNum]['assists'];
+        $(q + " .points .value").text(points);
 
         //Score
+        $(q + " .score .value").text(teamArray[indexNum]['score']);
         teamScore[tm] += teamArray[indexNum]['score'];
 
-        //Bumps 
-        teamBumps[tm] += teamArray[indexNum]['cartouches'];
-
-        //Touches
-        teamTouches[tm] += teamArray[indexNum]['touches'];
-        
-        //Check if Dead
-        if(teamArray[indexNum]['isDead'])
-        {
-            $(q).css({"opacity":.5});
-        }
-        else
-        {
-            $(q).css({"opacity":1});
-        }
+        //Logo
+        $( q + " .logo img").attr("src",TEAM_LOGO_MAP[tm===0?leftTeamName:rightTeamName]);
 
         //check if player exists in the adv stats obj
         if(playerAdvStats[teamArray[indexNum]['name']] === undefined)

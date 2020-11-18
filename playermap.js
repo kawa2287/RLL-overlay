@@ -19,7 +19,10 @@ const PLAYER_TEAM_MAP = {
     "KURTZYP00": "Team Santa",
     "KURTZY P00": "Team Santa",
     "SNAKES ON A MICROPLANE": "Reindeer",
-    "EVERGREEN6258": "Team Santa"
+    "EVERGREEN6258": "Team Santa",
+
+    "YURI":"Pilgrims",
+    "SLIDER":"Death"
 };
 
 

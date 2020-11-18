@@ -483,8 +483,12 @@ i {
     color: white;
     text-shadow:2px 2px #000924;
     opacity: 1;
-    font-size: 16px;
+    font-size: 18px;
     padding-left: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 200px;
+    display: inline-block
 }
 
 .team .players
@@ -510,6 +514,7 @@ i {
     display: flex;
     flex-direction: row;
     flex: 3;
+    box-shadow: 5px 5px 10px  #000924;
 }
 
 .team .players .box .stats .logo
@@ -566,11 +571,18 @@ i {
     color: white;
     padding-right: 10px;
 }
+.team .players .box .stats .points .value
+{
+    font-size: 30px;
+}
 .blue.team.team .players .box .stats .points .value
 {
     color: rgb(189, 188, 255);
 }
-
+.orange.team.team .players .box .stats .points .value
+{
+    color: rgb(208, 255, 79);
+}
 .team .players .box .stats .score .title
 {
     position: absolute;
@@ -683,7 +695,7 @@ i {
     left: -10px;
     font-size: 30px;
     color: white;
-    text-shadow: 1px 1px 2px blac
+    text-shadow: 1px 1px 2px black
     
 }
 .targetDisplay .player .scoreTitle
