@@ -4,10 +4,10 @@
         <script type="text/javascript" src="js/Timer.js"></script>
         <link rel="stylesheet" href="css/mystyle.css">
         <link rel="stylesheet" href="css/animations.css">
-       
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
         <link href="fontawesome-free-5.14.0-web/css/all.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="lib/animate.min.css" />
 
     </head>
@@ -65,45 +65,58 @@
             <div class="players">
 
                 <div class="box p1">
-                    <div class = "name">SNAKES ON A MICROPLANE </div>
+                    <div class = "name"> </div>
                     <div class="stats">
                         <div class="logo"><img src="assets/RLL_Logo.png"/></div>
                         <div class="score">
-                            <div class="value">1085</div>
+                            <div class="value"></div>
                             <div class="title">SCORE</div>
                         </div>
+                        <div class="performance">
+                            <div class="value"></div>
+                            <div class="title">GRD</div>
+                        </div>
                         <div class="points">
-                            <div class="value">2</div>
+                            <div class="value"></div>
                             <div class="title">PTS</div>
                         </div>
+                        
                     </div>
                 </div>   
 
                 <div class="box p2">
-                    <div class = "name">SNAKES ON A MICROPLANE </div>
+                    <div class = "name"></div>
                     <div class="stats">
                         <div class="logo"><img src="assets/RLL_Logo.png"/></div>
                         <div class="score">
-                            <div class="value">1085</div>
+                            <div class="value"></div>
                             <div class="title">SCORE</div>
                         </div>
+                        <div class="performance">
+                            <div class="value"></div>
+                            <div class="title">GRD</div>
+                        </div>
                         <div class="points">
-                            <div class="value">2</div>
+                            <div class="value"></div>
                             <div class="title">PTS</div>
                         </div>
                     </div>
                 </div>   
 
                 <div class="box p3">
-                    <div class = "name">SNAKES ON A MICROPLANE </div>
+                    <div class = "name"></div>
                     <div class="stats">
                         <div class="logo"><img src="assets/RLL_Logo.png"/></div>
                         <div class="score">
-                            <div class="value">1085</div>
+                            <div class="value"></div>
                             <div class="title">SCORE</div>
                         </div>
+                        <div class="performance">
+                            <div class="value"></div>
+                            <div class="title">GRD</div>
+                        </div>
                         <div class="points">
-                            <div class="value">2</div>
+                            <div class="value"></div>
                             <div class="title">PTS</div>
                         </div>
                     </div>
@@ -116,14 +129,18 @@
             <div class="players">
 
                 <div class="box p1">
-                    <div class = "name">Gnomie, dont ya know me? </div>
+                    <div class = "name"> </div>
                     <div class="stats">
                         <div class="points">
-                            <div class="value">2</div>
+                            <div class="value"></div>
                             <div class="title">PTS</div>
                         </div>
+                        <div class="performance">
+                            <div class="value"></div>
+                            <div class="title">GRD</div>
+                        </div>
                         <div class="score">
-                            <div class="value">1085</div>
+                            <div class="value"></div>
                             <div class="title">SCORE</div>
                         </div>
                         <div class="logo"><img src="assets/RLL_Logo.png"/></div>
@@ -131,14 +148,18 @@
                 </div>   
 
                 <div class="box p2">
-                    <div class = "name">Gnomie, dont ya know me? </div>
+                    <div class = "name"> </div>
                     <div class="stats">
                         <div class="points">
-                            <div class="value">2</div>
+                            <div class="value"></div>
                             <div class="title">PTS</div>
                         </div>
+                        <div class="performance">
+                            <div class="value"></div>
+                            <div class="title">GRD</div>
+                        </div>
                         <div class="score">
-                            <div class="value">1085</div>
+                            <div class="value"></div>
                             <div class="title">SCORE</div>
                         </div>
                         <div class="logo"><img src="assets/RLL_Logo.png"/></div>
@@ -146,14 +167,18 @@
                 </div>   
 
                 <div class="box p3">
-                    <div class = "name">Gnomie, dont ya know me? </div>
+                    <div class = "name"></div>
                     <div class="stats">
                         <div class="points">
-                            <div class="value">2</div>
+                            <div class="value"></div>
                             <div class="title">PTS</div>
                         </div>
+                        <div class="performance">
+                            <div class="value"></div>
+                            <div class="title">GRD</div>
+                        </div>
                         <div class="score">
-                            <div class="value">1085</div>
+                            <div class="value"></div>
                             <div class="title">SCORE</div>
                         </div>
                         <div class="logo"><img src="assets/RLL_Logo.png"/></div>
@@ -232,6 +257,8 @@
                 <div class="logo"><img src="assets/RLL_logo.png"/></div>
                 <div class="team"><span></span></div>
                 <div class="score"><span></span></div>
+
+                <div id="toast-left"></div>
             </div>
 
             <div class="mid container">
@@ -259,6 +286,8 @@
                 <div class="score"><span></span></div>
                 <div class="team"><span></span></div>
                 <div class="logo"><img src="assets/RLL_logo.png"/></div>
+
+                <div id="toast-right"></div>
             </div>
         </div>
 
@@ -277,6 +306,7 @@
                         <div class = "player">
                             <div class="upperCont">
                                 <div class ="name"></div>
+                                <div class ="grade"></div>
                                 <div class ="scoreTitle">SCORE:</div>
                                 <div class ="score">-</div>
                             </div>
@@ -328,6 +358,7 @@
                         <div class = "player">
                             <div class="upperCont">
                                 <div class ="name">-</div>
+                                <div class ="grade"></div>
                                 <div class ="scoreTitle">SCORE:</div>
                                 <div class ="score">-</div>
                             </div>
@@ -379,6 +410,7 @@
                         <div class = "player">
                             <div class="upperCont">
                                 <div class ="name">-</div>
+                                <div class ="grade"></div>
                                 <div class ="scoreTitle">SCORE:</div>
                                 <div class ="score">-</div>
                             </div>
@@ -439,6 +471,7 @@
                         <div class = "player">
                             <div class="upperCont">
                                 <div class ="name">-</div>
+                                <div class ="grade"></div>
                                 <div class ="scoreTitle">SCORE:</div>
                                 <div class ="score">-</div>
                             </div>
@@ -490,6 +523,7 @@
                         <div class = "player">
                             <div class="upperCont">
                                 <div class ="name">-</div>
+                                <div class ="grade"></div>
                                 <div class ="scoreTitle">SCORE:</div>
                                 <div class ="score">-</div>
                             </div>
@@ -541,6 +575,7 @@
                         <div class = "player">
                             <div class="upperCont">
                                 <div class ="name">-</div>
+                                <div class ="grade"></div>
                                 <div class ="scoreTitle">SCORE:</div>
                                 <div class ="score">-</div>
                             </div>
@@ -592,6 +627,8 @@
 
         <input id="hidden-checkbox" type="checkbox"></input>
         <label for="hidden-checkbox"></label> 
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
         <script type="text/javascript" src="subscribers.js"></script>
         <script type="text/javascript" src="js/GameInit_Main.js"></script>

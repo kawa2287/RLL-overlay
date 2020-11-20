@@ -21,9 +21,11 @@ const PLAYER_TEAM_MAP = {
     "SNAKES ON A MICROPLANE": "Reindeer",
     "EVERGREEN6258": "Team Santa",
 
-    "YURI":"Turkeys",
-    "SLIDER":"Pumkins"
+    "ARMSTRONG":"Turkeys",
+    "STORM":"Pilgrims"
 };
+
+
 
 
 /*
@@ -121,4 +123,5 @@ const COLOR_MAP =
     "orangeTeam" :rgba(223, 126, 0, 1),
     "blueTeam" : "blue"
 };
+
 

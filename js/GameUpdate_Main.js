@@ -41,14 +41,16 @@ function GameUpdateMain(d)
 
         //Update Stats
         let isReplay = d['game']['isReplay'];
+        let gTime = d['game']['time'] ;
+        
 
-        UpdateStats(blueTeam, 0, ".p1","blue",isReplay,d);
-        UpdateStats(blueTeam, 1, ".p2","blue",isReplay,d);
-        UpdateStats(blueTeam, 2, ".p3","blue",isReplay,d);
+        UpdateStats(blueTeam, 0, ".p1","blue",isReplay,d,gTime);
+        UpdateStats(blueTeam, 1, ".p2","blue",isReplay,d,gTime);
+        UpdateStats(blueTeam, 2, ".p3","blue",isReplay,d,gTime);
 
-        UpdateStats(orangeTeam, 0, ".p1","orange",isReplay,d);
-        UpdateStats(orangeTeam, 1, ".p2","orange",isReplay,d);
-        UpdateStats(orangeTeam, 2, ".p3","orange",isReplay,d);
+        UpdateStats(orangeTeam, 0, ".p1","orange",isReplay,d,gTime);
+        UpdateStats(orangeTeam, 1, ".p2","orange",isReplay,d,gTime);
+        UpdateStats(orangeTeam, 2, ".p3","orange",isReplay,d,gTime);
         
         
         //Update Scorebug
@@ -62,6 +64,7 @@ function GameUpdateMain(d)
         //Show Target Player Stats if focused
         TargetStats(allPlayers,d);
 
+       
         //Shot map shots
         //MapShots();
 
@@ -95,7 +98,7 @@ function GetPlayerTeamArray(d)
     return playerTeamArray;
 }
 
-function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
+function UpdateStats(teamArray, indexNum, p, color, isReplay,d,gTime)
 {
     const q = `.${color} ${p}`;
     let tm = (color === 'blue' ? 0 : 1 );
@@ -128,6 +131,76 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
 
         //Logo
         $( q + " .logo img").attr("src",TEAM_LOGO_MAP[tm===0?leftTeamName:rightTeamName]);
+        
+        //Update Player Grades
+        const AVG_SCORE_MAP = 
+        {
+            "KAWA": 424,
+            "JR": 174,
+            "DETHORNE": 234,
+            "ELFFAW": 307,
+            "ANDY MAC": 145,
+            "TWERP": 192,
+            "MATTAUX": 241,
+            "KAWA2796": 181,
+            "PNKROCKJOCK26": 304,
+            "HOOTENANNIES": 210,
+            "OFTHEMOON16": 290,
+            "GNOMIE, DONT YA KNOW ME?": 477,
+            "GOLFJBC89": 223,
+            "JMYRV": 152,
+            "MADSCOUTFAN": 160,
+            "MADSCOUT": 160,
+            "KURTZYP00": 148,
+            "KURTZY P00": 148,
+            "SNAKES ON A MICROPLANE": 346,
+            "EVERGREEN6258": 365,
+
+            "CHIPPER": 320,
+            "COUGAR": 320,
+            "FURY": 410,
+            "CAVEMAN": 213,
+            "PONCHO": 178,
+            "SHEPARD": 110,
+            "CENTICE": 320,
+            "MIDDY": 320,
+            "SUNDOWN": 410,
+            "CASPER": 213,
+            "ICEMAN": 178,
+            "SQUALL": 110,
+            "BOOMER": 320,
+            "JUNKER": 320,
+            "SWABBIE": 410,
+            "HOLLYWOOD": 213,
+            "ARMSTRONG": 178,
+            "TUSK": 110,
+            "FOAMER": 410,
+            "MYRTLE": 213,
+            "MARLEY": 178,
+            "RAINMAKER": 213,
+            "SCOUT": 178,
+            "BANDIT": 213,
+            "GERWIN": 178,
+            "TEX": 213,
+            "YURI": 178,
+            "MIDDY": 178,
+            "WOLFMAN": 213,
+            "MOUNTAIN": 178,
+            "SAMARA": 178,
+            "STICKS": 213,
+
+
+        };
+        
+        let avgScore = AVG_SCORE_MAP[ teamArray[indexNum]['name'].toUpperCase() ];   
+           
+        let grade = GetPlayerGrade(teamArray[indexNum]['score'],avgScore,gTime);
+
+        $(q + " .performance .value").text(grade['grade']);
+        $(q + " .performance .value").css({"color":grade['color']});
+        $(q + " .performance .title").css({"color":grade['color']});
+        $(q + " .performance").css({"background":grade['background']});
+        
 
         //check if player exists in the adv stats obj
         if(playerAdvStats[teamArray[indexNum]['name']] === undefined)
@@ -160,7 +233,8 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
                 goalSpeed:0,
                 epicSaves:0,
                 aerialGoals:0,
-                bicycleHits:0
+                bicycleHits:0,
+                grade: ""
             }
         }
         else
@@ -191,6 +265,7 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d)
                 playerAdvStats[teamArray[indexNum]['name']]['position']['y'] = py;
                 playerAdvStats[teamArray[indexNum]['name']]['position']['z'] = pz;
                 playerAdvStats[teamArray[indexNum]['name']]['team'] = color==='blue'?leftTeamName :rightTeamName;
+                playerAdvStats[teamArray[indexNum]['name']]['grade'] = grade['grade'];
             }
         }
     }
@@ -337,4 +412,29 @@ function TargetStats(players, d)
         //hide targetDisplay
         $(".targetDisplay").css({"visibility":"hidden"})
     }
+}
+
+function GetPlayerGrade(score,avgScore,gTime)
+{
+    let time = gTime === 300 ? 0 : gTime
+    let target = ((300-time)/300)*avgScore;
+    return GetGrade(target,score);
+
+    
+    
+}
+
+function GetGrade(target,current)
+{
+
+    console.log("current: " + current);
+    console.log("target: " + target);
+    console.log("AA: " +  (target + target*.75));
+    if(current >= target + target*.75){return {grade:"AA",background:"yellow",color:"black"};}
+    else if(current>= target + target*.45){return {grade:"A",background:"#F4D58D",color:"black"};}
+    else if(current>= target + target*.15){return{grade:"B",background:"#D4C2FC",color:"black"};}
+    else if(current>= target - target*.15){return{grade:"C",background:"#708D81",color:"white"};}
+    else if(current>= target - target*.45){return {grade:"D",background:"#BF0603",color:"white"};}
+    else if(current>= target - target*.75){return {grade:"F",background:"#8D0801",color:"white"};}
+    else {return {grade:"FF",background:"#001427",color:"white"};}
 }

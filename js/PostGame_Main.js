@@ -112,6 +112,7 @@ function PostGameMain(d)
                 let pts = x['goals'] + x['assists']; 
                 $(q +" .player .name").text(x['name']);
                 $(q +" .player .score").text(x['score']);
+                $(q +" .player .grade").text(playerAdvStats[x['name']]['grade']);
                 $(q +" .player .stat.points .value").text(pts);
                 $(q +" .player .stat.goals .value").text(x['goals']);
                 $(q +" .player .stat.assists .value").text(x['assists']);
@@ -121,6 +122,8 @@ function PostGameMain(d)
                 $(q +" .player .stat.bumps .value").text(x['cartouches']);
                 $(q +" .player .stat.airTime .value").text(aTime.toFixed(1)+"s");
                 $(q +" .player .stat.airHits .value").text(playerAdvStats[x['name']]['airHits']);
+
+              
                 
                 
                 //set colors and logos
