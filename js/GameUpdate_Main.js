@@ -265,7 +265,7 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d,gTime)
                 playerAdvStats[teamArray[indexNum]['name']]['position']['y'] = py;
                 playerAdvStats[teamArray[indexNum]['name']]['position']['z'] = pz;
                 playerAdvStats[teamArray[indexNum]['name']]['team'] = color==='blue'?leftTeamName :rightTeamName;
-                playerAdvStats[teamArray[indexNum]['name']]['grade'] = grade['grade'];
+                playerAdvStats[teamArray[indexNum]['name']]['grade'] = grade;
             }
         }
     }

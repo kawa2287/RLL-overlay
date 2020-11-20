@@ -112,7 +112,9 @@ function PostGameMain(d)
                 let pts = x['goals'] + x['assists']; 
                 $(q +" .player .name").text(x['name']);
                 $(q +" .player .score").text(x['score']);
-                $(q +" .player .grade").text(playerAdvStats[x['name']]['grade']);
+                $(q +" .player .grade").text(playerAdvStats[x['name']]['grade']['grade']);
+                $(q +" .player .grade").css({"background":playerAdvStats[x['name']]['grade']['background']});
+                $(q +" .player .grade").css({"color":playerAdvStats[x['name']]['grade']['color']});
                 $(q +" .player .stat.points .value").text(pts);
                 $(q +" .player .stat.goals .value").text(x['goals']);
                 $(q +" .player .stat.assists .value").text(x['assists']);
