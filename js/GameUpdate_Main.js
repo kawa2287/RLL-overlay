@@ -131,6 +131,8 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d,gTime)
 
         //Logo
         $( q + " .logo img").attr("src",TEAM_LOGO_MAP[tm===0?leftTeamName:rightTeamName]);
+
+        
         
         //Update Player Grades
         const AVG_SCORE_MAP = 
@@ -234,7 +236,8 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d,gTime)
                 epicSaves:0,
                 aerialGoals:0,
                 bicycleHits:0,
-                grade: ""
+                grade: "",
+                scoreData:[]
             }
         }
         else
@@ -252,12 +255,26 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay,d,gTime)
 
                     //Zone stats
                     ZoneStats(teamArray[indexNum]);
+                    
+                    //update player scoreData for postgame chart
+                    let sec = Math.ceil(d['game']['time'] );
+                    let prevSec = Math.ceil(previousData['game']['time'] );
+                    
+                    if(sec % 2 === 0  && sec !== prevSec)
+                    {
+                        let item = playerAdvStats[teamArray[indexNum]['name']]['scoreData'].length;
+                        playerAdvStats[teamArray[indexNum]['name']]['scoreData'].push(
+                            {label: item,
+                            y: teamArray[indexNum]['score']});
+                    }
                 } 
 
                 //update player position
                 let px = teamArray[indexNum]['x'];
                 let py = teamArray[indexNum]['y'];
                 let pz = teamArray[indexNum]['z'];
+
+                
 
                 
 
@@ -427,9 +444,6 @@ function GetPlayerGrade(score,avgScore,gTime)
 function GetGrade(target,current)
 {
 
-    console.log("current: " + current);
-    console.log("target: " + target);
-    console.log("AA: " +  (target + target*.75));
     if(current >= target + target*.75){return {grade:"AA",background:"yellow",color:"black"};}
     else if(current>= target + target*.45){return {grade:"A",background:"#F4D58D",color:"black"};}
     else if(current>= target + target*.15){return{grade:"B",background:"#D4C2FC",color:"black"};}

@@ -23,3 +23,5 @@ function PlayAnimation(loc, animClass, duration)
         $(loc).removeClass(animClass);
     }, duration);
 }
+
+

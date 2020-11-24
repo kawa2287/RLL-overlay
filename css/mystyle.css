@@ -890,6 +890,15 @@ i {
     opacity: .2;
 }
 
+#chart_div
+{
+    position: absolute;
+    width: 700px;
+    height: 400px;
+    top: 500px;
+    left: 610px;
+    z-index: 1;
+}
 
 .postGame
 {
@@ -899,6 +908,8 @@ i {
     flex-direction: row;
     text-transform: uppercase;
 }
+
+
 
 .postGame .team
 {

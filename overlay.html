@@ -10,6 +10,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="lib/animate.min.css" />
 
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      
+
     </head>
     <body>
 
@@ -243,10 +246,10 @@
         <div id="transitionLogo" class="animate__animated animate__rollOut"></div>
         <div id="transitionBg" class="animate__animated animate_fadeOut"></div>
 
+
+        <div id="chart_div"></div>
+
         <div class="scorebug">
-
-            
-
             <div class="left container">
 
                 <div class="overlay">
@@ -292,6 +295,7 @@
         </div>
 
         <div class ="postGame">
+            <div id="chart_div" ></div>
             <div class= "left team">
                 <div class = "tmscore"></div>
                 <div class ="upperArea">
@@ -629,8 +633,10 @@
         <label for="hidden-checkbox"></label> 
 
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        
 
         <script type="text/javascript" src="subscribers.js"></script>
+        <script type="text/javascript" src="js/PostGameChart.js"></script>
         <script type="text/javascript" src="js/GameInit_Main.js"></script>
         <script type="text/javascript" src="js/ZoneStats.js"></script>
         <script type="text/javascript" src="js/MatchCreated_Main.js"></script>

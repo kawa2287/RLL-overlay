@@ -163,6 +163,43 @@ function PostGameMain(d)
             }
         }
     }
+
+    //fill Chart
+    let chartData = [];
+    let header = ["time"];
+    let snapShots = 0;
+
+    //Fill Header
+    for (const player in playerAdvStats )
+    {
+        //Push name for series
+        header.push(player);
+        //Determine how many snapshots
+        let snapLength = playerAdvStats[player]['scoreData'].length;
+        if(snapLength > snapShots)
+        {
+            snapShots = snapLength;
+        }
+    }
+    //Push header into chartData
+    chartData.push(header);
+
+    //Fill Each Snapshot
+    for (var i = 0; i < snapShots; i++)
+    {
+        let snapShot = [];
+        snapShot.push(i);
+
+        for (const player in playerAdvStats )
+        {
+            snapShot.push( playerAdvStats[player]['scoreData'][i]['y'] );
+        }
+        chartData.push(snapShot);
+    }
+
+    //Draw Chart
+    
+    google.charts.setOnLoadCallback(drawChart(chartData));
 }
 
 function SetStatGlow(pStat, stat, divClass,q, maxStats)

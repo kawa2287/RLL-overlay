@@ -8,6 +8,7 @@ function StatFeedMain(d)
     let side ="";
     let selector= "";
 
+    console.log(playerAdvStats);
 
     //determine which team player is on
     for (let m in  previousData['players'])
@@ -67,7 +68,7 @@ function StatFeedMain(d)
             backgroundColor: "BLUE",
             close: false,
             selector:selector,
-            avatar: "assets/ICON_SHOT.png",
+            avatar: "assets/ICON_SAVE.png",
             gravity: "top", // `top` or `bottom`
             position: side, // `left`, `center` or `right`
             stopOnFocus: true, // Prevents dismissing of toast on hover
@@ -107,7 +108,7 @@ function StatFeedMain(d)
             backgroundColor: "CHOCOLATE",
             close: false,
             selector:selector,
-            avatar: "assets/ICON_DEMO.png",
+            avatar: "assets/ICON_AERIAL.png",
             gravity: "top", // `top` or `bottom`
             position: side, // `left`, `center` or `right`
             stopOnFocus: true, // Prevents dismissing of toast on hover
@@ -151,7 +152,6 @@ function SaveShot(player)
     {
         if(previousData['players'][m]['name'] === player)
         {
-            console.log(playerAdvStats[player]);
             let tm = previousData['players'][m]['team'] ;
             let coord = [];
             coord[0] = playerAdvStats[player]['lastHit']['x'];
