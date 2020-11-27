@@ -5,6 +5,7 @@ function PostGameMain(d)
     //show post game scores
     $(".postGame .left.team").css({"transform":"translateX(960px)"});
     $(".postGame .right.team").css({"transform":"translateX(-960px)"});
+    $("#chart-div").show();
 
     //Create export array
     let exportContent = [];

@@ -309,7 +309,14 @@ function GetTeam(team)
         "Pumkins":0,
         "Death":0,
         "Team Santa":0,
-        "Reindeer":0
+        "Reindeer":0,
+
+        "australia":0,
+        "india":0,
+        "switzerland":0,
+        "thailand":0,
+        "venezuela":0,
+        "panama":0,
     };
     /*
    let teams = 

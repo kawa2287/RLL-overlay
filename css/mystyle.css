@@ -218,6 +218,7 @@ i {
     text-align: center;
     text-shadow:  2px 2px 5px #fff;
     overflow: hidden;
+    background: black;
 }
 
 .scorebug .overlay span
@@ -248,32 +249,29 @@ i {
 }
 
 
-.scorebug .left.container .overlay span img
-{
-    transform: skew(-20deg);
-}
-.scorebug .left.container .overlay span.g
-{
-    transform: skew(-20deg);
-}
+
+
 .scorebug .overlay img
 {
     position: absolute;
-    top: -10px;
-    height: 130px;
-    width: 130px;
+    top: -50px;
+    height: 180px;
+    width: 180px;
     left: -450px;
     opacity: .7;
 }
 
-.scorebug .right.container .overlay span.g
+.scorebug .left.container .overlay img
+{
+    transform: skew(-20deg);
+}
+
+.scorebug .right.container .overlay img
 {
     transform: skew(20deg);
 }
-.scorebug .right.container .overlay span img
-{
-    transform: skew(20deg);
-}
+
+
 
 .scorebug .left.container
 {
@@ -890,7 +888,7 @@ i {
     opacity: .2;
 }
 
-#chart_div
+#chart-div
 {
     position: absolute;
     width: 700px;
@@ -898,6 +896,7 @@ i {
     top: 500px;
     left: 610px;
     z-index: 1;
+    visibility: visible;
 }
 
 .postGame

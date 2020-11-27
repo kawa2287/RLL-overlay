@@ -21,80 +21,49 @@ const PLAYER_TEAM_MAP = {
     "SNAKES ON A MICROPLANE": "Reindeer",
     "EVERGREEN6258": "Team Santa",
 
-    "ARMSTRONG":"Turkeys",
-    "STORM":"Pilgrims"
+    "ARMSTRONG":"australia",
+    "STORM":"australia",
+    "CHIPPER": "australia",
+    "COUGAR": "australia",
+    "FURY": "australia",
+    "CAVEMAN": "australia",
+    "PONCHO": "india",
+    "SHEPARD": "india",
+    "CENTICE": "india",
+    "MIDDY": "india",
+    "SUNDOWN": "india",
+    "CASPER": "india",
+    "ICEMAN": "panama",
+    "SQUALL": "panama",
+    "BOOMER": "panama",
+    "JUNKER": "panama",
+    "SWABBIE": "panama",
+    "HOLLYWOOD": "switzerland",
+    "ARMSTRONG": "switzerland",
+    "TUSK": "switzerland",
+    "FOAMER": "switzerland",
+    "MYRTLE": "switzerland",
+    "MARLEY": "thailand",
+    "RAINMAKER": "thailand",
+    "SCOUT": "thailand",
+    "BANDIT": "thailand",
+    "GERWIN": "thailand",
+    "TEX": "thailand",
+    "YURI": "venezuela",
+    "MIDDY": "venezuela",
+    "WOLFMAN": "venezuela",
+    "MOUNTAIN": "venezuela",
+    "SAMARA": "venezuela",
+    "STICKS": "venezuela"
 };
 
 
 
 
-/*
-const PLAYER_TEAM_MAP = {
-    "kawa": "Crabs",
-    "JR": "Crabs",
-    "dethorne": "LongBows",
-    "elffaW": "LongBows",
-    "Andy Mac": "Queens",
-    "Twerp": "LongBows",
-    "mattaux": "Samurai",
-    "kawa2796": "Samurai",
-    "pnkrockjock26": "Queens",
-    "Hootenannies": "Pigeons",
-    "ofthemoon16": "Pigeons",
-    "AwesomeX": "Knights",
-    "GolfJBC89": "Samurai",
-    "JMyrv": "Knights",
-    "Elissa": "Crabs",
-    "Kurtzy P00": "Knights",
-    "Snakes on a Microplane": "Queens",
-    "Evergreen6258": "Pigeons",
-
-    "Squall": "belgium",
-    "Shepard": "belgium",
-    "Rainmaker": "belgium",
-    "Storm": "belgium",
-    "Beast": "belgium",
-    "Cougar": "botswana",
-    "Viper": "botswana",
-    "Tex": "botswana",
-    "Scout": "botswana",
-    "Heater": "botswana",
-    "Sticks":"colombia",
-    "Raja": "colombia",
-    "Sabertooth": "colombia",
-    "Merlin": "colombia",
-    "Sundown": "colombia",
-    "Storm": "japan",
-    "Myrtle": "japan",
-    "Casper": "japan",
-    "Rex": "japan",
-    "Cougar": "japan",
-    "Armstrong": "mexico",
-    "Foamer": "mexico",
-    "Samara": "mexico",
-    "Iceman" :"mexico",
-    "Jester" :"mexico",
-    "Marley": "norway",
-    "Roundhouse": "norway",
-    "Dude": "norway",
-    "Stinger": "norway",
-    "Maverick": "norway",
-    "Swabbie": "norway",
 
 
-};
 
 
-const TEAM_LOGO_MAP = {
-    "RLL": "assets/RLL_logo.png",
-    "belgium": "assets/belgium.png",
-    "botswana": "assets/botswana.png",
-    "colombia": "assets/colombia.png",
-    "japan": "assets/japan.png",
-    "mexico": "assets/mexico.png",
-    "norway": "assets/norway.png"
-};
-*/
 
 const TEAM_LOGO_MAP = {
     "RLL": "assets/RLL_logo.png",
@@ -103,7 +72,14 @@ const TEAM_LOGO_MAP = {
     "Reindeer": "assets/LOGO_REINDEER.png",
     "Turkeys": "assets/LOGO_TURKEYS.png",
     "Pumkins": "assets/LOGO_PUMPKINS.png",
-    "Death": "assets/LOGO_DEATH.png"
+    "Death": "assets/LOGO_DEATH.png",
+
+    "australia": "assets/FLAG_AUSTRALIA.png",
+    "india": "assets/FLAG_INDIA.png",
+    "panama": "assets/FLAG_PANAMA.png",
+    "switzerland": "assets/FLAG_SWISS.png",
+    "thailand": "assets/FLAG_THAILAND.png",
+    "venezuela": "assets/FLAG_VENEZUELA.png"
 };
 
 
@@ -115,7 +91,13 @@ const TEAM_COLOR_MAP = {
     "Turkeys": {primary:"#7c471b", secondary:"#ffcc33", shadow: "#4d2c10",tertiary: "black"},
     "Pumkins": {primary:"#ff8800", secondary:"black", shadow: "#ffbf00",tertiary: "black"},
     "Death": {primary:"#182024", secondary:"#6b99ae", shadow: "black",tertiary: "black"},
-
+    
+    "australia":{primary:"#101f4f", secondary:"white", shadow: "black",tertiary: "black"},
+    "india":{primary:"#e27423", secondary:"white", shadow: "#d86619",tertiary: "black"},
+    "panama":{primary:"#e9f3f4", secondary:"#d21034", shadow: "black",tertiary: "black"},
+    "switzerland":{primary:"#c41616", secondary:"white", shadow: "black",tertiary: "black"},
+    "thailand":{primary:"#07304f", secondary:"white", shadow: "black",tertiary: "black"},
+    "venezuela":{primary:"#ffbc00", secondary:"#cf142b", shadow: "black",tertiary: "black"},
 };
 
 const COLOR_MAP = 
