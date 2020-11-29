@@ -58,8 +58,8 @@ function GameUpdateMain(d)
         $(".scorebug .right .team span").text(rightTeamName);
         $(".scorebug .left .logo img").attr("src",TEAM_LOGO_MAP[leftTeamName]);
         $(".scorebug .right .logo img").attr("src",TEAM_LOGO_MAP[rightTeamName]);
-        $(".scorebug .mid .shots .value").text(teamShots[0]);
-        $(".scorebug .mid .shots .value").text(teamShots[1]);
+        $(".scorebug .mid .shots.left .value").text(teamShots[0]);
+        $(".scorebug .mid .shots.right .value").text(teamShots[1]);
 
         //Show Target Player Stats if focused
         TargetStats(allPlayers,d);
@@ -317,6 +317,7 @@ function GetTeam(team)
         "thailand":0,
         "venezuela":0,
         "panama":0,
+        "somalia":0
     };
     /*
    let teams = 

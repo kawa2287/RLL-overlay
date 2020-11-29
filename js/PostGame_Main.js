@@ -1,6 +1,5 @@
 function PostGameMain(d)
 {
-    console.log(playerAdvStats);
     
     //show post game scores
     $(".postGame .left.team").css({"transform":"translateX(960px)"});
@@ -70,6 +69,13 @@ function PostGameMain(d)
         return b[1] - a[1];
     });
 
+    //Colors to be used on chart
+    const chartColors = [["#0000FF","#4747FF","#8585FF"],["#F59F00","#FFB01F","#FFBF47"]];
+
+    //fill Chart
+    let chartData = [];
+    let header = ["time"];
+    let snapShots = 0;
 
     //Fill out stats
     for (let n = 0; n <= 1; n++)
@@ -126,7 +132,8 @@ function PostGameMain(d)
                 $(q +" .player .stat.airTime .value").text(aTime.toFixed(1)+"s");
                 $(q +" .player .stat.airHits .value").text(playerAdvStats[x['name']]['airHits']);
 
-              
+                //Add player name to chart header
+                header.push(x['name']);
                 
                 
                 //set colors and logos
@@ -143,11 +150,11 @@ function PostGameMain(d)
                 $(".postGame "+side).css({"background-image":"linear-gradient(to top,grey , "+colors.primary+")"});
 
                 $(q +" img").attr("src", logo);
-                $(q).css({"background":colors.primary});
-                $(q +" .scoreTitle").css({"color":colors.secondary});
-                $(q +" .lowerCont").css({"color":colors.secondary});
-                $(q +" .lowerCont").css({"background":colors.shadow});
-                $(q +" .lowerCont .title").css({"background":colors.primary});
+                $(q).css({"background":chartColors[team][counter-1]});
+                $(q +" .scoreTitle").css({"color":"white"});
+                $(q +" .lowerCont").css({"color":"white"});
+                $(q +" .lowerCont").css({"background":"black"});
+                $(q +" .lowerCont .title").css({"background":chartColors[team][counter-1]});
 
                 //check and apply if stat leader
                 SetStatGlow(x['score'], 'score', 'score',q,maxStats);
@@ -165,16 +172,12 @@ function PostGameMain(d)
         }
     }
 
-    //fill Chart
-    let chartData = [];
-    let header = ["time"];
-    let snapShots = 0;
+    //Push header into chartData
+    chartData.push(header);
 
-    //Fill Header
+    //Determine maxSnapshots
     for (const player in playerAdvStats )
     {
-        //Push name for series
-        header.push(player);
         //Determine how many snapshots
         let snapLength = playerAdvStats[player]['scoreData'].length;
         if(snapLength > snapShots)
@@ -182,8 +185,6 @@ function PostGameMain(d)
             snapShots = snapLength;
         }
     }
-    //Push header into chartData
-    chartData.push(header);
 
     //Fill Each Snapshot
     for (var i = 0; i < snapShots; i++)
@@ -193,14 +194,22 @@ function PostGameMain(d)
 
         for (const player in playerAdvStats )
         {
-            snapShot.push( playerAdvStats[player]['scoreData'][i]['y'] );
+            for(var p = 0; p< Object.keys(playerAdvStats).length; p++)
+            {
+                //check to make sure it is correct player
+                if(player === header[p+1])
+                {
+                    snapShot.push( playerAdvStats[player]['scoreData'][i]['y'] );
+                    break;
+                }
+            }
         }
         chartData.push(snapShot);
     }
 
     //Draw Chart
     
-    google.charts.setOnLoadCallback(drawChart(chartData));
+    google.charts.setOnLoadCallback(drawChart(chartData,chartColors));
 }
 
 function SetStatGlow(pStat, stat, divClass,q, maxStats)

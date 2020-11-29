@@ -1,5 +1,6 @@
 
 const PLAYER_TEAM_MAP = {
+    /*
     "KAWA": "Pilgrims",
     "JR": "Reindeer",
     "DETHORNE": "Team Santa",
@@ -20,19 +21,35 @@ const PLAYER_TEAM_MAP = {
     "KURTZY P00": "Team Santa",
     "SNAKES ON A MICROPLANE": "Reindeer",
     "EVERGREEN6258": "Team Santa",
+    */
+
+   "KAWA": "india",
+   "DETHORNE": "venezuela",
+   "ELFFAW": "switzerland",
+   "ANDY MAC": "switzerland",
+   "TWERP": "somalia",
+   "MATTAUX": "venezuela",
+   "PNKROCKJOCK26": "thailand",
+   "OFTHEMOON16": "australia",
+   "GOLFJBC89": "australia",
+   "MADSCOUTFAN": "somalia",
+   "MADSCOUT": "somalia",
+   "KURTZYP00": "thailand",
+   "KURTZY P00": "thailand",
+   "EVERGREEN6258": "panama",
 
     "ARMSTRONG":"australia",
     "STORM":"australia",
     "CHIPPER": "australia",
     "COUGAR": "australia",
     "FURY": "australia",
-    "CAVEMAN": "australia",
+    "CAVEMAN": "somalia",
     "PONCHO": "india",
     "SHEPARD": "india",
     "CENTICE": "india",
     "MIDDY": "india",
     "SUNDOWN": "india",
-    "CASPER": "india",
+    "CASPER": "somalia",
     "ICEMAN": "panama",
     "SQUALL": "panama",
     "BOOMER": "panama",
@@ -54,7 +71,7 @@ const PLAYER_TEAM_MAP = {
     "WOLFMAN": "venezuela",
     "MOUNTAIN": "venezuela",
     "SAMARA": "venezuela",
-    "STICKS": "venezuela"
+    "STICKS": "somalia"
 };
 
 
@@ -79,7 +96,8 @@ const TEAM_LOGO_MAP = {
     "panama": "assets/FLAG_PANAMA.png",
     "switzerland": "assets/FLAG_SWISS.png",
     "thailand": "assets/FLAG_THAILAND.png",
-    "venezuela": "assets/FLAG_VENEZUELA.png"
+    "venezuela": "assets/FLAG_VENEZUELA.png",
+    "somalia": "assets/FLAG_SOMALIA.png"
 };
 
 
@@ -98,6 +116,7 @@ const TEAM_COLOR_MAP = {
     "switzerland":{primary:"#c41616", secondary:"white", shadow: "black",tertiary: "black"},
     "thailand":{primary:"#07304f", secondary:"white", shadow: "black",tertiary: "black"},
     "venezuela":{primary:"#ffbc00", secondary:"#cf142b", shadow: "black",tertiary: "black"},
+    "somalia":{primary:"##1980bf", secondary:"white", shadow: "black",tertiary: "black"},
 };
 
 const COLOR_MAP = 
