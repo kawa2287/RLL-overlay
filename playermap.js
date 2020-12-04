@@ -1,6 +1,6 @@
 
 const PLAYER_TEAM_MAP = {
-    /*
+    
     "KAWA": "Pilgrims",
     "JR": "Reindeer",
     "DETHORNE": "Team Santa",
@@ -21,8 +21,9 @@ const PLAYER_TEAM_MAP = {
     "KURTZY P00": "Team Santa",
     "SNAKES ON A MICROPLANE": "Reindeer",
     "EVERGREEN6258": "Team Santa",
-    */
-
+    "CREAM DADDY9057": "Team Santa"
+    
+    /*
    "KAWA": "india",
    "DETHORNE": "venezuela",
    "ELFFAW": "switzerland",
@@ -72,6 +73,7 @@ const PLAYER_TEAM_MAP = {
     "MOUNTAIN": "venezuela",
     "SAMARA": "venezuela",
     "STICKS": "somalia"
+    */
 };
 
 

@@ -9,6 +9,34 @@ let teamTouches = [];
 let teamBumps = [];
 let leftShots = [];
 let rightShots = [];
+let tmConsecutiveTouches = [0,0];
+let ballData =
+{
+    currentOwner:{player:"",team:""},
+    
+};
+let hitData = 
+{
+    currentHit :{
+        player:"",
+        team:"",
+        hitLocation : {x:0,y:0,z:0},
+        hitVector : {x:0,y:0,z:0,mag:0}
+    },
+    lastHit :{
+        player:"",
+        team:"",
+        hitLocation : {x:0,y:0,z:0},
+        hitVector : {x:0,y:0,z:0,mag:0}
+    },
+    twoHitsAgo :{
+        player:"",
+        team:"",
+        hitLocation : {x:0,y:0,z:0},
+        hitVector : {x:0,y:0,z:0,mag:0}
+    }
+};
+
 
 
 const WsSubscribers = {
