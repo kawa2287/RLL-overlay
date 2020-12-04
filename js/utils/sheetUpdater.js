@@ -8,7 +8,6 @@ require("dotenv").config();
  * @param {team0Score} int first team's score
  * @param {team1Name} string name of the second team
  * @param {team1Score} int second team's score
- * @param {gameInfo} object contains required info to identify the game
  *
  * @returns -1 for failure, 0 for success
  */
@@ -16,8 +15,7 @@ export default sheetUpdater = (
   team0Name,
   team0Score,
   team1Name,
-  team1Score,
-  gameInfo
+  team1Score
 ) => {
   const {
     SEASON_NUMBER,
