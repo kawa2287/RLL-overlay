@@ -1,1183 +1,1018 @@
-body
-{
-    width: 1920px;
-    height: 1080px;
-    font-size: 20px;
-    font-family: Oswald,Roboto,RobotoDraft,sans-serif;
-    overflow: hidden;
-    background-color: gray;
+body {
+  width: 1920px;
+  height: 1080px;
+  font-size: 20px;
+  font-family: Oswald, Roboto, RobotoDraft, sans-serif;
+  overflow: hidden;
+  background-color: gray;
 }
 
 #transitionLogo {
-    width: 1920px;
-    height: 1080px;
-    background-image: url("../assets/RLL_Logo_LARGE.png");
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 10;
+  width: 1920px;
+  height: 1080px;
+  background-image: url("../assets/RLL_Logo_LARGE.png");
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
 }
 #transitionBg {
-    width: 1920px;
-    height: 1080px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 #transitionBg.hasBg {
-    background-color: black;
-}
-
-i { 
-    text-shadow:2px 2px #000924;
-}
-
-.toasty
-{
-    color: red;
-}
-
-.replay
-{
-    background: rgba(20,20,20,.7);
-    position: absolute;
-    height: 100%;
-    width: 400px;
-    left:-400px;
-    transition: all 0.5s ease ;
-
-}
-
-
-.replay .speedCont
-{
-    display: flex;
-    width: 100%;
-    position: absolute;
-    left:0px;
-    justify-content: center;
-    align-items:center;
-    top: 210px;
-    text-align: center;
-    text-shadow: 0px 0px 1px whitesmoke;
-} 
-
-.replay .speedCont .speed
-{
-    text-align: center;
-    font-size:60px;
-    color: cornflowerblue;
-    text-shadow: 0px 0px 1px whitesmoke;
-} 
-
-.replay .goal
-{
-    position: absolute;
-    height: 75px;
-    width: 300px;
-    left:50px;
-    top: 120px;
-    display: flex;
-    flex-direction: row;
-} 
-
-.replay .goal .in
-{
-    position: relative;
-    width: 200px;
-    border: 4px solid white;
-    box-shadow: inset 0px 0px 4px black;
-    box-shadow:  0px 0px 4px black;
-    background-color: darkslategrey;
-} 
-
-.replay .goal .in b
-{
-    display: flex;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    justify-content: center;
-    align-items: center;
-    color: yellow;
-    text-shadow: 2px 2px black;
-    
-    
-} 
-.replay .goal .in i
-{
-    display: flex;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    justify-content: center;
-    align-items: center;
-    color: yellow;
-    animation: shotGlow 3s ease infinite;
-    
-
-} 
-
-.replay .goal .out
-{
-    width: 50px;
-    border-bottom: 4px solid white;
-} 
-
-.replay .box
-{
-    position: absolute;
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    background-color: black;
-    box-shadow: 2px 2px 10px black;
-    color: white;
-    height: 100px;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 8px black;
-}
-
-.replay .box.scorer
-{
-    top: 500px;
-    left: 20px;
-}
-
-.replay .box.assist
-{
-    top: 620px;
-    left: 20px;
-}
-
-.replay .box.lastMan
-{
-    top: 800px;
-    left: 20px;
-}
-.replay .box .title
-{
-    display: flex;
-    flex: 1;
-    padding-left: 10px;
-    font-size: 18px;
-    align-content: center;
-    background-color: black;
-    border-bottom: 1px solid white;
-}
-
-.replay .box .name
-{
-    display: flex;
-    flex: 4;
-    align-items: center;
-    padding-left: 10px;
-    font-size: 20px;
-    box-shadow: inset 1px 4px 9px -6px #fff;
-}
-.replay .box .h
-{
-    display: flex;
-    flex-direction: row;
-    flex: 2;
-    overflow: hidden;
-}
-
-.replay .box .logo
-{
-    overflow: hidden;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.scorebug
-{
-    position:absolute;
-    top: 20px;
-    left: 260px;
-    color:white;
-    text-shadow:2px 2px #000924;
-    width: 1400px;
-    height: 120px;
-    display: flex;
-    flex-direction: row;
-    text-transform: uppercase; 
-    
-}
-
-.scorebug .overlay
-{
-    position: absolute;
-    width: 0%;
-    height: 100%;
-    z-index: 9999;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    text-align: center;
-    text-shadow:  2px 2px 5px #fff;
-    overflow: hidden;
-    background: black;
-}
-
-.scorebug .overlay span
-{
-    position: absolute;
-    top: 0;
-    right: -200px;
-    width: 100%;
-    height: 100%;
-    font-size: 60px;   
-    
-}
-#toast-left
-{
-    position: absolute;
-    left: 200px;
-    top: 90px;
-    width: 500px;
-    transform: skew(-20deg);
-}
-#toast-right
-{
-    position: absolute;
-    left: 0px;
-    top: 90px;
-    width: 500px;
-    transform: skew(20deg);
-}
-
-
-
-
-.scorebug .overlay img
-{
-    position: absolute;
-    top: -50px;
-    height: 180px;
-    width: 180px;
-    left: -450px;
-    opacity: .7;
-}
-
-.scorebug .left.container .overlay img
-{
-    transform: skew(-20deg);
-}
-
-.scorebug .right.container .overlay img
-{
-    transform: skew(20deg);
-}
-
-
-
-.scorebug .left.container
-{
-    flex: 1;
-    transform: skew(20deg);
-    background: white;
-    box-shadow: 2px 5px 5px #000924b8;
-    height: 80px;
-    display: flex;
-}
-.scorebug .container .logo
-{
-    flex: 1;
-    background: black;
-    border: whitesmoke solid 1px;
-}
-.scorebug .container .team
-{
-    flex: 4;
-    border: whitesmoke solid 1px;
-    font-size: 40px;
-}
-
-
-.scorebug .container  span 
-{
-    display: block;
-    margin: auto;
-    width: 50%;
-    padding-top: 5px;
-    text-align: center;
-}
-.scorebug .left.container  span 
-{
-    transform: skew(-20deg);
-}
-.scorebug .right.container  span 
-{
-    transform: skew(20deg);
-}
-.scorebug .left.container .team  span 
-{
-    padding-left: 0px;
-}
-.scorebug .left.container .score span 
-{
-    padding-right: 90px;
-    padding-top: 0px;
-}
-.scorebug .right.container .team  span 
-{
-    padding-left: 0px;
-}
-.scorebug .right.container .score span 
-{
-    padding-left: 90px;
-    padding-top: 0px;
-}
-
-
-
-.scorebug .container .score
-{
-    flex: 2;
-    border: whitesmoke solid 1px;
-    color: #ffffc6;
-    font-size: 50px;
-}
-.scorebug .left.container .team
-{
-    background:  linear-gradient(to left, darkblue 0%,blue 50%,rgb(134, 134, 255)  100%);
-}
-.scorebug .left.container .score
-{
-    background: linear-gradient(to left, darkblue 30%,black  100%);
-}
-
-.scorebug .right.container .team
-{
-    background:  linear-gradient(to right, rgb(179, 101, 0) 0%,rgb(223, 126, 0) 50%,rgb(255, 204, 136) 100%);
-}
-.scorebug .right.container .score
-{
-    background: linear-gradient(to right,  rgb(179, 101, 0) 30%,black  100%);
-}
-
-.scorebug .logo
-{
-    overflow: hidden;
-    position: relative;
-}
-.scorebug .logo img
-{
-    height: 190%;
-    position: absolute;
-    top: -9999px;
-    bottom: -9999px;
-    left: -9999px;
-    right: -9999px;
-    margin: auto;
-}
-.scorebug .left .logo img
-{
-    transform: skew(-20deg);
-}
-.scorebug .right .logo img
-{
-    transform: skew(20deg);
-}
-
-
-.scorebug .mid.container
-{
-    position: absolute;
-    left: 600;
-    height: 120;
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    z-index: 1;
-    box-shadow: 0px 0px 15px #000924b8;
-    border: gray solid 1px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-.scorebug .mid.container .top
-{
-    display: flex;
-    flex:3;
-    background: linear-gradient(to right,  rgb(48, 48, 48) 0%,black  50%,  rgb(48, 48, 48) 100%);
-    align-items: center;
-    justify-content: center;
-    font-size: 50px;
-    border: gray solid 1px;
-    color: yellowgreen;
-    font-family: 'Orbitron', sans-serif;
-    
-}
-.scorebug .mid.container .bot
-{
-    display: flex;
-    flex:2;
-    background: rgb(31, 31, 31);
-    border: gray solid 1px;
-    flex-direction: row;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.scorebug .mid.container .bot .shots
-{
-    display: flex;
-    flex:2;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.scorebug .mid.container .bot .logo
-{
-    display: flex;
-    flex:1;
-    border: gray solid 0px;
-}
-.scorebug .mid.container .bot .logo img
-{
-    height: 100%;
-}
-.scorebug .mid.container .bot .shots .value
-{
-    display: flex;
-    flex:2;
-    align-items: center;
-    justify-content: center;
-}
-.scorebug .mid.container .bot .shots .title
-{
-    display: flex;
-    flex:1;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-}
-.scorebug .mid.container .bot .shots.left
-{
-    border-bottom-left-radius: 20px;
-    background:  linear-gradient(to right,  darkblue 0%,black  100%);
-}
-.scorebug .mid.container .bot .shots.right
-{
-    
-    border-bottom-right-radius: 20px;
-    background:  linear-gradient(to left,  rgb(179, 101, 0) 0%,black  100%);
-}
-
-.scorebug .right.container
-{
-    transform: skew(-20deg);
-    background: white;
-    flex: 1;
-    box-shadow: 2px 5px 5px #000924b8;
-    height: 80px;
-    display: flex;
-}
-
-
-.logo
-{
-    display: flex;
-}
-
-.replay .logo img
-{
-    width: 100px;
-    height: 100px;
-    justify-content: center;
-    object-fit: scale-down;
-    align-items: center;
-
-}
-
-
-
-.blue.team
-{
-    position:absolute;
-    top: 250px;
-    left: 20px;
-    text-transform: uppercase;
-    transition: all 0.5s ease;
-}
-
-.orange.team
-{
-    position:absolute;
-    top: 250px;
-    right: 20px;
-    text-transform: uppercase;
-    transition: all 0.5s ease;
-}
-
-
-.team .players .name
-{
-    color: white;
-    text-shadow:2px 2px #000924;
-    opacity: 1;
-    font-size: 18px;
-    padding-left: 5px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 200px;
-    display: inline-block;
-    flex:2;
-}
-
-.team .players
-{
-    display: flex;
-    width: 260px;
-    flex-direction: column;
-    transition: ease;
-    
-}
-
-.team .players .box
-{
-    display: flex;
-    flex:2;
-    height: 60px;
-    margin: 10px;
-    transition: all .5s;
-    flex-direction: column;
-}
-
-.team .players .box .stats
-{
-    display: flex;
-    flex-direction: row;
-    flex: 5;
-    box-shadow: 5px 5px 10px  #000924;
-    border: whitesmoke solid 1px;
-    min-height: 40px;
-
-}
-
-.team .players .box .stats .logo
-{
-    display: flex;
-    flex: 1;
-    background:black;
-    position: relative;
-    overflow: hidden;
-}
-.team .players .stats .logo img
-{
-    height: 190%;
-    position: absolute;
-    top: -9999px;
-    bottom: -9999px;
-    left: -9999px;
-    right: -9999px;
-    margin: auto;
-}
-
-.team .players .box .stats .score
-{
-    display: flex;
-    flex: 4;
-    border-left: whitesmoke solid 1px;
-    border-right: whitesmoke solid 1px;
-}
-.blue.team .players .box .stats .score
-{
-    background: linear-gradient(to right,  blue 0%,darkblue  100%);
-}
-.blue.team .players .box .stats .points
-{
-    display: flex;
-    flex: 2;
-    background: linear-gradient(to right,blue 0%, darkblue 80%);
-}
-.orange.team .players .box .stats .score
-{
-    background: linear-gradient(to left,  rgb(223, 126, 0)  0%,rgb(179, 101, 0)  100%);
-}
-.orange.team .players .box .stats .points
-{
-    display: flex;
-    flex: 2;
-    background: linear-gradient(to left,rgb(223, 126, 0)  0%, rgb(179, 101, 0) 80%);
-}
-.team .players .box .stats .value
-{
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px;
-    color: white;
-    padding-right: 20px;
-}
-.team .players .box .stats .points .value
-{
-    font-size: 30px;
-}
-.blue.team.team .players .box .stats .points .value
-{
-    color: rgb(189, 188, 255);
-}
-.orange.team.team .players .box .stats .points .value
-{
-    color: rgb(208, 255, 79);
-}
-.team .players .box .stats .score .title
-{
-    position: absolute;
-    font-size: 12px;
-    color: white;
-    opacity: .5;
-    padding-left: 70px;
-    padding-top: 25px;
-}
-.team .players .box .stats .points .title
-{
-    position: absolute;
-    font-size: 12px;
-    color: white;
-    opacity: .5;
-    padding-left: 30px;
-    padding-top: 25px;
-}
-
-.team .players .box .stats .performance
-{
-    display: flex;
-    flex: 2;
-    border-left: whitesmoke solid 1px;
-    border-right: whitesmoke solid 1px;
-}
-.team .players .box .stats .performance .title
-{
-    position: absolute;
-    font-size: 12px;
-    color: white;
-    opacity: .5;
-    padding-left: 30px;
-    padding-top: 25px;
-}
-
-
-
-.targetDisplay
-{
-    display: flex;
-    flex-direction: row;
-    height: 90px;
-    width: 450px;
-    position: absolute;
-    left: 20px;
-    bottom: 150px;
-    background: crimson;
-    color: white;
-    text-shadow: 1px 1px 2px black;
-    box-shadow: 5px 5px 10px  #000924;
-    text-transform: uppercase;
-}
-.targetDisplay .side
-{
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-}
-
-.targetDisplay .side.logo
-{
-    position: relative;
-    overflow: hidden;
-}
-
-.targetDisplay .side.speed
-{
-    
-    border-left: 1px solid black;
-    
-}
-
-.targetDisplay .side.logo img
-{
-    object-fit: scale-down;
-    max-width: 120px;
-    max-height: 120px;
-}
-
-.targetDisplay .player
-{
-    display: flex;
-    flex: 4;
-    flex-direction: column;
-}
-
-.targetDisplay .side.speed
-{
-    flex-direction: column;
-    
-}
-.targetDisplay .side.speed .text
-{
-    flex: 1;
-    font-size: small;
-    display: flex;
-    align-items: center;
-}
-
-.targetDisplay .side.speed .middle
-{
-    flex: 2;
-    display: flex;
-    align-items: center;
-    font-size: 30px;
-    color: white;
-}
-
-.targetDisplay .player .upperCont
-{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    font-size: 15px;
-}
-
-.targetDisplay .player .name
-{
-    position: absolute;
-    align-items: center;
-    padding-left: 10px;
-    padding-top: 3px;
-    top: -45px;
-    left: -10px;
-    font-size: 30px;
-    color: white;
-    text-shadow: 1px 1px 2px black
-    
-}
-.targetDisplay .player .scoreTitle
-{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 5px;
-    border-bottom: 1px solid black;
-}
-.targetDisplay .player .score
-{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 5px;
-    border-bottom: 1px solid black;
-    font-size: 20px;
-    color: white;
-}
-
-.targetDisplay .player .lowerCont
-{
-    display: flex;
-    flex: 2;
-    flex-direction: row;
-    border-left: 1px solid black;
-    
-}
-
-.targetDisplay .player .stat
-{
-    
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    font-size: 12px;
-    
-}
-.targetDisplay .player .stat.points
-{
-    border-right: 1px solid black;
-}
-.targetDisplay .player .stat.saves
-{
-    border-right: 1px solid black;
-}
-.targetDisplay .player .title
-{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
-}
-.targetDisplay .player .value
-{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    background-color: white;
-    color: black;
-    text-shadow: 0px 0px 0px black;
-    box-shadow: inset 0 -20px 20px -20px rgba(0,0,0,0.8);
-    
-}
-
-.targetDisplay .progressBarCont
-{
-    display: flex;
-    flex: 4;
-	padding: 1px;
-    background: black;
-}
-
-.targetDisplay .progressBarCont .bar
-{
-    background: linear-gradient(to right, blue 0%,blue 50%,rgb(134, 134, 255)  100%);
-
-}
-
-.field
-{
-    position: fixed;
-    right:40px;
-    bottom: 150px;
-    opacity: .8;
-}
-
-.map
-{
-    width: 300px;
-    height: 240px;
-    
-    opacity: 1;
-    position: fixed;
-    right: 40px;
-    bottom: 150px;
-    display: flex;
-    flex-direction: row;
-}
-.mappics
-{
-    width: 300px;
-    height: 240px;
-    
-    opacity: 1;
-    position: fixed;
-    right: 40px;
-    bottom: 150px;
-    display: flex;
-    flex-direction: row;
-}
-
-.mappics .team
-{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-.mappics .team img
-{
-    width: 150px;
-    height: 150px;
-    opacity: .2;
-}
-
-#chart-div
-{
-    position: absolute;
-    width: 700px;
-    height: 350px;
-    top: 550px;
-    left: 610px;
-    z-index: 1;
-    visibility: visible;
-}
-
-.postGame
-{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    text-transform: uppercase;
-}
-
-
-
-.postGame .team
-{
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-}
-
-.postGame .team .upperArea
-{
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-}
-
-.postGame .team .lowerArea
-{
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.postGame .team.left
-{
-    position: fixed;
-    transition: all 2s ease;
-    left:-960px;
-    height: 1080px;
-    width:960px;
-    background-image: linear-gradient(to top,grey , blue);
-}
-
-.postGame .team.left .tmscore
-{
-    position: absolute;
-    right: 100px;
-    top: 150px;
-    font-size: 150px;
-    color: white;
-    text-shadow: 0px 0px 20px black;
-    
-}
-
-.postGame .team.right .tmscore
-{
-    position: absolute;
-    left: 100px;
-    top: 150px;
-    font-size: 150px;
-    color: white;
-    text-shadow: 0px 0px 20px black;
-    
-}
-
-.postGame .team.right
-{
-    position: fixed;    
-    right:-960px;
-    height: 1080px;
-    width:960px;
-    transition: all 2s ease;
-    background-image: linear-gradient(to top,grey , yellow);
-}
-
-.postGame .postDisplay
-{
-    display: flex;
-    flex: 1;
-    position: relative;
-    margin: 20px;
-    margin-left: 150px;
-    margin-right: 150px;
-    left: 0;
-    background-color: chocolate;
-    height: 90px;
-    box-shadow: 2px 2px 10px black;
-    
-}
-.postGame .left.team .postDisplay
-{
-    margin-left: 100px;
-    margin-right: 350px; 
-}
-.postGame .right.team .postDisplay
-{
-    margin-left: 350px;
-    margin-right: 100px; 
-}
-
-
-
-.postGame .postDisplay .player .scoreTitle
-{
-    border: 0px;
-}
-.postGame .postDisplay .player .score
-{
-    border: 0px;
-}
-
-.postGame .logo
-{
-    display: flex;
-    flex: 1;
-}
-
-
-.postGame .postDisplay .side
-{
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-}
-
-.postGame .postDisplay .side.logo
-{
-    position: relative;
-    overflow: hidden;
-}
-
-
-.postGame .postDisplay .side.logo img
-{
-    object-fit: scale-down;
-    max-width: 120px;
-    max-height: 120px;
-}
-
-.postGame .postDisplay .player
-{
-    display: flex;
-    flex: 8;
-    flex-direction: column;
-}
-
-
-.postGame .postDisplay .player .upperCont
-{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    font-size: 15px;
-}
-
-.postGame .postDisplay .player .name
-{
-    display: flex;
-    flex: 8;
-    align-items: center;
-    padding-left: 10px;
-    padding-top: 3px;
-    color: white;
-    text-shadow: 0px 0px 2px black;
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
-    
-}
-.postGame .postDisplay .player .grade
-{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid black;
-    
-}
-.postGame .postDisplay .player .scoreTitle
-{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 5px;
-    border-bottom: 1px solid black;
-}
-.postGame .postDisplay .player .score
-{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 5px;
-    border-bottom: 1px solid black;
-    font-size: 20px;
-    color: white;
-}
-
-.postGame .postDisplay .player .lowerCont
-{
-    display: flex;
-    flex: 2;
-    flex-direction: row;
-    border-left: 1px solid black;
-    
-}
-
-.postGame .postDisplay .player .stat
-{
-    
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    font-size: 15px;
-    
-}
-
-.postGame .postDisplay .player .stat.points
-{ 
-    border-right: 1px solid black;
-}
-.postGame .postDisplay .player .stat.saves
-{ 
-    border-right: 1px solid black;
-}
-.postGame .postDisplay .player .title
-{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
-}
-.postGame .postDisplay .player .value
-{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    background-color: white;
-    color: black;
-    text-shadow: 0px 0px 0px black;
-    box-shadow: inset 0 -20px 20px -20px rgba(0,0,0,0.8);
-    
-}
-
+  background-color: black;
+}
+
+i {
+  text-shadow: 2px 2px #000924;
+}
+
+.toasty {
+  color: red;
+}
+
+.replay {
+  background: rgba(20, 20, 20, 0.7);
+  position: absolute;
+  height: 100%;
+  width: 400px;
+  left: -400px;
+  transition: all 0.5s ease;
+}
+
+.replay .speedCont {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  justify-content: center;
+  align-items: center;
+  top: 210px;
+  text-align: center;
+  text-shadow: 0px 0px 1px whitesmoke;
+}
+
+.replay .speedCont .speed {
+  text-align: center;
+  font-size: 60px;
+  color: cornflowerblue;
+  text-shadow: 0px 0px 1px whitesmoke;
+}
+
+.replay .goal {
+  position: absolute;
+  height: 75px;
+  width: 300px;
+  left: 50px;
+  top: 120px;
+  display: flex;
+  flex-direction: row;
+}
+
+.replay .goal .in {
+  position: relative;
+  width: 200px;
+  border: 4px solid white;
+  box-shadow: inset 0px 0px 4px black;
+  box-shadow: 0px 0px 4px black;
+  background-color: darkslategrey;
+}
+
+.replay .goal .in b {
+  display: flex;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  color: yellow;
+  text-shadow: 2px 2px black;
+}
+.replay .goal .in i {
+  display: flex;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  color: yellow;
+  animation: shotGlow 3s ease infinite;
+}
+
+.replay .goal .out {
+  width: 50px;
+  border-bottom: 4px solid white;
+}
+
+.replay .box {
+  position: absolute;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  box-shadow: 2px 2px 10px black;
+  color: white;
+  height: 100px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 8px black;
+}
+
+.replay .box.scorer {
+  top: 500px;
+  left: 20px;
+}
 
-
+.replay .box.assist {
+  top: 620px;
+  left: 20px;
+}
+
+.replay .box.lastMan {
+  top: 800px;
+  left: 20px;
+}
+.replay .box .title {
+  display: flex;
+  flex: 1;
+  padding-left: 10px;
+  font-size: 18px;
+  align-content: center;
+  background-color: black;
+  border-bottom: 1px solid white;
+}
+
+.replay .box .name {
+  display: flex;
+  flex: 4;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 20px;
+  box-shadow: inset 1px 4px 9px -6px #fff;
+}
+.replay .box .h {
+  display: flex;
+  flex-direction: row;
+  flex: 2;
+  overflow: hidden;
+}
+
+.replay .box .logo {
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.scorebug {
+  position: absolute;
+  top: 20px;
+  left: 260px;
+  color: white;
+  text-shadow: 2px 2px #000924;
+  width: 1400px;
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+}
+
+.scorebug .overlay {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  z-index: 9999;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 5px #fff;
+  overflow: hidden;
+  background: black;
+}
+
+.scorebug .overlay span {
+  position: absolute;
+  top: 0;
+  right: -200px;
+  width: 100%;
+  height: 100%;
+  font-size: 60px;
+}
+#toast-left {
+  position: absolute;
+  left: 200px;
+  top: 90px;
+  width: 500px;
+  transform: skew(-20deg);
+}
+#toast-right {
+  position: absolute;
+  left: 0px;
+  top: 90px;
+  width: 500px;
+  transform: skew(20deg);
+}
+
+.scorebug .overlay img {
+  position: absolute;
+  top: -50px;
+  height: 180px;
+  width: 180px;
+  left: -450px;
+  opacity: 0.7;
+}
+
+.scorebug .left.container .overlay img {
+  transform: skew(-20deg);
+}
+
+.scorebug .right.container .overlay img {
+  transform: skew(20deg);
+}
+
+.scorebug .left.container {
+  flex: 1;
+  transform: skew(20deg);
+  background: white;
+  box-shadow: 2px 5px 5px #000924b8;
+  height: 80px;
+  display: flex;
+}
+.scorebug .container .logo {
+  flex: 1;
+  background: black;
+  border: whitesmoke solid 1px;
+}
+.scorebug .container .team {
+  flex: 4;
+  border: whitesmoke solid 1px;
+  font-size: 40px;
+}
+
+.scorebug .container span {
+  display: block;
+  margin: auto;
+  width: 50%;
+  padding-top: 5px;
+  text-align: center;
+}
+.scorebug .left.container span {
+  transform: skew(-20deg);
+}
+.scorebug .right.container span {
+  transform: skew(20deg);
+}
+.scorebug .left.container .team span {
+  padding-left: 0px;
+}
+.scorebug .left.container .score span {
+  padding-right: 90px;
+  padding-top: 0px;
+}
+.scorebug .right.container .team span {
+  padding-left: 0px;
+}
+.scorebug .right.container .score span {
+  padding-left: 90px;
+  padding-top: 0px;
+}
+
+.scorebug .container .score {
+  flex: 2;
+  border: whitesmoke solid 1px;
+  color: #ffffc6;
+  font-size: 50px;
+}
+.scorebug .left.container .team {
+  background: linear-gradient(
+    to left,
+    darkblue 0%,
+    blue 50%,
+    rgb(134, 134, 255) 100%
+  );
+}
+.scorebug .left.container .score {
+  background: linear-gradient(to left, darkblue 30%, black 100%);
+}
+
+.scorebug .right.container .team {
+  background: linear-gradient(
+    to right,
+    rgb(179, 101, 0) 0%,
+    rgb(223, 126, 0) 50%,
+    rgb(255, 204, 136) 100%
+  );
+}
+.scorebug .right.container .score {
+  background: linear-gradient(to right, rgb(179, 101, 0) 30%, black 100%);
+}
+
+.scorebug .logo {
+  overflow: hidden;
+  position: relative;
+}
+.scorebug .logo img {
+  height: 190%;
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+}
+.scorebug .left .logo img {
+  transform: skew(-20deg);
+}
+.scorebug .right .logo img {
+  transform: skew(20deg);
+}
+
+.scorebug .mid.container {
+  position: absolute;
+  left: 600;
+  height: 120;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  box-shadow: 0px 0px 15px #000924b8;
+  border: gray solid 1px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.scorebug .mid.container .top {
+  display: flex;
+  flex: 3;
+  background: linear-gradient(
+    to right,
+    rgb(48, 48, 48) 0%,
+    black 50%,
+    rgb(48, 48, 48) 100%
+  );
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  border: gray solid 1px;
+  color: yellowgreen;
+  font-family: "Orbitron", sans-serif;
+}
+.scorebug .mid.container .bot {
+  display: flex;
+  flex: 2;
+  background: rgb(31, 31, 31);
+  border: gray solid 1px;
+  flex-direction: row;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.scorebug .mid.container .bot .shots {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.scorebug .mid.container .bot .logo {
+  display: flex;
+  flex: 1;
+  border: gray solid 0px;
+}
+.scorebug .mid.container .bot .logo img {
+  height: 100%;
+}
+.scorebug .mid.container .bot .shots .value {
+  display: flex;
+  flex: 2;
+  align-items: center;
+  justify-content: center;
+}
+.scorebug .mid.container .bot .shots .title {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+.scorebug .mid.container .bot .shots.left {
+  border-bottom-left-radius: 20px;
+  background: linear-gradient(to right, darkblue 0%, black 100%);
+}
+.scorebug .mid.container .bot .shots.right {
+  border-bottom-right-radius: 20px;
+  background: linear-gradient(to left, rgb(179, 101, 0) 0%, black 100%);
+}
+
+.scorebug .right.container {
+  transform: skew(-20deg);
+  background: white;
+  flex: 1;
+  box-shadow: 2px 5px 5px #000924b8;
+  height: 80px;
+  display: flex;
+}
+
+.logo {
+  display: flex;
+}
+
+.replay .logo img {
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  object-fit: scale-down;
+  align-items: center;
+}
+
+.blue.team {
+  position: absolute;
+  top: 250px;
+  left: 20px;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+}
+
+.orange.team {
+  position: absolute;
+  top: 250px;
+  right: 20px;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+}
+
+.team .players .name {
+  color: white;
+  text-shadow: 2px 2px #000924;
+  opacity: 1;
+  font-size: 18px;
+  padding-left: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 200px;
+  display: inline-block;
+  flex: 2;
+}
+
+.team .players {
+  display: flex;
+  width: 260px;
+  flex-direction: column;
+  transition: ease;
+}
+
+.team .players .box {
+  display: flex;
+  flex: 2;
+  height: 60px;
+  margin: 10px;
+  transition: all 0.5s;
+  flex-direction: column;
+}
+
+.team .players .box .stats {
+  display: flex;
+  flex-direction: row;
+  flex: 5;
+  box-shadow: 5px 5px 10px #000924;
+  border: whitesmoke solid 1px;
+  min-height: 40px;
+}
+
+.team .players .box .stats .logo {
+  display: flex;
+  flex: 1;
+  background: black;
+  position: relative;
+  overflow: hidden;
+}
+.team .players .stats .logo img {
+  height: 190%;
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+}
+
+.team .players .box .stats .score {
+  display: flex;
+  flex: 4;
+  border-left: whitesmoke solid 1px;
+  border-right: whitesmoke solid 1px;
+}
+.blue.team .players .box .stats .score {
+  background: linear-gradient(to right, blue 0%, darkblue 100%);
+}
+.blue.team .players .box .stats .points {
+  display: flex;
+  flex: 2;
+  background: linear-gradient(to right, blue 0%, darkblue 80%);
+}
+.orange.team .players .box .stats .score {
+  background: linear-gradient(
+    to left,
+    rgb(223, 126, 0) 0%,
+    rgb(179, 101, 0) 100%
+  );
+}
+.orange.team .players .box .stats .points {
+  display: flex;
+  flex: 2;
+  background: linear-gradient(
+    to left,
+    rgb(223, 126, 0) 0%,
+    rgb(179, 101, 0) 80%
+  );
+}
+.team .players .box .stats .value {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: white;
+  padding-right: 20px;
+}
+.team .players .box .stats .points .value {
+  font-size: 30px;
+}
+.blue.team.team .players .box .stats .points .value {
+  color: rgb(189, 188, 255);
+}
+.orange.team.team .players .box .stats .points .value {
+  color: rgb(208, 255, 79);
+}
+.team .players .box .stats .score .title {
+  position: absolute;
+  font-size: 12px;
+  color: white;
+  opacity: 0.5;
+  padding-left: 70px;
+  padding-top: 25px;
+}
+.team .players .box .stats .points .title {
+  position: absolute;
+  font-size: 12px;
+  color: white;
+  opacity: 0.5;
+  padding-left: 30px;
+  padding-top: 25px;
+}
+
+.team .players .box .stats .performance {
+  display: flex;
+  flex: 2;
+  border-left: whitesmoke solid 1px;
+  border-right: whitesmoke solid 1px;
+}
+.team .players .box .stats .performance .title {
+  position: absolute;
+  font-size: 12px;
+  color: white;
+  opacity: 0.5;
+  padding-left: 30px;
+  padding-top: 25px;
+}
+
+.targetDisplay {
+  display: flex;
+  flex-direction: row;
+  height: 90px;
+  width: 450px;
+  position: absolute;
+  left: 20px;
+  bottom: 150px;
+  background: crimson;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  box-shadow: 5px 5px 10px #000924;
+  text-transform: uppercase;
+}
+.targetDisplay .side {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.targetDisplay .side.logo {
+  position: relative;
+  overflow: hidden;
+}
+
+.targetDisplay .side.speed {
+  border-left: 1px solid black;
+}
+
+.targetDisplay .side.logo img {
+  object-fit: scale-down;
+  max-width: 120px;
+  max-height: 120px;
+}
+
+.targetDisplay .player {
+  display: flex;
+  flex: 4;
+  flex-direction: column;
+}
+
+.targetDisplay .side.speed {
+  flex-direction: column;
+}
+.targetDisplay .side.speed .text {
+  flex: 1;
+  font-size: small;
+  display: flex;
+  align-items: center;
+}
+
+.targetDisplay .side.speed .middle {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  color: white;
+}
+
+.targetDisplay .player .upperCont {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  font-size: 15px;
+}
+
+.targetDisplay .player .name {
+  position: absolute;
+  align-items: center;
+  padding-left: 10px;
+  padding-top: 3px;
+  top: -45px;
+  left: -10px;
+  font-size: 30px;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+.targetDisplay .player .scoreTitle {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 5px;
+  border-bottom: 1px solid black;
+}
+.targetDisplay .player .score {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 5px;
+  border-bottom: 1px solid black;
+  font-size: 20px;
+  color: white;
+}
+
+.targetDisplay .player .lowerCont {
+  display: flex;
+  flex: 2;
+  flex-direction: row;
+  border-left: 1px solid black;
+}
+
+.targetDisplay .player .stat {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 12px;
+}
+.targetDisplay .player .stat.points {
+  border-right: 1px solid black;
+}
+.targetDisplay .player .stat.saves {
+  border-right: 1px solid black;
+}
+.targetDisplay .player .title {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.8);
+}
+.targetDisplay .player .value {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background-color: white;
+  color: black;
+  text-shadow: 0px 0px 0px black;
+  box-shadow: inset 0 -20px 20px -20px rgba(0, 0, 0, 0.8);
+}
+
+.targetDisplay .progressBarCont {
+  display: flex;
+  flex: 4;
+  padding: 1px;
+  background: black;
+}
+
+.targetDisplay .progressBarCont .bar {
+  background: linear-gradient(
+    to right,
+    blue 0%,
+    blue 50%,
+    rgb(134, 134, 255) 100%
+  );
+}
+
+.field {
+  position: fixed;
+  right: 40px;
+  bottom: 150px;
+  opacity: 0.8;
+}
+
+.map {
+  width: 300px;
+  height: 240px;
+
+  opacity: 1;
+  position: fixed;
+  right: 40px;
+  bottom: 150px;
+  display: flex;
+  flex-direction: row;
+}
+.mappics {
+  width: 300px;
+  height: 240px;
+
+  opacity: 1;
+  position: fixed;
+  right: 40px;
+  bottom: 150px;
+  display: flex;
+  flex-direction: row;
+}
+
+.mappics .team {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.mappics .team img {
+  width: 150px;
+  height: 150px;
+  opacity: 0.2;
+}
+
+#chart-div {
+  position: absolute;
+  width: 700px;
+  height: 350px;
+  top: 550px;
+  left: 610px;
+  z-index: 1;
+  visibility: visible;
+}
+
+.postGame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+}
+
+.postGame .team {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.postGame .team .upperArea {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.postGame .team .lowerArea {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.postGame .team.left {
+  position: fixed;
+  transition: all 2s ease;
+  left: -960px;
+  height: 1080px;
+  width: 960px;
+  background-image: linear-gradient(to top, grey, blue);
+}
+
+.postGame .team.left .tmscore {
+  position: absolute;
+  right: 100px;
+  top: 150px;
+  font-size: 150px;
+  color: white;
+  text-shadow: 0px 0px 20px black;
+}
+
+.postGame .team.right .tmscore {
+  position: absolute;
+  left: 100px;
+  top: 150px;
+  font-size: 150px;
+  color: white;
+  text-shadow: 0px 0px 20px black;
+}
+
+.postGame .team.right {
+  position: fixed;
+  right: -960px;
+  height: 1080px;
+  width: 960px;
+  transition: all 2s ease;
+  background-image: linear-gradient(to top, grey, yellow);
+}
+
+.postGame .postDisplay {
+  display: flex;
+  flex: 1;
+  position: relative;
+  margin: 20px;
+  margin-left: 150px;
+  margin-right: 150px;
+  left: 0;
+  background-color: chocolate;
+  height: 90px;
+  box-shadow: 2px 2px 10px black;
+}
+.postGame .left.team .postDisplay {
+  margin-left: 100px;
+  margin-right: 350px;
+}
+.postGame .right.team .postDisplay {
+  margin-left: 350px;
+  margin-right: 100px;
+}
+
+.postGame .postDisplay .player .scoreTitle {
+  border: 0px;
+}
+.postGame .postDisplay .player .score {
+  border: 0px;
+}
+
+.postGame .logo {
+  display: flex;
+  flex: 1;
+}
+
+.postGame .postDisplay .side {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.postGame .postDisplay .side.logo {
+  position: relative;
+  overflow: hidden;
+}
+
+.postGame .postDisplay .side.logo img {
+  object-fit: scale-down;
+  max-width: 120px;
+  max-height: 120px;
+}
+
+.postGame .postDisplay .player {
+  display: flex;
+  flex: 8;
+  flex-direction: column;
+}
+
+.postGame .postDisplay .player .upperCont {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  font-size: 15px;
+}
+
+.postGame .postDisplay .player .name {
+  display: flex;
+  flex: 8;
+  align-items: center;
+  padding-left: 10px;
+  padding-top: 3px;
+  color: white;
+  text-shadow: 0px 0px 2px black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+.postGame .postDisplay .player .grade {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid black;
+}
+.postGame .postDisplay .player .scoreTitle {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 5px;
+  border-bottom: 1px solid black;
+}
+.postGame .postDisplay .player .score {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 5px;
+  border-bottom: 1px solid black;
+  font-size: 20px;
+  color: white;
+}
+
+.postGame .postDisplay .player .lowerCont {
+  display: flex;
+  flex: 2;
+  flex-direction: row;
+  border-left: 1px solid black;
+}
+
+.postGame .postDisplay .player .stat {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 15px;
+}
+
+.postGame .postDisplay .player .stat.points {
+  border-right: 1px solid black;
+}
+.postGame .postDisplay .player .stat.saves {
+  border-right: 1px solid black;
+}
+.postGame .postDisplay .player .title {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.8);
+}
+.postGame .postDisplay .player .value {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background-color: white;
+  color: black;
+  text-shadow: 0px 0px 0px black;
+  box-shadow: inset 0 -20px 20px -20px rgba(0, 0, 0, 0.8);
+}
 
 label {
-    display: block;
-    border-radius: 50%;
-    width: 0px;
-    height: 0px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -50px;
-    margin-top: -50px;
-    transition: all .5s;
-    background: black;
-    background-image: url("../assets/RLL_Logo_LARGE.png");
-
+  display: block;
+  border-radius: 50%;
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  transition: all 0.5s;
+  background: black;
+  background-image: url("../assets/RLL_Logo_LARGE.png");
 }
 
 input:checked + label {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    margin-top: 0;
-    left: 0;
-    margin-left: 0;
-    border-radius: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  margin-top: 0;
+  left: 0;
+  margin-left: 0;
+  border-radius: 0;
 }
 
 input {
-   visibility: hidden;
-   position: absolute;
+  visibility: hidden;
+  position: absolute;
 }
