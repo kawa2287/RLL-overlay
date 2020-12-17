@@ -4,7 +4,8 @@
   "description": "Websocket Relay. Very lightweight",
   "main": "ws-relay.js",
   "scripts": {
-    "relay": "node ws-relay.js"
+    "relay": "node ws-relay.js",
+    "build": "browserify js/utils/sheetUpdater.js -o test.js"
   },
   "author": "",
   "license": "MIT",
@@ -15,5 +16,8 @@
     "google-spreadsheet": "^3.0.14",
     "prompt": "^1.0.0",
     "ws": "^7.2.1"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0"
   }
 }
