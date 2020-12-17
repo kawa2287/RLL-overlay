@@ -40,6 +40,10 @@
     }
 
     try {
+      const email = GOOGLE_SERVICE_ACCOUNT_EMAIL;
+      const privateKey = GOOGLE_PRIVATE_KEY;
+      const sheetId = GOOGLE_SHEETS_SHEET_ID;
+
       const doc = new GoogleSpreadsheet(sheetId);
       doc
         .useServiceAccountAuth({
