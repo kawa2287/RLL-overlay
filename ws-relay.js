@@ -1,22 +1,24 @@
-const WebSocket = require('ws');
-const prompt = require('prompt');
-const { success, error, warn, info, log, indent } = require('cli-msg');
-const atob = require('atob');
+const WebSocket = require("ws");
+const prompt = require("prompt");
+const { success, error, warn, info, log, indent } = require("cli-msg");
+const atob = require("atob");
 
-prompt.get([
+prompt.get(
+  [
     {
-        message: "Port number for this websocket server",
-        name: 'port',
-        required: true,
-        default: "49322",
+      message: "Port number for this websocket server",
+      name: "port",
+      required: true,
+      default: "49322",
     },
     {
-        message: "Hostname:Port that Rocket League is running on",
-        name: 'rocketLeagueHostname',
-        required: true,
-        default: "localhost:49122"
-    }
-], function (e, r) {
+      message: "Hostname:Port that Rocket League is running on",
+      name: "rocketLeagueHostname",
+      required: true,
+      default: "localhost:49122",
+    },
+  ],
+  function (e, r) {
     /**
      * Rocket League WebSocket client
      * @type {WebSocket}
@@ -27,95 +29,120 @@ prompt.get([
     let connections = {};
     info.wb("Opened WebSocket server on port " + r.port);
 
-    wss.on('connection', function connection(ws) {
-        let id = (+ new Date()).toString();
-        success.wb("Received connection: " + id);
-        connections[id] = {
-            connection: ws,
-            registeredFunctions: []
-        };
+    wss.on("connection", function connection(ws) {
+      let id = (+new Date()).toString();
+      success.wb("Received connection: " + id);
+      connections[id] = {
+        connection: ws,
+        registeredFunctions: [],
+      };
 
-        ws.send(JSON.stringify({
-            event: "wsRelay:info",
-            data: "Connected!"
-        }));
+      ws.send(
+        JSON.stringify({
+          event: "wsRelay:info",
+          data: "Connected!",
+        })
+      );
 
-        ws.on('message', function incoming(message) {
-            sendRelayMessage(id, message);
-        });
+      ws.on("message", function incoming(message) {
+        sendRelayMessage(id, message);
+      });
 
-        ws.on('close', function close() {
-            // Might run into race conditions with accessing connections for sending, but cant be arsed to account for this.
-            // If a connection closes something will be fucked anyway
-            delete connections[id];
-        });
+      ws.on("close", function close() {
+        // Might run into race conditions with accessing connections for sending, but cant be arsed to account for this.
+        // If a connection closes something will be fucked anyway
+        delete connections[id];
+      });
     });
 
     initRocketLeagueWebsocket(r.rocketLeagueHostname);
     setInterval(function () {
-       if (wsClient.readyState === WebSocket.CLOSED) {
-           warn.wb("Rocket League WebSocket Server Closed. Attempting to reconnect");
-           initRocketLeagueWebsocket(r.rocketLeagueHostname);
-       }
+      if (wsClient.readyState === WebSocket.CLOSED) {
+        warn.wb(
+          "Rocket League WebSocket Server Closed. Attempting to reconnect"
+        );
+        initRocketLeagueWebsocket(r.rocketLeagueHostname);
+      }
     }, 10000);
 
     function sendRelayMessage(senderConnectionId, message) {
-        let json = JSON.parse(message);
-        log.wb(senderConnectionId + "> Sent " + json.event);
-        let channelEvent = (json['event']).split(':');
-        if (channelEvent[0] === 'wsRelay') {
-            if (channelEvent[1] === 'register') {
-                if (connections[senderConnectionId].registeredFunctions.indexOf(json['data']) < 0) {
-                    connections[senderConnectionId].registeredFunctions.push(json['data']);
-                    info.wb(senderConnectionId + "> Registered to receive: "+json['data']);
-                } else {
-                    warn.wb(senderConnectionId + "> Attempted to register an already registered function: "+json['data']);
-                }
-            } else if (channelEvent[1] === 'unregister') {
-                let idx = connections[senderConnectionId].registeredFunctions.indexOf(json['data']);
-                if (idx > -1) {
-                    connections[senderConnectionId].registeredFunctions.splice(idx, 1);
-                    info.wb(senderConnectionId + "> Unregistered: "+json['data']);
-                } else {
-                    warn.wb(senderConnectionId + "> Attempted to unregister a non-registered function: "+json['data']);
-                }
-            }
-            return;
+      let json = JSON.parse(message);
+      log.wb(senderConnectionId + "> Sent " + json.event);
+      let channelEvent = json["event"].split(":");
+      if (channelEvent[0] === "wsRelay") {
+        if (channelEvent[1] === "register") {
+          if (
+            connections[senderConnectionId].registeredFunctions.indexOf(
+              json["data"]
+            ) < 0
+          ) {
+            connections[senderConnectionId].registeredFunctions.push(
+              json["data"]
+            );
+            info.wb(
+              senderConnectionId + "> Registered to receive: " + json["data"]
+            );
+          } else {
+            warn.wb(
+              senderConnectionId +
+                "> Attempted to register an already registered function: " +
+                json["data"]
+            );
+          }
+        } else if (channelEvent[1] === "unregister") {
+          let idx = connections[senderConnectionId].registeredFunctions.indexOf(
+            json["data"]
+          );
+          if (idx > -1) {
+            connections[senderConnectionId].registeredFunctions.splice(idx, 1);
+            info.wb(senderConnectionId + "> Unregistered: " + json["data"]);
+          } else {
+            warn.wb(
+              senderConnectionId +
+                "> Attempted to unregister a non-registered function: " +
+                json["data"]
+            );
+          }
         }
-        for (let k in connections) {
-            if (senderConnectionId === k) {
-                continue;
-            }
-            if (!connections.hasOwnProperty(k)) {
-                continue;
-            }
-            if (connections[k].registeredFunctions.indexOf(json['event']) > -1) {
-                setTimeout(() => {
-                    try {
-                        connections[k].connection.send(message);
-                    } catch (e) {
-                        //The connection can close between the exist check, and sending, so we catch it here and ignore
-                    }
-                }, 0);
-            }
+        return;
+      }
+      for (let k in connections) {
+        if (senderConnectionId === k) {
+          continue;
         }
+        if (!connections.hasOwnProperty(k)) {
+          continue;
+        }
+        if (connections[k].registeredFunctions.indexOf(json["event"]) > -1) {
+          setTimeout(() => {
+            try {
+              connections[k].connection.send(message);
+            } catch (e) {
+              //The connection can close between the exist check, and sending, so we catch it here and ignore
+            }
+          }, 0);
+        }
+      }
     }
 
     function initRocketLeagueWebsocket(rocketLeagueHostname) {
-        wsClient = new WebSocket("ws://"+rocketLeagueHostname);
+      wsClient = new WebSocket("ws://" + rocketLeagueHostname);
 
-        wsClient.onopen = function open() {
-            success.wb("Connected to Rocket League on "+rocketLeagueHostname);
+      wsClient.onopen = function open() {
+        success.wb("Connected to Rocket League on " + rocketLeagueHostname);
+      };
+      wsClient.onmessage = function (message) {
+        let sendMessage = message.data;
+        if (sendMessage.substr(0, 1) !== "{") {
+          sendMessage = atob(message.data);
         }
-        wsClient.onmessage = function(message) {
-            let sendMessage = message.data;
-            if (sendMessage.substr(0, 1) !== '{') {
-                sendMessage = atob(message.data);
-            }
-            sendRelayMessage(0, sendMessage);
-        }
-        wsClient.onerror = function (err) {
-            error.wb(`Error connecting to Rocket League on host "${rocketLeagueHostname}"\nIs the plugin loaded into Rocket League? Run the command "plugin load sos" from the BakkesMod console to make sure`);
-        };
+        sendRelayMessage(0, sendMessage);
+      };
+      wsClient.onerror = function (err) {
+        error.wb(
+          `Error connecting to Rocket League on host "${rocketLeagueHostname}"\nIs the plugin loaded into Rocket League? Run the command "plugin load sos" from the BakkesMod console to make sure`
+        );
+      };
     }
-});
+  }
+);

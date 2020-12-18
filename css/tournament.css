@@ -1,0 +1,688 @@
+.tournament {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: darkred;
+  display: flex;
+  flex-direction: column;
+  z-index: 10000;
+  transition: all 2s ease;
+  top: 1080px;
+}
+
+.tournament .header {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  background-color: black;
+  z-index: 100000;
+  color: antiquewhite;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+}
+.tournament .body {
+  width: 100%;
+  display: flex;
+  flex: 10;
+  background-color: darkred;
+  z-index: 100000;
+  flex-direction: row;
+}
+
+.tournament .body .half {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border: solid black 2px;
+}
+.tournament .body .lcq.half .quarter {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px;
+}
+.tournament .body .lcq.half .top.quarter .title {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  background-color: cornflowerblue;
+  border: black solid 1px;
+}
+.tournament .body .lcq.half .top.quarter .timeslots {
+  display: flex;
+  flex: 6;
+  flex-direction: row;
+}
+
+.tournament .body .lcq.half .top.quarter .timeslots .round {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round.a {
+  background-color: darkslategrey;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round.b {
+  background-color: darkslategrey;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round.c {
+  background-color: darkslategrey;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round .time {
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  display: flex;
+  height: 32px;
+  flex: 1;
+  border: black solid 1px;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round .match {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  padding: 20px;
+  border: black solid 1px;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round .match .info {
+  align-items: center;
+  justify-content: flex-end;
+  display: flex;
+  flex: 1;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round .match .headers {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round .match .tm {
+  display: flex;
+  flex: 2;
+  flex-direction: row;
+  width: 100%;
+  max-height: 60px;
+}
+.tournament
+  .body
+  .lcq.half
+  .top.quarter
+  .timeslots
+  .round
+  .match
+  .headers
+  .logo {
+  display: flex;
+  flex: 2;
+  align-items: center;
+  justify-content: center;
+}
+.tournament
+  .body
+  .lcq.half
+  .top.quarter
+  .timeslots
+  .round
+  .match
+  .headers
+  .name {
+  display: flex;
+  flex: 3;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round .match .headers .g1 {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round .match .headers .g2 {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+.tournament
+  .body
+  .lcq.half
+  .top.quarter
+  .timeslots
+  .round
+  .match
+  .headers
+  .pts {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.tournament .body .lcq.half .top.quarter .timeslots .round .match .tm .logo {
+  display: flex;
+  flex: 2;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border: black solid 1px;
+}
+.tournament
+  .body
+  .lcq.half
+  .top.quarter
+  .timeslots
+  .round
+  .match
+  .tm
+  .logo
+  img {
+  object-fit: scale-down;
+  max-width: 200%;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round .match .tm .name {
+  display: flex;
+  flex: 3;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  justify-content: start;
+  padding-left: 10px;
+  background-color: antiquewhite;
+  border: black solid 1px;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round .match .tm .g1 {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: cyan;
+  border: black solid 1px;
+  font-size: 20px;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round .match .tm .g2 {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: cyan;
+  border: black solid 1px;
+  font-size: 20px;
+}
+.tournament .body .lcq.half .top.quarter .timeslots .round .match .tm .pts {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgreen;
+  border: black solid 1px;
+  font-size: 30px;
+}
+
+.tournament .body .lcq.half .top.quarter .timeslots .round .match .tm .headers {
+  font-size: 12px;
+}
+
+.tournament .body .lcq.half .bot.quarter .title {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  background-color: cornflowerblue;
+  border: black solid 1px;
+}
+.tournament .body .lcq.half .bot.quarter .standings {
+  display: flex;
+  flex: 8;
+  background-color: lightgreen;
+  border: black solid 1px;
+  font-size: 30px;
+  flex-direction: row;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group {
+  display: flex;
+  flex: 1;
+  background-color: darkslategray;
+  border: black solid 1px;
+  font-size: 30px;
+  flex-direction: column;
+  padding: 30px;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .title {
+  display: flex;
+  flex: 2;
+  background-color: white;
+  border: black solid 1px;
+  font-size: 20px;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .headers {
+  display: flex;
+  flex: 1;
+  background-color: white;
+  border: black solid 1px;
+  font-size: 12px;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .seed {
+  display: flex;
+  flex: 3;
+  border: black solid 1px;
+  font-size: 30px;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .seed.q {
+  background-color: lightskyblue;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .seed.r {
+  background-color: lightsalmon;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .rank {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .logo {
+  flex: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .name {
+  flex: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .points {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .diff {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .gf {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .seed .rank {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .seed .logo {
+  flex: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .seed .name {
+  flex: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .seed .points {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .seed .diff {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .seed .gf {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.tournament .body .lcq.half .bot.quarter .standings .group .seed .logo img {
+  max-height: 80%;
+  max-width: 80%;
+  object-fit: scale-down;
+}
+.tournament .body .ff.half .third {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px;
+  border: black solid 1px;
+}
+
+.tournament .body .ff.half .third .title {
+  display: flex;
+  flex: 1;
+  background-color: tomato;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  border: black solid 1px;
+}
+.tournament .body .ff.half .third .main {
+  display: flex;
+  flex: 4;
+  background-color: blue;
+  border: black solid 1px;
+}
+.tournament .body .ff.half .top.third .main .match {
+  display: flex;
+  flex: 1;
+  background-color: darkslategray;
+  border: black solid 1px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tournament .body .ff.half .top.third .main .match .time {
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  display: flex;
+  height: 32px;
+  flex: 1;
+  border: black solid 1px;
+  width: 100%;
+}
+.tournament .body .ff.half .top.third .main .match .matchup {
+  background-color: darkslategray;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex: 6;
+  border: black solid 1px;
+  flex-direction: column;
+  padding: 20px;
+}
+.tournament .body .ff.half .top.third .main .match .tm {
+  display: flex;
+  flex: 3;
+  background-color: green;
+  border: black solid 1px;
+  flex-direction: row;
+  max-height: 60px;
+}
+.tournament .body .ff.half .top.third .main .match .logo {
+  display: flex;
+  flex: 2;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border: black solid 1px;
+  position: relative;
+  overflow: hidden;
+}
+.tournament .body .ff.half .top.third .main .match .logo img {
+  object-fit: scale-down;
+  max-width: 200%;
+}
+
+.tournament .body .ff.half .top.third .main .match .name {
+  display: flex;
+  flex: 3;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border: black solid 1px;
+  background-color: white;
+}
+.tournament .body .ff.half .top.third .main .match .g {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border: black solid 1px;
+  background-color: cyan;
+}
+
+.tournament .body .ff.half .top.third .main .match .headers {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  font-size: 12px;
+  color: white;
+  width: 100%;
+  max-height: 20px;
+  border: black solid 1px;
+}
+.tournament .body .ff.half .top.third .main .match .info {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 16px;
+  color: white;
+  width: 100%;
+  max-height: 20px;
+}
+
+.tournament .body .ff.half .top.third .main .match .headers .logo {
+  background-color: black;
+  border: black solid 1px;
+}
+.tournament .body .ff.half .top.third .main .match .headers .name {
+  background-color: black;
+  border: black solid 1px;
+}
+.tournament .body .ff.half .top.third .main .match .headers .g {
+  background-color: black;
+  border: black solid 1px;
+}
+
+.tournament .body .ff.half .mid.third .main .match {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: darkslategray;
+  border: black solid 1px;
+}
+.tournament .body .ff.half .mid.third .main .time {
+  display: flex;
+  flex: 1;
+  min-height: 32px;
+  width: 100%;
+  background-color: white;
+  border: black solid 1px;
+  color: black;
+  align-items: center;
+  justify-content: center;
+}
+.tournament .body .ff.half .mid.third .main .matchup {
+  display: flex;
+  flex: 6;
+  background-color: darkslategray;
+  border: black solid 1px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px 20px 20px 20px;
+}
+.tournament .body .ff.half .mid.third .main .match .info {
+  display: flex;
+  flex: 1;
+  color: white;
+  width: 100%;
+  font-size: 16px;
+  align-items: center;
+  justify-content: flex-end;
+  max-height: 20px;
+}
+.tournament .body .ff.half .mid.third .main .match .game {
+  display: flex;
+  flex: 4;
+  background-color: darkslategray;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: black solid 1px;
+  max-height: 100px;
+  overflow: hidden;
+}
+.tournament .body .ff.half .mid.third .main .match .game .logo {
+  display: flex;
+  flex: 3;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+  border: black solid 1px;
+  position: relative;
+  overflow: hidden;
+}
+.tournament .body .ff.half .mid.third .main .match .game .logo img {
+  object-fit: scale-down;
+  max-width: 150%;
+  height: auto;
+}
+.tournament .body .ff.half .mid.third .main .match .game .score {
+  display: flex;
+  flex: 2;
+  background-color: cyan;
+  align-items: center;
+  justify-content: center;
+  border: black solid 1px;
+  height: 100%;
+}
+.tournament .body .ff.half .mid.third .main .match .game .vs {
+  display: flex;
+  flex: 1;
+  background-color: rgb(22, 22, 22);
+  color: white;
+  align-items: center;
+  justify-content: center;
+  border: black solid 1px;
+  height: 100%;
+}
+
+.tournament .body .ff.half .bot.third .main {
+  display: flex;
+  flex: 4;
+  background-color: darkslategray;
+  border: black solid 1px;
+  flex-direction: column;
+}
+.tournament .body .ff.half .bot.third .main .time {
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  display: flex;
+  flex: 1;
+  border: black solid 1px;
+}
+
+.tournament .body .ff.half .bot.third .main .matchup {
+  background-color: darkslategray;
+  display: flex;
+  flex: 6;
+  border: black solid 1px;
+  flex-direction: column;
+  padding: 20px;
+  background-color: royalblue;
+}
+.tournament .body .ff.half .bot.third .main .tm {
+  display: flex;
+  flex: 3;
+  background-color: green;
+  border: black solid 1px;
+  flex-direction: row;
+  overflow: hidden;
+  max-height: 80px;
+}
+.tournament .body .ff.half .bot.third .main .logo {
+  display: flex;
+  flex: 2;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border: black solid 1px;
+  position: relative;
+  overflow: hidden;
+}
+.tournament .body .ff.half .bot.third .main .logo img {
+  object-fit: scale-down;
+  max-width: 200%;
+}
+
+.tournament .body .ff.half .bot.third .main .name {
+  display: flex;
+  flex: 3;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border: black solid 1px;
+  background-color: white;
+}
+.tournament .body .ff.half .bot.third .main .g {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border: black solid 1px;
+  background-color: cyan;
+}
+
+.tournament .body .ff.half .bot.third .main .headers {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  font-size: 12px;
+  color: white;
+  border: black solid 1px;
+}
+.tournament .body .ff.half .bot.third .main .info {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 16px;
+  color: white;
+}
+
+.tournament .body .ff.half .bot.third .main .headers .logo {
+  background-color: black;
+  border: black solid 1px;
+}
+.tournament .body .ff.half .bot.third .main .headers .name {
+  background-color: black;
+  border: black solid 1px;
+}
+.tournament .body .ff.half .bot.third .main .headers .g {
+  background-color: black;
+  border: black solid 1px;
+}

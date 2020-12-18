@@ -282,7 +282,7 @@ function GetTeam(team) {
     RLL: 0,
     Pilgrims: 0,
     Turkeys: 0,
-    Pumkins: 0,
+    Pumpkins: 0,
     Death: 0,
     "Team Santa": 0,
     Reindeer: 0,
