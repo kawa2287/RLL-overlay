@@ -5,7 +5,7 @@
   "main": "ws-relay.js",
   "scripts": {
     "relay": "node ws-relay.js",
-    "build": "browserify js/utils/sheetUpdater.js -o test.js"
+    "build": "browserify js/utils/sheetUpdater.js -o build/sheetUpdater.js -s sheetUpdater"
   },
   "author": "",
   "license": "MIT",
