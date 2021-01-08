@@ -1,4 +1,5 @@
 const PLAYER_TEAM_MAP = {
+  /*
   KAWA: "Pilgrims",
   JR: "Reindeer",
   DETHORNE: "Team Santa",
@@ -20,7 +21,7 @@ const PLAYER_TEAM_MAP = {
   "SNAKES ON A MICROPLANE": "Reindeer",
   EVERGREEN6258: "Team Santa",
   "CREAM DADDY9057": "Team Santa",
-
+  */
   /*
    "KAWA": "india",
    "DETHORNE": "venezuela",
