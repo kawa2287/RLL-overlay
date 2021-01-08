@@ -65,8 +65,10 @@ const PLAYER_TEAM_MAP = {
   REX: "Turkeys",
   YURI: "Death",
   COUGAR: "Death",
-  SHEPARD: "Pumpkins",
+  SHEPARD: "Pilgrims",
   HOLLYWOOD: "Pumpkins",
+  PONCHO: "Pilgrims",
+  KHAN: "Pilgrims",
 };
 
 const TEAM_LOGO_MAP = {
