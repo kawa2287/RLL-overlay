@@ -207,6 +207,8 @@ i {
   top: 90px;
   width: 500px;
   transform: skew(-20deg);
+  font-size: medium;
+  box-shadow: 2px 5px 5px #000924b8;
 }
 #toast-right {
   position: absolute;
@@ -214,6 +216,8 @@ i {
   top: 90px;
   width: 500px;
   transform: skew(20deg);
+  font-size: medium;
+  box-shadow: 2px 5px 5px #000924b8;
 }
 
 .scorebug .overlay img {
@@ -727,6 +731,7 @@ i {
     blue 50%,
     rgb(134, 134, 255) 100%
   );
+  transition: all ease 0.5s;
 }
 
 .field {

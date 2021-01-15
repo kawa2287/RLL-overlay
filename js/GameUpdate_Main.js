@@ -280,12 +280,16 @@ function GetTeam(team) {
 
   let teams = {
     RLL: 0,
-    Pilgrims: 0,
-    Turkeys: 0,
-    Pumkins: 0,
-    Death: 0,
-    "Team Santa": 0,
-    Reindeer: 0,
+    TOAST: 0,
+    BRAN: 0,
+    CRUNCH: 0,
+    SMACKS: 0,
+    TRIX: 0,
+    FROOTS: 0,
+    KRISPIES: 0,
+    FLAKES: 0,
+    CHEERIOS: 0,
+    CHARMS: 0,
   };
   /*
    let teams = 
