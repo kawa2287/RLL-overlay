@@ -39,12 +39,12 @@ const PLAYER_TEAM_MAP = {
   ICEMAN: "panama",
   SQUALL: "FLAKES",
   BOOMER: "FLAKES",
-  JUNKER: "panama",
+  JUNKER: "CRUNCH",
   SWABBIE: "panama",
   HOLLYWOOD: "switzerland",
   ARMSTRONG: "switzerland",
   TUSK: "switzerland",
-  FOAMER: "switzerland",
+  FOAMER: "CHARMS",
   MYRTLE: "CHARMS",
   MARLEY: "thailand",
   RAINMAKER: "thailand",
@@ -72,6 +72,20 @@ const TEAM_LOGO_MAP = {
   FLAKES: "assets/LOGO_FLAKES.png",
   CHEERIOS: "assets/LOGO_CHERRIOS.png",
   CHARMS: "assets/LOGO_LUCKY.png",
+};
+
+const TEAM_TRANSITION_MAP = {
+  RLL: "assets/RLL_Logo_LARGE.png",
+  TOAST: "assets/svg/LOGO_TOAST.svg",
+  BRAN: "assets/svg/LOGO_RAISIN_BRAN.svg",
+  CRUNCH: "assets/svg/LOGO_CRUNCH.svg",
+  SMACKS: "assets/svg/LOGO_SMACKS.svg",
+  TRIX: "assets/svg/LOGO_TRIX.svg",
+  FROOTS: "assets/svg/LOGO_FRUIT_LOOPS.svg",
+  KRISPIES: "assets/svg/LOGO_KRISPIES.svg",
+  FLAKES: "assets/svg/LOGO_FROSTED_FLAKES.svg",
+  CHEERIOS: "assets/svg/LOGO_CHEERIOS.svg",
+  CHARMS: "assets/svg/LOGO_LUCKY_CHARMS.svg",
 };
 
 const TEAM_COLOR_MAP = {
