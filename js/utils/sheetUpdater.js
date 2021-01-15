@@ -22,6 +22,7 @@ export default sheetUpdater = (
     GOOGLE_SERVICE_ACCOUNT_EMAIL,
     GOOGLE_PRIVATE_KEY,
     GOOGLE_SHEETS_SHEET_ID,
+    GOOGLE_SHEETS_SHEET_ID,
   } = process.env;
 
   // required env vars
@@ -35,6 +36,11 @@ export default sheetUpdater = (
   }
   if (!GOOGLE_PRIVATE_KEY) {
     console.log("no GOOGLE_PRIVATE_KEY env var set");
+    return -1;
+  }
+  if (!GOOGLE_SHEETS_SHEET_ID) {
+    // spreadsheet key is the long id in the sheets URL
+    console.log("no GOOGLE_SHEETS_SHEET_ID env var set");
     return -1;
   }
   if (!GOOGLE_SHEETS_SHEET_ID) {
@@ -65,7 +71,7 @@ export default sheetUpdater = (
            *
            * *ROLES removed S4
            */
-          const scheduleSheet = doc.sheetsByIndex[2];
+          const scheduleSheet = doc.sheetsByTitle[2];
 
           scheduleSheet.getRows().then((rows) => {
             // get the next un-recorded row
