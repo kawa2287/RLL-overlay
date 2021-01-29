@@ -1,4 +1,7 @@
 function GoalScoredMain(d) {
+  //HACK - check teams on schedule
+  sheetUpdater.GetNextGame();
+
   //Determine which team scored
   let gScoringTm = DetermineGoalScoringTeam(d["scorer"]["name"]);
   let scoredAgainst = gScoringTm === "blue" ? "orange" : "blue";

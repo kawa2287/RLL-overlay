@@ -59,6 +59,19 @@ function GameUpdateMain(d) {
   $(".scorebug .mid .shots.left .value").text(teamShots[0]);
   $(".scorebug .mid .shots.right .value").text(teamShots[1]);
 
+  //Update ScoreBug League Crest
+  let lgID = 1;
+  let lgPath = "assests/RLL_logo.png";
+
+  lgID =
+    TEAM_LEAGUE_MAP[leftTeamName] === 2 && TEAM_LEAGUE_MAP[rightTeamName] === 2
+      ? 2
+      : 1;
+
+  lgPath = lgID === 1 ? "assests/RLL_logo.png" : "assests/RLL_LOWER_LOGO.png";
+
+  $(".scorebug .mid .logo img").attr("src", lgPath);
+
   //Show Target Player Stats if focused
   TargetStats(allPlayers, d);
 
@@ -127,60 +140,30 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay, d, gTime) {
 
     //Update Player Grades
     const AVG_SCORE_MAP = {
-      KAWA: 461,
-      JR: 171,
-      DETHORNE: 229,
-      ELFFAW: 313,
-      "ANDY MAC": 142,
-      TWERP: 213,
-      MATTAUX: 227,
-      KAWA2796: 163,
-      PNKROCKJOCK26: 292,
-      HOOTENANNIES: 196,
-      OFTHEMOON16: 257,
+      KAWA: 578,
+      JR: 245,
+      DETHORNE: 357,
+      ELFFAW: 541,
+      "ANDY MAC": 309,
+      TWERP: 431,
+      MATTAUX: 277,
+      KAWA2796: 181,
+      PNKROCKJOCK26: 349,
+      HOOTENANNIES: 280,
+      OFTHEMOON16: 433,
       "GNOMIE, DONT YA KNOW ME?": 441,
-      GOLFJBC89: 234,
-      JMYRV: 141,
-      MADSCOUTFAN: 181,
-      MADSCOUT: 181,
-      KURTZYP00: 148,
-      "KURTZY P00": 148,
-      "CREAM DADDY9057": 148,
-      "SNAKES ON A MICROPLANE": 371,
-      EVERGREEN6258: 350,
-
-      CHIPPER: 320,
-      COUGAR: 320,
-      FURY: 410,
-      CAVEMAN: 213,
-      PONCHO: 178,
-      SHEPARD: 110,
-      CENTICE: 320,
-      MIDDY: 320,
-      SUNDOWN: 410,
-      CASPER: 213,
-      ICEMAN: 178,
-      SQUALL: 110,
-      BOOMER: 320,
-      JUNKER: 320,
-      SWABBIE: 410,
-      HOLLYWOOD: 213,
-      ARMSTRONG: 178,
-      TUSK: 110,
-      FOAMER: 410,
-      MYRTLE: 213,
-      MARLEY: 178,
-      RAINMAKER: 213,
-      SCOUT: 178,
-      BANDIT: 213,
-      GERWIN: 178,
-      TEX: 213,
-      YURI: 178,
-      MIDDY: 178,
-      WOLFMAN: 213,
-      MOUNTAIN: 178,
-      SAMARA: 178,
-      STICKS: 213,
+      GOLFJBC89: 392,
+      JMYRV: 354,
+      MADSCOUTFAN: 394,
+      MADSCOUT: 394,
+      KURTZYP00: 328,
+      "KURTZY P00": 328,
+      "CREAM DADDY9057": 328,
+      "SNAKES ON A MICROPLANE": 481,
+      EVERGREEN6258: 599,
+      AWESOMEX: 761,
+      FATKIDDESTROYERS: 207,
+      NKSSOCCER15: 181,
     };
 
     let avgScore = AVG_SCORE_MAP[teamArray[indexNum]["name"].toUpperCase()];
@@ -305,6 +288,23 @@ function GetTeam(team) {
     */
 
   //loop through players
+  /*for (var i = 0; i < team.length; i++) {
+    //check if schedule team names are initiated
+    if (scheduleLeftTeamName !== "" && scheduleRightTeamName !== "") {
+      //filter for current game in schedule
+      let tm = PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()];
+
+      console.log(scheduleRightTeamName);
+      console.log(scheduleLeftTeamName);
+
+      if (tm === scheduleLeftTeamName || tm === scheduleRightTeamName) {
+        teams[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
+      }
+    } else {
+      //just do it normally
+      teams[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
+    }
+  }*/
   for (var i = 0; i < team.length; i++) {
     teams[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
   }
