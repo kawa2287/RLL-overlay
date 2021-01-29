@@ -204,7 +204,6 @@ function PostGameMain(d) {
   }
 
   //Draw Chart
-
   google.charts.setOnLoadCallback(drawChart(chartData, chartColors));
 
   //Write score to sheets

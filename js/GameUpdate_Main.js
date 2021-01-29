@@ -61,14 +61,14 @@ function GameUpdateMain(d) {
 
   //Update ScoreBug League Crest
   let lgID = 1;
-  let lgPath = "assests/RLL_logo.png";
+  let lgPath = "assets/RLL_Logo.png";
 
   lgID =
     TEAM_LEAGUE_MAP[leftTeamName] === 2 && TEAM_LEAGUE_MAP[rightTeamName] === 2
       ? 2
       : 1;
 
-  lgPath = lgID === 1 ? "assests/RLL_logo.png" : "assests/RLL_LOWER_LOGO.png";
+  lgPath = lgID === 1 ? "assets/RLL_logo.png" : "assets/RLL_LOWER_LOGO.png";
 
   $(".scorebug .mid .logo img").attr("src", lgPath);
 
