@@ -1,5 +1,8 @@
 function PostGameMain(d) {
   //show post game scores
+  //$(".postGame .left.team").addClass("left_post_anim");
+  //$(".postGame .right.team").addClass("right_post_anim");
+
   $(".postGame .left.team").css({ transform: "translateX(960px)" });
   $(".postGame .right.team").css({ transform: "translateX(-960px)" });
   $("#chart-div").show();
@@ -82,6 +85,15 @@ function PostGameMain(d) {
     $(".postGame " + side + " .tmscore").text(
       previousData["game"]["teams"][n]["score"]
     );
+
+    //hide players for 2's
+    if (sortList.length === 4) {
+      let quer = "postGame " + side + " .postDisplay" + ".p3";
+      console.log(quer);
+      $(quer).css({
+        visibility: "hidden",
+      });
+    }
 
     let counter = 0;
     for (let i = 0; i < sortList.length; i++) {
@@ -204,7 +216,7 @@ function PostGameMain(d) {
   }
 
   //Draw Chart
-  google.charts.setOnLoadCallback(drawChart(chartData, chartColors));
+  //google.charts.setOnLoadCallback(drawChart(chartData, chartColors));
 
   //Write score to sheets
   //sheet variables
