@@ -92,7 +92,7 @@ function GameUpdateMain(d) {
   UpdateStats(orangeTeam, 1, ".p2", "orange", isReplay, d, gTime);
   UpdateStats(orangeTeam, 2, ".p3", "orange", isReplay, d, gTime);
 
-  //Show Target Player Stats if focused
+  //Show Target Player Stats if focused (the bottom left tile on the screen)
   TargetStats(allPlayers, d);
 
   //Shot map shots
@@ -142,36 +142,41 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay, d, gTime) {
   if (teamArray[indexNum] !== undefined) {
     $(q).css({ visibility: "visible" });
 
-    //Shots
+    // Basic Stats Section
+    //--------------------------------------------------------------------------
+    //Set Shots
     teamShots[tm] += teamArray[indexNum]["shots"];
 
-    //Name
+    //Set Name
     $(q + " .name").text(teamArray[indexNum]["name"]);
 
-    //Points
+    //Set Points
     let points = teamArray[indexNum]["goals"] + teamArray[indexNum]["assists"];
     $(q + " .points .value").text(points);
 
-    //Score
+    //Set Score
     $(q + " .score .value").text(teamArray[indexNum]["score"]);
     teamScore[tm] += teamArray[indexNum]["score"];
 
-    //Logo
+    //Set Logo
     $(q + " .logo img").attr(
       "src",
       TEAM_LOGO_MAP[tm === 0 ? leftTeamName : rightTeamName]
     );
 
+    //Determine Player "Grade"
     let avgScore = AVG_SCORE_MAP[teamArray[indexNum]["name"].toUpperCase()];
-
     let grade = GetPlayerGrade(teamArray[indexNum]["score"], avgScore, gTime);
 
+    //Set Grade
     $(q + " .performance .value").text(grade["grade"]);
     $(q + " .performance .value").css({ color: grade["color"] });
     $(q + " .performance .title").css({ color: grade["color"] });
     $(q + " .performance").css({ background: grade["background"] });
 
-    //check if player exists in the adv stats obj
+    // Advanced Stats Section
+    //--------------------------------------------------------------------------
+    //Check if player exists in the adv stats obj
     if (playerAdvStats[teamArray[indexNum]["name"]] === undefined) {
       //add player to adv stats
       playerAdvStats[teamArray[indexNum]["name"]] = {
@@ -316,12 +321,13 @@ function GetTeam(team) {
 }
 
 function TargetStats(players, d) {
-  //Check if director has player targeted
+  //Check if spectator director has player targeted (ie camera is following the player)
   if (d["game"]["hasTarget"]) {
-    //make targetDisplay Visible
-    $(".targetDisplay").css({ visibility: "visible" });
-    //fill out stats
-    let target = d["game"]["target"];
+    $(".targetDisplay").css({ visibility: "visible" }); //make targetDisplay Visible in bottom left of screen
+
+    let target = d["game"]["target"]; //Assign the target player
+
+    //Loop through the players array and find the matching target player
     for (let i = 0; i < players.length; i++) {
       if (players[i]["id"] === target) {
         //set stats
@@ -376,15 +382,14 @@ function TargetStats(players, d) {
         $(".targetDisplay img").attr("src", logo);
         $(".targetDisplay .progressBarCont .bar").css({ background: barColor });
 
-        /*
-                $(".targetDisplay").css({"background":colors.primary});
-                $(".targetDisplay .scoreTitle").css({"color":colors.secondary});
-                $(".targetDisplay .side.speed .text").css({"color":colors.secondary});
-                $(".targetDisplay .lowerCont").css({"color":colors.secondary});
-                $(".targetDisplay .lowerCont").css({"background":colors.shadow});
-                $(".targetDisplay .lowerCont .title").css({"background":colors.primary});
-                */
-
+        /*  Use this if we want to see the team's colors rather than just blue or orange
+        $(".targetDisplay").css({"background":colors.primary});
+        $(".targetDisplay .scoreTitle").css({"color":colors.secondary});
+        $(".targetDisplay .side.speed .text").css({"color":colors.secondary});
+        $(".targetDisplay .lowerCont").css({"color":colors.secondary});
+        $(".targetDisplay .lowerCont").css({"background":colors.shadow});
+        $(".targetDisplay .lowerCont .title").css({"background":colors.primary});
+        */
         $(".targetDisplay").css({ background: basicColor });
         $(".targetDisplay .scoreTitle").css({ color: "white" });
         $(".targetDisplay .score").css({ color: "yellow" });
@@ -402,12 +407,18 @@ function TargetStats(players, d) {
 }
 
 function GetPlayerGrade(score, avgScore, gTime) {
+  // this is a function to determine the playe's "grade" based off his/her avg score (AVG_SCORE_MAP)
+  // the idea is to linearly have a target score the player should be at
+  // based on a point in time in the game
+  // this assume the game is 300 seconds long (5min)
   let time = gTime === 300 ? 0 : gTime;
   let target = ((300 - time) / 300) * avgScore;
   return GetGrade(target, score);
 }
 
 function GetGrade(target, current) {
+  //function to help decide the grade of the player and the
+  //associated styling to go along with it
   if (current >= target + target * 0.75) {
     return { grade: "AA", background: "yellow", color: "black" };
   } else if (current >= target + target * 0.45) {
