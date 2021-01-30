@@ -1,5 +1,6 @@
 const WebSocket = require("ws");
 const fs = require("fs");
+const PMAP = require("./playermap-test");
 
 const PORT = 49322;
 
@@ -28,7 +29,15 @@ const wsClient = new WebSocket("ws://localhost:" + PORT);
 //---------------------------------------------------------------------------------
 const gamestateInterval = 1000; // milliseconds
 let timeCounter = gamestateInterval / 1000; // seconds
+
+//Generate random Players
+let randPlayers = [];
+randPlayers = GenerateRandomPlayers();
+console.log(randPlayers);
+
 const gsInterval = setInterval(() => {
+  //GAMESTATE
+  //----------------------------------------------------------------------------------
   let gamestate = JSON.parse(
     fs.readFileSync("update_state-sample.json", "utf-8")
   );
@@ -39,34 +48,71 @@ const gsInterval = setInterval(() => {
   timeCounter += gamestateInterval / 1000;
 
   // BALL POSITIONING
-  const x = Math.random() * 7000 - 3500; // random number between -3500 and 3500
-  const y = Math.random() * 10000 - 5000; // random number between -5000 and 5000
-  gamestate.game.ballX = x;
-  gamestate.game.ballY = y;
+  let fieldPosition = {};
+  fieldPosition = RandomFieldPosition();
+  //const x = Math.random() * 7000 - 3500; // random number between -3500 and 3500
+  //const y = Math.random() * 10000 - 5000; // random number between -5000 and 5000
+  gamestate.game.ballX = fieldPosition.X;
+  gamestate.game.ballY = fieldPosition.Y;
 
   // PLAYER SCORES / BOOSTS / x/y/z
+  let count = 0;
   gamestate.players = Object.keys(gamestate.players).map((playerName) => {
     const player = gamestate.players[playerName];
     const newScore = Math.floor(Math.random() * 1000);
     const newBoost = Math.random() * 100;
     const newSpeed = Math.random() * 100;
 
+    player.name = randPlayers[count];
+
     player.score = newScore;
     player.boost = newBoost;
     player.speed = newSpeed;
 
+    let p = RandomFieldPosition();
+    player.x = p.X;
+    player.y = p.Y;
+
+    count += 1;
     return player;
   });
 
-  // console.log(gamestate.players);
+  //STATFEED
+  //----------------------------------------------------------------------------------
+  let statFeed = JSON.parse(
+    fs.readFileSync("statfeed_event-sample.json", "utf-8")
+  );
+  statFeed.main_target.name = randPlayers[randomIntFromInterval(0, 5)];
+  statFeed.type = "Save";
 
-  const gamestateMsg = JSON.stringify({
+  //SEND PACKET
+  //----------------------------------------------------------------------------------
+  let statOccurance = 10;
+  let podiumStart = 40;
+
+  if (timeCounter === podiumStart) {
+    //Run podium start
+    let podiumEvent = JSON.stringify({
+      event: "game:podium_start",
+      data: "game_podium_start",
+    });
+    SendEvent(podiumEvent, "sent statfeed");
+  }
+  //try sending a stat every 10sec
+  if (timeCounter % statOccurance === 0) {
+    let statevent = JSON.stringify({
+      event: "game:statfeed_event",
+      data: statFeed,
+    });
+    SendEvent(statevent, "sent statfeed");
+  }
+
+  //Send Gamestate
+  let gamestateMsg = JSON.stringify({
     event: "game:update_state",
     data: gamestate,
   });
-  wsClient.send(gamestateMsg);
-  // console.log(gamestate);
-  console.log("sent gamestate");
+  SendEvent(gamestateMsg, "sent gamestate");
 }, gamestateInterval);
 
 /**
@@ -173,4 +219,33 @@ function sendRelayMessage(senderConnectionId, message) {
       }, 0);
     }
   }
+}
+
+function RandomFieldPosition() {
+  let position = { X: 0, Y: 0 };
+  position.X = Math.random() * 7000 - 3500; // random number between -3500 and 3500
+  position.Y = Math.random() * 10000 - 5000; // random number between -5000 and 5000
+  return position;
+}
+
+function SendEvent(gamestateMsg, msg) {
+  wsClient.send(gamestateMsg);
+  console.log(msg);
+}
+
+function GenerateRandomPlayers() {
+  let usedPlayers = [];
+  let players = [];
+  players = Object.keys(PMAP.PLAYER_TEAM_MAP_TEST);
+  let count = players.length;
+  for (let i = 0; i < 6; i++) {
+    let index = randomIntFromInterval(0, count);
+    usedPlayers.push(players[index]);
+  }
+  return usedPlayers;
+}
+
+function randomIntFromInterval(min, max) {
+  // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
