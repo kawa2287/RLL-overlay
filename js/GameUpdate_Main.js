@@ -1,20 +1,29 @@
 function GameUpdateMain(d) {
+  /*
+  |--------------------------------------------------------------------------
+  | Main Game Updater
+  |--------------------------------------------------------------------------
+  |
+  | This is the most common subscriber and gets an update ~ every 0.1s
+  | This is used to determine players, teams, and stats by pulling form the main data object, d
+  | 
+  |
+  */
+
   //Set Global Player Teams Array
   globPlayerTmsArr = GetPlayerTeamArray(d);
 
+  // All things related to players and teams
+  //--------------------------------------------------------------------------
   //store team info
   let blueTeam = [];
   let orangeTeam = [];
   let allPlayers = [];
 
-  //Clear team Arrays
-  teamShots = [0, 0];
-  teamScore = [0, 0];
-  teamTouches = [0, 0];
-  teamBumps = [0, 0];
-
+  //Get all players in the game
   let players = d["players"];
 
+  //Loop through players obj and assign to team arrays
   for (var key of Object.keys(players)) {
     if (players[key].team === 0) {
       blueTeam.push(players[key]);
@@ -28,8 +37,17 @@ function GameUpdateMain(d) {
   leftTeamName = GetTeam(blueTeam);
   rightTeamName = GetTeam(orangeTeam);
 
-  //Update Time
-  $(".scorebug .mid.container .top").text(secondsToMS(d["game"]["time"]));
+  // All things related to the scoreboard
+  //--------------------------------------------------------------------------
+  //Clear team Arrays
+  teamShots = [0, 0];
+  teamScore = [0, 0];
+  teamTouches = [0, 0];
+  teamBumps = [0, 0];
+
+  //Update scoreboard time
+  let gTime = d["game"]["time"];
+  $(".scorebug .mid.container .top").text(secondsToMS(gTime));
 
   //Update Score
   $(".scorebug .left.container .score span").text(
@@ -38,18 +56,6 @@ function GameUpdateMain(d) {
   $(".scorebug .right.container .score span").text(
     d["game"]["teams"][1]["score"]
   );
-
-  //Update Stats
-  let isReplay = d["game"]["isReplay"];
-  let gTime = d["game"]["time"];
-
-  UpdateStats(blueTeam, 0, ".p1", "blue", isReplay, d, gTime);
-  UpdateStats(blueTeam, 1, ".p2", "blue", isReplay, d, gTime);
-  UpdateStats(blueTeam, 2, ".p3", "blue", isReplay, d, gTime);
-
-  UpdateStats(orangeTeam, 0, ".p1", "orange", isReplay, d, gTime);
-  UpdateStats(orangeTeam, 1, ".p2", "orange", isReplay, d, gTime);
-  UpdateStats(orangeTeam, 2, ".p3", "orange", isReplay, d, gTime);
 
   //Update Scorebug
   $(".scorebug .left .team span").text(leftTeamName);
@@ -60,17 +66,31 @@ function GameUpdateMain(d) {
   $(".scorebug .mid .shots.right .value").text(teamShots[1]);
 
   //Update ScoreBug League Crest
-  let lgID = 1;
-  let lgPath = "assets/RLL_Logo.png";
+  let lgID = 1; //Set default
+  let lgPath = TEAM_LOGO_MAP["RLL"]; //Set default
 
+  //Check both teams against the TEAM_LEAGUE_MAP to see if they are in the KRLL
   lgID =
     TEAM_LEAGUE_MAP[leftTeamName] === 2 && TEAM_LEAGUE_MAP[rightTeamName] === 2
       ? 2
       : 1;
 
-  lgPath = lgID === 1 ? "assets/RLL_logo.png" : "assets/RLL_LOWER_LOGO.png";
-
+  //Set Path to proper crest and assign
+  lgPath = lgID === 1 ? TEAM_LOGO_MAP["RLL"] : TEAM_LOGO_MAP["KRLL"];
   $(".scorebug .mid .logo img").attr("src", lgPath);
+
+  // All things related to stats
+  //--------------------------------------------------------------------------
+  //Update Stats
+  let isReplay = d["game"]["isReplay"]; // Check if currently in replay mode
+
+  UpdateStats(blueTeam, 0, ".p1", "blue", isReplay, d, gTime);
+  UpdateStats(blueTeam, 1, ".p2", "blue", isReplay, d, gTime);
+  UpdateStats(blueTeam, 2, ".p3", "blue", isReplay, d, gTime);
+
+  UpdateStats(orangeTeam, 0, ".p1", "orange", isReplay, d, gTime);
+  UpdateStats(orangeTeam, 1, ".p2", "orange", isReplay, d, gTime);
+  UpdateStats(orangeTeam, 2, ".p3", "orange", isReplay, d, gTime);
 
   //Show Target Player Stats if focused
   TargetStats(allPlayers, d);
@@ -90,9 +110,17 @@ function GameUpdateMain(d) {
 }
 
 function GetPlayerTeamArray(d) {
-  let players = d["players"];
-  let playerTeamArray = [];
+  // This function used to return an array of arrays
+  // main array holds the teams
+  // next level arrays hold the players
 
+  //Grab all players in game
+  let players = d["players"];
+
+  // Create Array to hold players into teams
+  let playerTeamArray = []; //[0] = blue, [1] = orange
+
+  //Loop through player objects to determine which team they are assigned to
   for (var key of Object.keys(players)) {
     if (players[key].team === 0) {
       playerTeamArray.push([players[key], "blue"]);
@@ -104,19 +132,15 @@ function GetPlayerTeamArray(d) {
 }
 
 function UpdateStats(teamArray, indexNum, p, color, isReplay, d, gTime) {
+  //This function will update the side stats per player
+
+  //build html locator
   const q = `.${color} ${p}`;
   let tm = color === "blue" ? 0 : 1;
 
+  //Check if player exists.  If not, hide the tile
   if (teamArray[indexNum] !== undefined) {
     $(q).css({ visibility: "visible" });
-
-    //Boost
-    /*
-        if(!isReplay)
-        {
-            progress(teamArray[indexNum]['boost'], $(q+ " .bar"));
-        }
-        */
 
     //Shots
     teamShots[tm] += teamArray[indexNum]["shots"];
@@ -137,34 +161,6 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay, d, gTime) {
       "src",
       TEAM_LOGO_MAP[tm === 0 ? leftTeamName : rightTeamName]
     );
-
-    //Update Player Grades
-    const AVG_SCORE_MAP = {
-      KAWA: 578,
-      JR: 245,
-      DETHORNE: 357,
-      ELFFAW: 541,
-      "ANDY MAC": 309,
-      TWERP: 431,
-      MATTAUX: 277,
-      KAWA2796: 181,
-      PNKROCKJOCK26: 349,
-      HOOTENANNIES: 280,
-      OFTHEMOON16: 433,
-      "GNOMIE, DONT YA KNOW ME?": 441,
-      GOLFJBC89: 392,
-      JMYRV: 354,
-      MADSCOUTFAN: 394,
-      MADSCOUT: 394,
-      KURTZYP00: 328,
-      "KURTZY P00": 328,
-      "CREAM DADDY9057": 328,
-      "SNAKES ON A MICROPLANE": 481,
-      EVERGREEN6258: 599,
-      AWESOMEX: 761,
-      FATKIDDESTROYERS: 207,
-      NKSSOCCER15: 181,
-    };
 
     let avgScore = AVG_SCORE_MAP[teamArray[indexNum]["name"].toUpperCase()];
 
@@ -259,34 +255,20 @@ function progress(percent, $element) {
 }
 
 function GetTeam(team) {
-  //initial object
+  // This function used to determine which teams are present in the game
+  // based off of the  PLAYER_TEAM_MAP
+  // @team = [playerObj, playerObj, ...]
 
-  let teams = {
-    RLL: 0,
-    TOAST: 0,
-    BRAN: 0,
-    CRUNCH: 0,
-    SMACKS: 0,
-    TRIX: 0,
-    FROOTS: 0,
-    KRISPIES: 0,
-    FLAKES: 0,
-    CHEERIOS: 0,
-    CHARMS: 0,
-  };
-  /*
-   let teams = 
-   {
-        "RLL":0,
-        "belgium" : 0,
-        "botswana":0,
-        "colombia":0,
-        "japan":0,
-        "mexico":0,
-        "norway":0
-    };
-    */
+  //Build teams object based off of team logo map
+  //This will be used to count how many present players belong to which teams
+  let teamsCounter = JSON.parse(JSON.stringify(TEAM_LOGO_MAP));
 
+  //Loop through teams and assign zeroes to all as a starting point
+  for (var key of Object.keys(teamsCounter)) {
+    teamsCounter[key] = 0;
+  }
+
+  /*  TODO - determine team for 2's with a sub
   //loop through players
   /*for (var i = 0; i < team.length; i++) {
     //check if schedule team names are initiated
@@ -305,22 +287,31 @@ function GetTeam(team) {
       teams[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
     }
   }*/
+
+  //Loop through the team array and add a count
   for (var i = 0; i < team.length; i++) {
-    teams[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
+    try {
+      //player found to be on a team.  Add a count to that team.
+      teamsCounter[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
+    } catch {
+      //player not found to be on a team.  Add a count to the RLL default
+      teamsCounter["RLL"] += 1;
+    }
   }
 
-  //push to sortable array
+  //Push counters to sortable array
   var sortList = [];
-  for (var team in teams) {
-    sortList.push([team, teams[team]]);
+  for (var team in teamsCounter) {
+    sortList.push([team, teamsCounter[team]]);
   }
 
-  //sort
+  //Sort that Array
   sortList.sort(function (a, b) {
     return b[1] - a[1];
   });
 
-  //return
+  // return the highest item on that array (ie the one with the most counts...)
+  // this should be the team that is playing
   return sortList[0][0];
 }
 
