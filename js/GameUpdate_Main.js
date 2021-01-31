@@ -57,14 +57,6 @@ function GameUpdateMain(d) {
     d["game"]["teams"][1]["score"]
   );
 
-  //Update Scorebug
-  $(".scorebug .left .team span").text(leftTeamName);
-  $(".scorebug .right .team span").text(rightTeamName);
-  $(".scorebug .left .logo img").attr("src", TEAM_LOGO_MAP[leftTeamName]);
-  $(".scorebug .right .logo img").attr("src", TEAM_LOGO_MAP[rightTeamName]);
-  $(".scorebug .mid .shots.left .value").text(teamShots[0]);
-  $(".scorebug .mid .shots.right .value").text(teamShots[1]);
-
   //Update ScoreBug League Crest
   let lgID = 1; //Set default
   let lgPath = TEAM_LOGO_MAP["RLL"]; //Set default
@@ -91,6 +83,14 @@ function GameUpdateMain(d) {
   UpdateStats(orangeTeam, 0, ".p1", "orange", isReplay, d, gTime);
   UpdateStats(orangeTeam, 1, ".p2", "orange", isReplay, d, gTime);
   UpdateStats(orangeTeam, 2, ".p3", "orange", isReplay, d, gTime);
+
+  //Update Scorebug
+  $(".scorebug .left .team span").text(leftTeamName);
+  $(".scorebug .right .team span").text(rightTeamName);
+  $(".scorebug .left .logo img").attr("src", TEAM_LOGO_MAP[leftTeamName]);
+  $(".scorebug .right .logo img").attr("src", TEAM_LOGO_MAP[rightTeamName]);
+  $(".scorebug .mid .shots.left .value").text(teamShots[0]);
+  $(".scorebug .mid .shots.right .value").text(teamShots[1]);
 
   //Show Target Player Stats if focused (the bottom left tile on the screen)
   TargetStats(allPlayers, d);

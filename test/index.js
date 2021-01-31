@@ -79,25 +79,36 @@ const gsInterval = setInterval(() => {
 
   //STATFEED
   //----------------------------------------------------------------------------------
+  //save
   let statFeed = JSON.parse(
     fs.readFileSync("statfeed_event-sample.json", "utf-8")
   );
   statFeed.main_target.name = randPlayers[randomIntFromInterval(0, 5)];
   statFeed.type = "Save";
+  //assist
+  let assistFeed = JSON.parse(
+    fs.readFileSync("statfeed_event-sample.json", "utf-8")
+  );
+  assistFeed.main_target.name = randPlayers[randomIntFromInterval(0, 5)];
+  assistFeed.type = "Assist";
+  //goal
+  let goalFeed = JSON.parse(
+    fs.readFileSync("goal_scored-sample.json", "utf-8")
+  );
+  goalFeed.scorer.name = randPlayers[randomIntFromInterval(0, 5)];
+  goalFeed.type = "Goal";
 
   //SEND PACKET
   //----------------------------------------------------------------------------------
   let statOccurance = 10;
+  let goalscored = 18;
+  let replayStart = 20;
+  let replaytWillEnd = 25;
+  let replayEnd = 28;
   let podiumStart = 40;
 
-  if (timeCounter === podiumStart) {
-    //Run podium start
-    let podiumEvent = JSON.stringify({
-      event: "game:podium_start",
-      data: "game_podium_start",
-    });
-    SendEvent(podiumEvent, "sent statfeed");
-  }
+  //STAT
+  //----------------------------------------------------------------------------------
   //try sending a stat every 10sec
   if (timeCounter % statOccurance === 0) {
     let statevent = JSON.stringify({
@@ -105,6 +116,64 @@ const gsInterval = setInterval(() => {
       data: statFeed,
     });
     SendEvent(statevent, "sent statfeed");
+  }
+  //ASSIST
+  //----------------------------------------------------------------------------------
+  if (timeCounter === goalscored) {
+    let e = JSON.stringify({
+      event: "game:statfeed_event",
+      data: assistFeed,
+    });
+    SendEvent(e, "sent statfeed");
+  }
+  //GOAL
+  //----------------------------------------------------------------------------------
+  if (timeCounter === goalscored) {
+    let e = JSON.stringify({
+      event: "game:goal_scored",
+      data: goalFeed,
+    });
+    SendEvent(e, "sent statfeed");
+  }
+  //REPLAY START
+  //----------------------------------------------------------------------------------
+  if (timeCounter === replayStart) {
+    //Run podium start
+    let replayEvent = JSON.stringify({
+      event: "game:replay_start",
+      data: "game_replay_start",
+    });
+    SendEvent(replayEvent, "sent replayStart");
+  }
+  //REPLAY WILL END
+  //----------------------------------------------------------------------------------
+  if (timeCounter === replaytWillEnd) {
+    //Run podium start
+    let replayEvent = JSON.stringify({
+      event: "game:replay_will_end",
+      data: "game_replay_will_end",
+    });
+    SendEvent(replayEvent, "sent replayStart");
+  }
+  //REPLAY END
+  //----------------------------------------------------------------------------------
+  if (timeCounter === replayEnd) {
+    //Run podium start
+    let replayEvent = JSON.stringify({
+      event: "game:replay_end",
+      data: "game_replay_end",
+    });
+    SendEvent(replayEvent, "sent replayStart");
+  }
+  //PODIUM START
+  //----------------------------------------------------------------------------------
+  if (timeCounter === podiumStart) {
+    //Run podium start
+    let podiumEvent = JSON.stringify({
+      event: "game:podium_start",
+      data: "game_podium_start",
+    });
+    SendEvent(podiumEvent, "sent statfeed");
   }
 
   //Send Gamestate

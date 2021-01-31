@@ -229,8 +229,3 @@ const TEAM_COLOR_MAP = {
     tertiary: "black",
   },
 };
-
-const COLOR_MAP = {
-  orangeTeam: rgba(223, 126, 0, 1),
-  blueTeam: "blue",
-};

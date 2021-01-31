@@ -163,12 +163,12 @@ function PostGameMain(d) {
         });
 
         $(q + " img").attr("src", logo);
-        $(q).css({ background: chartColors[team][counter - 1] });
+        $(q).css({ background: colors.primary });
         $(q + " .scoreTitle").css({ color: "white" });
         $(q + " .lowerCont").css({ color: "white" });
         $(q + " .lowerCont").css({ background: "black" });
         $(q + " .lowerCont .title").css({
-          background: chartColors[team][counter - 1],
+          background: colors.primary,
         });
 
         //check and apply if stat leader

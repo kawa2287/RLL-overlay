@@ -6,6 +6,9 @@ function StatFeedMain(d) {
   console.log(event);
   let side = "";
   let selector = "";
+  let teamName = "";
+
+  console.log(previousData);
 
   //determine which team player is on
   for (let m in previousData["players"]) {
@@ -24,8 +27,12 @@ function StatFeedMain(d) {
     }
   }
 
+  console.log(teamName);
   //Get Team Colors
   let colors = TEAM_COLOR_MAP[teamName];
+
+  //Get Team Logo
+  let logo = TEAM_LOGO_MAP[teamName];
 
   //Set Text Color
   $("#" + selector).css({ color: colors.secondary });
@@ -37,6 +44,33 @@ function StatFeedMain(d) {
     if (curSpd < ballSpeed) {
       playerAdvStats[player]["goalSpeed"] = ballSpeed;
     }
+  }
+
+  if (event === "Assist") {
+    Toastify({
+      text: "ASSIST | " + player,
+      duration: 5000,
+      destination: "https://github.com/apvarun/toastify-js",
+      backgroundColor: colors.primary,
+      close: false,
+      selector: selector,
+      avatar: "assets/ICON_ASSIST.png",
+      gravity: "top", // `top` or `bottom`
+      position: side, // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+
+      onClick: function () {}, // Callback after click
+    }).showToast();
+
+    //show the assister on the replay if exists
+    $(".replay .box.assist").css({ visibility: "visible" });
+    $(".replay .assist img").attr("src", logo);
+    $(".replay .assist .name").text(player);
+    $(".replay .assist .h").css({ background: colors.primary });
+    $(".replay .assist .name").css({ color: colors.secondary });
+    $(".replay .assist .name").css({
+      "text-shadow": "2px 2px 8px " + colors.shadow,
+    });
   }
 
   if (event === "Shot on Goal") {
