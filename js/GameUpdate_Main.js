@@ -105,6 +105,44 @@ function GameUpdateMain(d) {
   $(".mappics .team.left img").attr("src", TEAM_LOGO_MAP[leftTeamName]);
   $(".mappics .team.right img").attr("src", TEAM_LOGO_MAP[rightTeamName]);
 
+  //Update possession times
+  /*
+  if (!isReplay) {
+    //Update Possession times
+    CheckPossession(gTime);
+
+    if (mapToggle === 1) {
+      let topPos =
+        Math.round((10 * (100 * possessionTime[0])) / (300 - gTime)) / 10 + "%";
+      let botPos =
+        Math.round((10 * (100 * possessionTime[1])) / (300 - gTime)) / 10 + "%";
+      let deadPos =
+        Math.round(
+          (10 *
+            (100 * (300 - gTime - (possessionTime[0] + possessionTime[1])))) /
+            (300 - gTime)
+        ) /
+          10 +
+        "%";
+      $("#comparebars .top .bar").css({ width: topPos, opacity: 1 });
+      $("#comparebars .mid .bar").css({ width: deadPos, opacity: 1 });
+      $("#comparebars .bot .bar").css({ width: botPos, opacity: 1 });
+    }
+
+    //Update Avg Ball Speed
+    let ball = GetBallInfo(d);
+    avgBallSpeed = avgBallSpeed +
+  }
+
+  //Update AvgBall Speed
+
+  //MoveMinimap
+  if (Math.floor(gTime) % 45 === 0) {
+    showLowerThird();
+    showBallPossession();
+  }
+  */
+
   //Save State
   previousData = d;
 }
@@ -218,10 +256,10 @@ function UpdateStats(teamArray, indexNum, p, color, isReplay, d, gTime) {
           AirStats(teamArray[indexNum]);
 
           //Check if player hit ball, if yes- save position
-          //LastHit(teamArray[indexNum]);
+          HitBall(teamArray[indexNum]);
 
           //Zone stats
-          ZoneStats(teamArray[indexNum]);
+          //ZoneStats(teamArray[indexNum]);
 
           //update player scoreData for postgame chart
           let sec = Math.ceil(d["game"]["time"]);

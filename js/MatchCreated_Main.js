@@ -14,11 +14,11 @@ function MatchCreatedMain() {
     delete playerAdvStats[p];
   }
 
-  //Clear Shots
+  //Clear Variables
   leftShots = [];
   rightShots = [];
+  possessionTime = [0, 0];
 
-  //clear current teams
   //clear current teams
   scheduleLeftTeamName = "";
   scheduleRightTeamName = "";

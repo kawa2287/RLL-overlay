@@ -105,7 +105,7 @@ const gsInterval = setInterval(() => {
   let replayStart = 20;
   let replaytWillEnd = 25;
   let replayEnd = 28;
-  let podiumStart = 40;
+  let podiumStart = 150;
 
   //STAT
   //----------------------------------------------------------------------------------

@@ -1,0 +1,122 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);
+
+$red: #cf4c4e;
+$ease-out: cubic-bezier(0.19, 0.76, 0.32, 1);
+
+body {
+  margin: 0;
+}
+
+main {
+  font-family: Oswald;
+  text-transform: uppercase;
+  line-height: 1;
+  position: absolute;
+  overflow: hidden;
+  background: linear-gradient(25deg, #091521, #7a8699);
+}
+
+.animation {
+  width: 20em;
+  height: 4em;
+  position: relative;
+}
+
+.oswald {
+  font-family: Oswald;
+}
+
+.red {
+  color: $red;
+}
+
+.white {
+  color: white;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.mask {
+  overflow: hidden;
+  position: relative;
+  height: 150px;
+}
+
+/*********************
+* Animation 4
+*********************/
+
+@keyframes animation-4-stroke {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+  10% {
+    transform: translate3d(0, 0, 0);
+  }
+  90% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes animation-4-text {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+  5% {
+    transform: translate3d(0, -100%, 0);
+  }
+  15% {
+    transform: translate3d(0, 0, 0);
+  }
+  85% {
+    transform: translate3d(0, 0, 0);
+  }
+  90% {
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+#animation-4 {
+  & > div {
+    display: inline-block;
+    top: 580px;
+    left: 1580px;
+    vertical-align: middle;
+    opacity: 0;
+
+    div {
+      animation: 10s ease-out infinite alternate both;
+    }
+  }
+
+  & > div:first-child {
+    div {
+      width: 0.38em;
+      height: 2.4em;
+      background-color: $red;
+      animation-name: animation-4-stroke;
+      height: 150px;
+    }
+  }
+
+  & > div:last-child {
+    font-size: 1.3em;
+
+    div {
+      animation-name: animation-4-text;
+    }
+  }
+}

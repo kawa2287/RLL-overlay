@@ -14,4 +14,26 @@ function ReplayEndMain(d) {
 
   //Hide assister
   $(".replay .box.assist").css({ visibility: "hidden" });
+
+  //reset hit data
+  hitData = {
+    currentHit: {
+      player: "",
+      team: "",
+      hitLocation: { x: 0, y: 0, z: 0 },
+      hitVector: { x: 0, y: 0, z: 0, mag: 0 },
+    },
+    lastHit: {
+      player: "",
+      team: "",
+      hitLocation: { x: 0, y: 0, z: 0 },
+      hitVector: { x: 0, y: 0, z: 0, mag: 0 },
+    },
+    twoHitsAgo: {
+      player: "",
+      team: "",
+      hitLocation: { x: 0, y: 0, z: 0 },
+      hitVector: { x: 0, y: 0, z: 0, mag: 0 },
+    },
+  };
 }

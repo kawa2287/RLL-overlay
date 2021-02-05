@@ -5,6 +5,7 @@
         <script type="text/javascript" src="env.js"></script>
         <link rel="stylesheet" href="css/mystyle.css">
         <link rel="stylesheet" href="css/animations.css">
+        <link rel="stylesheet" href="css/lowerthird.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
         <link href="fontawesome-free-5.14.0-web/css/all.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -18,18 +19,45 @@
     <body>
 
        
-
-        <img src="assets/field.png" class="field"></div>
-        <div class = "mappics">
-            <div class="team left"><img  ></div>
-            <div class="team right"><img  ></div>
+        <!--LOWER THIRD --------------------------------------------------->
+        <!--
+        <div id="animation-4" >
+            <div class="mask"><div></div></div>
+            <div class="white light oswald mask">
+                <div>POSSESSION</div>
+            </div>
         </div>
-        <div class = "map"></div>
-
+        -->
+        <div id="lowerthird" >
+            <div class="title">POSSESSION</div>
+            
+        </div>
         
-        
+        <div id="comparebars">
+            <div class="top cont">
+                <div class="bar"></div>
+            </div>
+            <div class="mid cont">
+                <div class="bar"></div>
+            </div>
+            <div class="bot cont">
+                <div class="bar"></div>
+            </div>
+        </div>
+    
 
 
+        <!--MINI MAP ------------------------------------------------------>
+        <div class="minimap">
+            <img src="assets/field.png" class="field">
+            <div class = "mappics">
+                <div class="team left"><img  ></div>
+                <div class="team right"><img  ></div>
+            </div>
+            <div class = "map"></div>
+        </div>
+
+        <!--REPLAY OVERLAY ------------------------------------------------>
         <div class="replay">
             <div class ="goal">
                 <div class ="out"></div>
@@ -64,7 +92,8 @@
                 </div>
             </div>
         </div>
-
+        
+        <!--BLUE TEAM PLAYERS --------------------------------------------->
         <div class="blue team">
             <div class="players">
 
@@ -84,7 +113,6 @@
                             <div class="value"></div>
                             <div class="title">PTS</div>
                         </div>
-                        
                     </div>
                 </div>   
 
@@ -127,8 +155,8 @@
                 </div>          
             </div>
         </div>
-
-
+        
+        <!--ORANGE TEAM PLAYERS ------------------------------------------->
         <div class="orange team">
             <div class="players">
 
@@ -191,6 +219,7 @@
             </div>
         </div>
 
+        <!--TARGET PLAYER ------------------------------------------------->
         <div class ="targetDisplay">
             
             <div class="side logo">
@@ -244,12 +273,11 @@
             </div>
         </div>
         
+        <!--TRANSITION STING ---------------------------------------------->
         <div id="transitionLogo" class="animate__animated animate__rollOut"></div>
         <div id="transitionBg" class="animate__animated animate_fadeOut"></div>
-
-
-       
-
+        
+        <!--SCOREBOARD----------------------------------------------------->
         <div class="scorebug">
             <div class="left container">
 
@@ -278,7 +306,6 @@
                         <div class="title">SHOTS</div>
                     </div>
                 </div>
-
             </div>
 
             <div class="right container">
@@ -294,7 +321,8 @@
                 <div id="toast-right"></div>
             </div>
         </div>
-
+        
+        <!--POST GAME REPORT ---------------------------------------------->
         <div class ="postGame">
             <div id="chart-div" ></div>
             <div class= "left team">
@@ -459,7 +487,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="right team">
@@ -624,21 +651,20 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
 
         <input id="hidden-checkbox" type="checkbox"></input>
         <label for="hidden-checkbox"></label> 
-
+        <!--SCRIPT FILES -------------------------------------------------->
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <script type="text/javascript" src="sheetUpdater.js"></script>
-        
         <script type="text/javascript" src="subscribers.js"></script>
         <script type="text/javascript" src="js/PostGameChart.js"></script>
+        <script type="text/javascript" src="js/statdisplay.js"></script>
         <script type="text/javascript" src="js/GameInit_Main.js"></script>
+        <script type="text/javascript" src="js/Hits.js"></script>
         <script type="text/javascript" src="js/ZoneStats.js"></script>
         <script type="text/javascript" src="js/MatchCreated_Main.js"></script>
         <script type="text/javascript" src="js/GameUpdate_Main.js"></script>

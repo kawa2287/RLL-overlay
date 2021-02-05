@@ -734,11 +734,15 @@ i {
   transition: all ease 0.5s;
 }
 
-.field {
+.minimap {
   position: fixed;
   right: 40px;
   bottom: 150px;
+  transition: all 2s ease;
+}
+.field {
   opacity: 0.8;
+  position: absolute;
 }
 
 .map {
@@ -746,9 +750,6 @@ i {
   height: 240px;
 
   opacity: 1;
-  position: fixed;
-  right: 40px;
-  bottom: 150px;
   display: flex;
   flex-direction: row;
 }
@@ -757,11 +758,9 @@ i {
   height: 240px;
 
   opacity: 1;
-  position: fixed;
-  right: 40px;
-  bottom: 150px;
   display: flex;
   flex-direction: row;
+  position: absolute;
 }
 
 .mappics .team {
@@ -776,6 +775,7 @@ i {
   width: 150px;
   height: 150px;
   opacity: 0.2;
+  position: absolute;
 }
 
 #chart-div {

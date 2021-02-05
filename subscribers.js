@@ -1,5 +1,6 @@
 let previousData;
 let globPlayerTmsArr = [];
+let mapToggle = 0;
 let leftTeamName;
 let rightTeamName;
 let scheduleLeftTeamName;
@@ -11,6 +12,7 @@ let teamTouches = [];
 let teamBumps = [];
 let leftShots = [];
 let rightShots = [];
+let possessionTime = [0, 0];
 let tmConsecutiveTouches = [0, 0];
 let ballData = {
   currentOwner: { player: "", team: "" },

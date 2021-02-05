@@ -5,7 +5,8 @@
   "main": "ws-relay.js",
   "scripts": {
     "relay": "node ws-relay.js",
-    "build": "browserify js/utils/sheetUpdater.js -o sheetUpdater.js -s sheetUpdater"
+    "build": "browserify js/utils/sheetUpdater.js -o sheetUpdater.js -s sheetUpdater",
+    "sass": "sass --watch sass/lowerthird.scss css/lowerthird.css"
   },
   "author": "",
   "license": "MIT",
