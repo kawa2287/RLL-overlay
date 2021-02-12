@@ -1,34 +1,26 @@
-function showLowerThird() {
-  if (mapToggle === 0) {
-    mapToggle = 1;
-    var map = $(".minimap");
+function showLowerThird(title) {
+  //Set Title
+  $("#lowerthird .title").text(title);
 
-    //Add class to activate the animation
-    map.addClass("map_slide_anim");
-    //remove class after 10sec (when the animation is complete)
-    setTimeout(function () {
-      map.removeClass("map_slide_anim");
-      mapToggle = 0;
-    }, 15000);
-  }
-}
-
-function showBallPossession() {
+  var map = $(".minimap");
   var bPoss = $("#lowerthird");
 
-  if (mapToggle === 0) {
-    bPoss.addClass("l3animate");
+  //Add class to activate the animation
+  map.addClass("map_slide_anim");
+  bPoss.addClass("l3animate");
 
-    //remove class after 10sec (when the animation is complete)
-    setTimeout(function () {
-      bPoss.removeClass("l3animate");
-    }, 15000);
+  //remove class  (when the animation is complete)
+  setTimeout(function () {
+    map.removeClass("map_slide_anim");
+    bPoss.removeClass("l3animate");
+  }, 30000);
+}
 
-    //Remove Progress bars 2 seconds earlier
-    setTimeout(function () {
-      $("#comparebars .top .bar").css({ width: "0%", opacity: 0 });
-      $("#comparebars .mid .bar").css({ width: "0%", opacity: 0 });
-      $("#comparebars .bot .bar").css({ width: "0%", opacity: 0 });
-    }, 12000);
-  }
+function slideStatTile(tilename) {
+  //move tile
+  $(tilename).addClass("stat_slide_anim");
+  //remove class (when the animation is complete)
+  setTimeout(function () {
+    $(tilename).removeClass("stat_slide_anim");
+  }, 30000);
 }

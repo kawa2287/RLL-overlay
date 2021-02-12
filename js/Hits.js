@@ -1,5 +1,6 @@
 function HitBall(player) {
   //Check if the player hit the ball
+
   for (let m in previousData["players"]) {
     if (previousData["players"][m]["name"] === player["name"]) {
       if (player["touches"] > previousData["players"][m]["touches"]) {
@@ -26,6 +27,7 @@ function CheckPossession(gTime) {
   if (hitData.currentHit.team === hitData.lastHit.team) {
     if (gTime > 0);
     {
+      console.log("im here");
       //This team has possession.  Add 0.1s to posession time
       possessionTime[hitData.currentHit.team] += 0.1;
     }

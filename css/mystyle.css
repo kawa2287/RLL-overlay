@@ -737,7 +737,7 @@ i {
 .minimap {
   position: fixed;
   right: 40px;
-  bottom: 150px;
+  bottom: 100px;
   transition: all 2s ease;
 }
 .field {
@@ -1020,4 +1020,198 @@ input:checked + label {
 input {
   visibility: hidden;
   position: absolute;
+}
+
+#avgBallSpeed {
+  position: absolute;
+  width: 350px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  right: -400px;
+  bottom: 100px;
+  background-color: rgba(26, 26, 26, 0.8);
+}
+
+.ball {
+  position: absolute;
+  right: 50px;
+  bottom: 125px;
+  animation: ball 4s linear infinite;
+}
+
+#avgBallSpeed .top {
+  display: flex;
+  flex: 2;
+  color: white;
+  text-shadow: 2px 2px 2px #000924;
+}
+#avgBallSpeed .top .left {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+}
+#avgBallSpeed .top .right {
+  display: flex;
+  flex: 2;
+  align-items: center;
+  padding-top: 30px;
+}
+#avgBallSpeed .mid {
+  display: flex;
+  flex: 1;
+}
+#avgBallSpeed .mid .line {
+  position: relative;
+  border-left: 1px white solid;
+}
+#avgBallSpeed .mid .progressBarCont {
+  display: flex;
+  flex: 4;
+  margin: 10px;
+  background: rgb(85, 85, 85);
+}
+#avgBallSpeed .mid .progressBarCont .bar {
+  background: linear-gradient(
+    to right,
+    rgb(206, 206, 206) 0%,
+    white 50%,
+    white 100%
+  );
+  margin: 5px;
+  transition: all ease 0.5s;
+}
+#avgBallSpeed .bot {
+  display: flex;
+  flex: 1;
+  color: white;
+  text-shadow: 2px 2px 2px #000924;
+}
+
+#avgBallSpeed .bot .left {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-left: 10px;
+}
+#avgBallSpeed .bot .right {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 10px;
+}
+
+#avgBallSpeed .value {
+  font-size: 26px;
+  flex: 4;
+}
+#avgBallSpeed .mph {
+  font-size: 12px;
+  flex: 3;
+}
+
+#avgBallSpeed .bot .lgAvg {
+  color: rgb(237, 100, 100);
+  position: absolute;
+  text-align: center;
+}
+
+#tmPossession {
+  position: absolute;
+  width: 350px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  right: -400px;
+  bottom: 100px;
+  background-color: rgba(26, 26, 26, 0.8);
+}
+#tmPossession img {
+  width: 80px;
+  height: 80px;
+}
+#tmPossession .top {
+  display: flex;
+  flex: 3;
+  color: white;
+  text-shadow: 2px 2px 2px #000924;
+}
+#tmPossession .mid {
+  display: flex;
+  flex: 2;
+  color: white;
+  text-shadow: 2px 2px 2px #000924;
+}
+#tmPossession .bot {
+  display: flex;
+  flex: 3;
+  color: white;
+  text-shadow: 2px 2px 2px #000924;
+}
+
+#tmPossession .top .left {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+#tmPossession .top .right {
+  display: flex;
+  flex: 4;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 40px;
+  padding-left: 15px;
+}
+#tmPossession .bot .right {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+#tmPossession .bot .left {
+  display: flex;
+  flex: 4;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 40px;
+  padding-right: 15px;
+}
+
+#tmPossession .mid .progressBarCont {
+  margin: 10px;
+  background: rgb(85, 85, 85);
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+#tmPossession .mid .progressBarCont .bar {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  transition: all ease 0.5s;
+}
+
+#tmPossession .ltm {
+  flex: 60;
+  margin-left: 5px;
+  border-top: 1px solid darkslategray;
+  border-bottom: 1px solid darkslategray;
+  border-left: 1px solid darkslategray;
+}
+#tmPossession .none {
+  background-color: beige;
+  flex: 15;
+  border: 1px solid darkslategray;
+}
+#tmPossession .rtm {
+  flex: 25;
+  margin-right: 5px;
+  border-top: 1px solid darkslategray;
+  border-bottom: 1px solid darkslategray;
+  border-right: 1px solid darkslategray;
 }

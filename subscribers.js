@@ -16,6 +16,9 @@ let possessionTime = [0, 0];
 let tmConsecutiveTouches = [0, 0];
 let ballData = {
   currentOwner: { player: "", team: "" },
+  sumSpeed: 0,
+  avgSpeed: 0,
+  samples: 0,
 };
 let hitData = {
   currentHit: {

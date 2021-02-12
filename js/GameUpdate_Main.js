@@ -95,6 +95,72 @@ function GameUpdateMain(d) {
   //Show Target Player Stats if focused (the bottom left tile on the screen)
   TargetStats(allPlayers, d);
 
+  //Update AvgBall Speed and Possession Time
+  if (previousData === undefined) {
+    console.log(gTime);
+  } else if (gTime !== previousData.game.time) {
+    //Set AvgBall Speed
+    //------------------------
+    ballData.samples++;
+    ballData.sumSpeed += d.game.ballSpeed * 0.621371;
+    ballData.avgSpeed = ballData.sumSpeed / ballData.samples;
+
+    //Set Stats
+    $("#avgBallSpeed .top .left").text(
+      (Math.round(ballData.avgSpeed * 10) / 10).toFixed(1)
+    );
+    $("#avgBallSpeed .mid .bar").css({
+      width: (100 * ballData.avgSpeed) / 50 + "%",
+    });
+
+    //League Avg
+    let lgAvg = 31.7; //mph
+    let fac = 6.4; //px/mph
+    let buf = 20; //px
+    $("#avgBallSpeed .mid .line").css({
+      left: buf + lgAvg * fac + "px",
+    });
+    $("#avgBallSpeed .bot .lgAvg").css({
+      left: lgAvg * fac + "px",
+    });
+
+    //Set Possession Stats
+    //------------------------
+    CheckPossession(gTime);
+    let ltm = Math.round((100 * possessionTime[0]) / (300 - gTime));
+    let rtm = Math.round((100 * possessionTime[1]) / (300 - gTime));
+    let none = Math.round(
+      (100 * (300 - gTime - (possessionTime[0] + possessionTime[1]))) /
+        (300 - gTime)
+    );
+
+    //Get Colors
+    let cleft = TEAM_COLOR_MAP[leftTeamName];
+    let cright = TEAM_COLOR_MAP[rightTeamName];
+
+    //Set Bar Widths
+    $("#tmPossession .bar.ltm").css({
+      flex: ltm.toString(),
+      background: cleft.primary,
+    });
+    $("#tmPossession .bar.none").css({ flex: none.toString() });
+    $("#tmPossession .bar.rtm").css({
+      flex: rtm.toString(),
+      background: cright.primary,
+    });
+
+    //Set team logos
+    $("#tmPossession .top .left img").attr("src", TEAM_LOGO_MAP[leftTeamName]);
+    $("#tmPossession .bot .right img").attr(
+      "src",
+      TEAM_LOGO_MAP[rightTeamName]
+    );
+
+    //Set percentages
+    $("#tmPossession .top .right").text(ltm + "%");
+    $("#tmPossession .bot .left").text(rtm + "%");
+  }
+
   //Shot map shots
   //MapShots();
 
@@ -105,43 +171,16 @@ function GameUpdateMain(d) {
   $(".mappics .team.left img").attr("src", TEAM_LOGO_MAP[leftTeamName]);
   $(".mappics .team.right img").attr("src", TEAM_LOGO_MAP[rightTeamName]);
 
-  //Update possession times
-  /*
-  if (!isReplay) {
-    //Update Possession times
-    CheckPossession(gTime);
-
-    if (mapToggle === 1) {
-      let topPos =
-        Math.round((10 * (100 * possessionTime[0])) / (300 - gTime)) / 10 + "%";
-      let botPos =
-        Math.round((10 * (100 * possessionTime[1])) / (300 - gTime)) / 10 + "%";
-      let deadPos =
-        Math.round(
-          (10 *
-            (100 * (300 - gTime - (possessionTime[0] + possessionTime[1])))) /
-            (300 - gTime)
-        ) /
-          10 +
-        "%";
-      $("#comparebars .top .bar").css({ width: topPos, opacity: 1 });
-      $("#comparebars .mid .bar").css({ width: deadPos, opacity: 1 });
-      $("#comparebars .bot .bar").css({ width: botPos, opacity: 1 });
-    }
-
-    //Update Avg Ball Speed
-    let ball = GetBallInfo(d);
-    avgBallSpeed = avgBallSpeed +
+  //MoveMinimap and show Average Ball Speed
+  let ft = Math.floor(gTime);
+  if (ft === 240 || ft === 120) {
+    showLowerThird("AVERAGE BALL SPEED");
+    slideStatTile("#avgBallSpeed");
   }
-
-  //Update AvgBall Speed
-
-  //MoveMinimap
-  if (Math.floor(gTime) % 45 === 0) {
-    showLowerThird();
-    showBallPossession();
+  if (ft === 180 || ft === 60) {
+    showLowerThird("TEAM BALL POSSESSION");
+    slideStatTile("#tmPossession");
   }
-  */
 
   //Save State
   previousData = d;
