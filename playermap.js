@@ -1,3 +1,4 @@
+/*
 const PLAYER_TEAM_MAP = {
   AWESOMEX: "BRAN",
   KAWA: "TOAST",
@@ -68,7 +69,55 @@ const PLAYER_TEAM_MAP = {
   STINGER: "FLAKES",
   OUTLAW: "BRAN",
 };
+*/
 
+// with billy
+/*
+const PLAYER_TEAM_MAP = {
+  KAWA: "BRAZIL",
+  DETHORNE: "ITALY",
+  ELFFAW: "UGANDA",
+  "ANDY MAC": "NEW ZEALAND",
+  TWERP: "ARUBA",
+  MATTAUX: "BRAZIL",
+  KAWA2796: "NEW ZEALAND",
+  PNKROCKJOCK26: "ARUBA",
+  HOOTENANNIES: "UGANDA",
+  JMYRV: "JAPAN",
+  "SNAKES ON A MICROPLANE": "ITALY",
+  EVERGREEN6258: "JAPAN",
+  "CREAM DADDY9057": "NEW ZEALAND",
+};
+*/
+
+// no billy
+
+const PLAYER_TEAM_MAP = {
+  KAWA: "BRAZIL",
+  DETHORNE: "NEW ZEALAND",
+  ELFFAW: "UGANDA",
+  "ANDY MAC": "UGANDA",
+  MATTAUX: "JAPAN",
+  KAWA2796: "BRAZIL",
+  PNKROCKJOCK26: "ARUBA",
+  HOOTENANNIES: "NEW ZEALAND",
+  JMYRV: "ARUBA",
+  "SNAKES ON A MICROPLANE": "ITALY",
+  EVERGREEN6258: "JAPAN",
+  "CREAM DADDY9057": "ITALY",
+};
+
+const TEAM_LOGO_MAP = {
+  RLL: "assets/RLL_Logo_INTL.png",
+  BRAZIL: "assets/FLAG_BRAZIL.png",
+  JAPAN: "assets/FLAG_JAPAN.png",
+  UGANDA: "assets/FLAG_UGANDA.png",
+  "NEW ZEALAND": "assets/FLAG_NEW_ZEALAND.png",
+  ARUBA: "assets/FLAG_ARUBA.png",
+  ITALY: "assets/FLAG_ITALY.png",
+};
+
+/*
 const TEAM_LOGO_MAP = {
   RLL: "assets/RLL_logo.png",
   KRLL: "assets/RLL_LOWER_LOGO.png",
@@ -83,6 +132,7 @@ const TEAM_LOGO_MAP = {
   CHEERIOS: "assets/LOGO_CHERRIOS.png",
   CHARMS: "assets/LOGO_LUCKY.png",
 };
+*/
 
 const TEAM_LEAGUE_MAP = {
   RLL: 1,
@@ -130,16 +180,12 @@ const AVG_SCORE_MAP = {
 
 const TEAM_TRANSITION_MAP = {
   RLL: "assets/RLL_Logo_LARGE.png",
-  TOAST: "assets/svg/LOGO_TOAST.svg",
-  BRAN: "assets/svg/LOGO_RAISIN_BRAN.svg",
-  CRUNCH: "assets/svg/LOGO_CRUNCH.svg",
-  SMACKS: "assets/svg/LOGO_SMACKS.svg",
-  TRIX: "assets/svg/LOGO_TRIX.svg",
-  FROOTS: "assets/svg/LOGO_FRUIT_LOOPS.svg",
-  KRISPIES: "assets/svg/LOGO_KRISPIES.svg",
-  FLAKES: "assets/svg/LOGO_FROSTED_FLAKES.svg",
-  CHEERIOS: "assets/svg/LOGO_CHEERIOS.svg",
-  CHARMS: "assets/svg/LOGO_LUCKY_CHARMS.svg",
+  JAPAN: "assets/svg/FLAG_JAPAN.svg",
+  BRAZIL: "assets/svg/FLAG_BRAZIL.svg",
+  ARUBA: "assets/svg/FLAG_ARUBA.svg",
+  ITALY: "assets/svg/FLAG_ITALY.svg",
+  UGANDA: "assets/svg/FLAG_UGANDA.svg",
+  "NEW ZEALAND": "assets/svg/FLAG_NEW_ZEALAND.svg",
 };
 
 const TEAM_COLOR_MAP = {
@@ -255,6 +301,43 @@ const TEAM_COLOR_MAP = {
   RWANDA: {
     primary: "#20603d",
     secondary: "#white",
+    shadow: "black",
+    tertiary: "black",
+  },
+
+  JAPAN: {
+    primary: "#ce0909",
+    secondary: "white",
+    shadow: "black",
+    tertiary: "black",
+  },
+  BRAZIL: {
+    primary: "#007c29",
+    secondary: "#fedf00",
+    shadow: "black",
+    tertiary: "black",
+  },
+  "NEW ZEALAND": {
+    primary: "#183889",
+    secondary: "white",
+    shadow: "black",
+    tertiary: "black",
+  },
+  ARUBA: {
+    primary: "#326ca8",
+    secondary: "ffd100",
+    shadow: "black",
+    tertiary: "black",
+  },
+  ITALY: {
+    primary: "#15721e",
+    secondary: "#e2f2f1",
+    shadow: "black",
+    tertiary: "black",
+  },
+  UGANDA: {
+    primary: "#1b1b1b",
+    secondary: "#fcdc04",
     shadow: "black",
     tertiary: "black",
   },
