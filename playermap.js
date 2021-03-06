@@ -72,7 +72,7 @@ const PLAYER_TEAM_MAP = {
 */
 
 // with billy
-/*
+
 const PLAYER_TEAM_MAP = {
   KAWA: "BRAZIL",
   DETHORNE: "ITALY",
@@ -88,10 +88,9 @@ const PLAYER_TEAM_MAP = {
   EVERGREEN6258: "JAPAN",
   "CREAM DADDY9057": "NEW ZEALAND",
 };
-*/
 
 // no billy
-
+/*
 const PLAYER_TEAM_MAP = {
   KAWA: "BRAZIL",
   DETHORNE: "NEW ZEALAND",
@@ -106,6 +105,7 @@ const PLAYER_TEAM_MAP = {
   EVERGREEN6258: "JAPAN",
   "CREAM DADDY9057": "ITALY",
 };
+*/
 
 const TEAM_LOGO_MAP = {
   RLL: "assets/RLL_Logo_INTL.png",
