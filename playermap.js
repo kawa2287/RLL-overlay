@@ -73,21 +73,7 @@ const PLAYER_TEAM_MAP = {
 
 // with billy
 
-const PLAYER_TEAM_MAP = {
-  KAWA: "BRAZIL",
-  DETHORNE: "ITALY",
-  ELFFAW: "UGANDA",
-  "ANDY MAC": "NEW ZEALAND",
-  TWERP: "ARUBA",
-  MATTAUX: "BRAZIL",
-  KAWA2796: "NEW ZEALAND",
-  PNKROCKJOCK26: "ARUBA",
-  HOOTENANNIES: "UGANDA",
-  JMYRV: "JAPAN",
-  "SNAKES ON A MICROPLANE": "ITALY",
-  EVERGREEN6258: "JAPAN",
-  "CREAM DADDY9057": "NEW ZEALAND",
-};
+const PLAYER_TEAM_MAP = {};
 
 // no billy
 /*
@@ -108,7 +94,7 @@ const PLAYER_TEAM_MAP = {
 */
 
 const TEAM_LOGO_MAP = {
-  RLL: "assets/RLL_Logo_INTL.png",
+  RLL: "assets/RLL_COMBINE_S6_Logo.png",
   BRAZIL: "assets/FLAG_BRAZIL.png",
   JAPAN: "assets/FLAG_JAPAN.png",
   UGANDA: "assets/FLAG_UGANDA.png",

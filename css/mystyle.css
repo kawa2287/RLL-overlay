@@ -804,16 +804,105 @@ i {
 
 .postGame .team .upperArea {
   display: flex;
-  flex: 1;
+  flex: 4;
   justify-content: center;
   align-items: center;
 }
 
 .postGame .team .lowerArea {
-  flex: 1;
+  flex: 6;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.postGame .team .lowerArea .mainboard {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 480px;
+  margin: 30px;
+  flex-direction: column;
+  color: white;
+}
+.postGame .team .lowerArea .mainboard .name {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding-left: 20px;
+}
+.postGame .team .lowerArea .mainboard .saves {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.postGame .team .lowerArea .mainboard .headers {
+  display: flex;
+  flex-direction: row;
+  flex: 10;
+  flex-basis: 10%;
+}
+.postGame .team .lowerArea .mainboard .break {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 10px;
+}
+.postGame .team .lowerArea .mainboard .headers .title {
+  display: flex;
+  flex: 1;
+  flex-basis: 25%;
+  align-items: center;
+  justify-content: center;
+}
+
+.postGame .team .lowerArea .mainboard .p {
+  display: flex;
+  display: flex;
+  flex: 30;
+  flex-basis: 30%;
+}
+.postGame .team .lowerArea .mainboard .p .box {
+  flex-basis: 25%;
+  line-height: 0.9;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+}
+.postGame .team .lowerArea .mainboard .p .name.box {
+  font-size: 32px;
+}
+.postGame .team .lowerArea .mainboard .p .score.box {
+  font-size: 40px;
+  justify-content: center;
+}
+
+.postGame .team .lowerArea .mainboard .p .goals.box {
+  display: flex;
+  flex-direction: column;
+}
+.postGame .team .lowerArea .mainboard .p .saves.box {
+  display: flex;
+  flex-direction: column;
+}
+.postGame .team .lowerArea .mainboard .p .box .holder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+}
+.postGame .team .lowerArea .mainboard .p .box .holder.top {
+  margin-top: 20px;
+  flex: 1;
+}
+.postGame .team .lowerArea .mainboard .p .box .holder.bot {
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.postGame .team .lowerArea .mainboard .p .g {
+  display: flex;
+  flex: 1;
+  height: 50;
+  width: 50;
+  flex-basis: 25%;
 }
 
 .postGame .team.left {
@@ -849,147 +938,7 @@ i {
   height: 1080px;
   width: 960px;
   transition: all 2s ease;
-  background-image: linear-gradient(to top, grey, yellow);
-}
-
-.postGame .postDisplay {
-  display: flex;
-  flex: 1;
-  position: relative;
-  margin: 20px;
-  margin-left: 150px;
-  margin-right: 150px;
-  left: 0;
-  background-color: chocolate;
-  height: 90px;
-  box-shadow: 2px 2px 10px black;
-}
-.postGame .left.team .postDisplay {
-  margin-left: 100px;
-  margin-right: 350px;
-}
-.postGame .right.team .postDisplay {
-  margin-left: 350px;
-  margin-right: 100px;
-}
-
-.postGame .postDisplay .player .scoreTitle {
-  border: 0px;
-}
-.postGame .postDisplay .player .score {
-  border: 0px;
-}
-
-.postGame .logo {
-  display: flex;
-  flex: 1;
-}
-
-.postGame .postDisplay .side {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-}
-
-.postGame .postDisplay .side.logo {
-  position: relative;
-  overflow: hidden;
-}
-
-.postGame .postDisplay .side.logo img {
-  object-fit: scale-down;
-  max-width: 120px;
-  max-height: 120px;
-}
-
-.postGame .postDisplay .player {
-  display: flex;
-  flex: 8;
-  flex-direction: column;
-}
-
-.postGame .postDisplay .player .upperCont {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  font-size: 15px;
-}
-
-.postGame .postDisplay .player .name {
-  display: flex;
-  flex: 8;
-  align-items: center;
-  padding-left: 10px;
-  padding-top: 3px;
-  color: white;
-  text-shadow: 0px 0px 2px black;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-}
-.postGame .postDisplay .player .grade {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid black;
-}
-.postGame .postDisplay .player .scoreTitle {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 5px;
-  border-bottom: 1px solid black;
-}
-.postGame .postDisplay .player .score {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: 5px;
-  border-bottom: 1px solid black;
-  font-size: 20px;
-  color: white;
-}
-
-.postGame .postDisplay .player .lowerCont {
-  display: flex;
-  flex: 2;
-  flex-direction: row;
-  border-left: 1px solid black;
-}
-
-.postGame .postDisplay .player .stat {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  font-size: 15px;
-}
-
-.postGame .postDisplay .player .stat.points {
-  border-right: 1px solid black;
-}
-.postGame .postDisplay .player .stat.saves {
-  border-right: 1px solid black;
-}
-.postGame .postDisplay .player .title {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.8);
-}
-.postGame .postDisplay .player .value {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  background-color: white;
-  color: black;
-  text-shadow: 0px 0px 0px black;
-  box-shadow: inset 0 -20px 20px -20px rgba(0, 0, 0, 0.8);
+  background-image: linear-gradient(to top, grey, orange);
 }
 
 label {

@@ -7,6 +7,7 @@ function PostGameMain(d) {
   $(".postGame .right.team").css({ transform: "translateX(-960px)" });
   $("#chart-div").show();
 
+  /*
   //Create export array
   let exportContent = [];
   let headers = [
@@ -51,7 +52,8 @@ function PostGameMain(d) {
   };
 
   //Fill Max Stats
-  GetMaxStats(maxStats);
+  //GetMaxStats(maxStats);
+  */
 
   //Sort Players Array
   //push to sorting array
@@ -66,10 +68,12 @@ function PostGameMain(d) {
   });
 
   //Colors to be used on chart
+  /*
   const chartColors = [
     ["#0000FF", "#4747FF", "#8585FF"],
     ["#F59F00", "#FFB01F", "#FFBF47"],
   ];
+  */
 
   //fill Chart
   let chartData = [];
@@ -86,6 +90,7 @@ function PostGameMain(d) {
       previousData["game"]["teams"][n]["score"]
     );
 
+    /*
     //hide players for 2's
     if (sortList.length === 4) {
       let quer = "postGame " + side + " .postDisplay" + ".p3";
@@ -94,6 +99,7 @@ function PostGameMain(d) {
         visibility: "hidden",
       });
     }
+    */
 
     let counter = 0;
     for (let i = 0; i < sortList.length; i++) {
@@ -102,11 +108,12 @@ function PostGameMain(d) {
       if (x["team"] === n) {
         //set player
         counter += 1;
-        let t = ".p" + counter;
+        let t = " .p." + counter;
 
         //set search
-        let q = ".postGame " + side + " .postDisplay" + t;
+        let q = ".postGame " + side + t;
 
+        /*
         let aTime = playerAdvStats[x["name"]]["airTime"];
 
         //set stats
@@ -121,29 +128,63 @@ function PostGameMain(d) {
         $(q + " .player .stat.airHits .title").css({ "font-size": "10px" });
 
         let pts = x["goals"] + x["assists"];
-        $(q + " .player .name").text(x["name"]);
-        $(q + " .player .score").text(x["score"]);
-        $(q + " .player .grade").text(
-          playerAdvStats[x["name"]]["grade"]["grade"]
-        );
+        */
+        $(q + " .name").text(x["name"]);
+        $(q + " .score").text(x["score"]);
+        /*
+        $(q + " .grade").text(playerAdvStats[x["name"]]["grade"]["grade"]);
         $(q + " .player .grade").css({
           background: playerAdvStats[x["name"]]["grade"]["background"],
         });
         $(q + " .player .grade").css({
           color: playerAdvStats[x["name"]]["grade"]["color"],
         });
-        $(q + " .player .stat.points .value").text(pts);
-        $(q + " .player .stat.goals .value").text(x["goals"]);
-        $(q + " .player .stat.assists .value").text(x["assists"]);
-        $(q + " .player .stat.shots .value").text(x["shots"]);
-        $(q + " .player .stat.saves .value").text(x["saves"]);
-        $(q + " .player .stat.touches .value").text(x["touches"]);
-        $(q + " .player .stat.bumps .value").text(x["cartouches"]);
-        $(q + " .player .stat.airTime .value").text(aTime.toFixed(1) + "s");
-        $(q + " .player .stat.airHits .value").text(
-          playerAdvStats[x["name"]]["airHits"]
-        );
+        */
 
+        //Determine which images to show for goals and saves
+        let goals = x["goals"];
+        let saves = x["saves"];
+        if (goals <= 4) {
+          $(q + " .goals .holder.top").css({ flex: 1 });
+          $(q + " .goals .holder.bot").css({ flex: 0 });
+        } else {
+          $(q + " .goals .holder.top").css({ flex: 1 });
+          $(q + " .goals .holder.bot").css({ flex: 1 });
+        }
+
+        if (saves <= 4) {
+          $(q + " .saves .holder.top").css({ flex: 1 });
+          $(q + " .saves .holder.bot").css({ flex: 0 });
+        } else {
+          $(q + " .saves .holder.top").css({ flex: 1 });
+          $(q + " .saves .holder.bot").css({ flex: 1 });
+        }
+
+        //
+        for (let i = 1; i <= 8; i++) {
+          if (i <= goals) {
+            $(q + " .goals .g." + i).css({ visibility: "visible" });
+          } else {
+            $(q + " .goals .g." + i).css({ visibility: "hidden" });
+          }
+          if (i <= saves) {
+            $(q + " .saves .g." + i).css({ visibility: "visible" });
+          } else {
+            $(q + " .saves .g." + i).css({ visibility: "hidden" });
+          }
+        }
+
+        //$(q + " .player .stat.points .value").text(pts);
+        //$(q + " .player .stat.assists .value").text(x["assists"]);
+        //$(q + " .player .stat.shots .value").text(x["shots"]);
+        //$(q + " .player .stat.touches .value").text(x["touches"]);
+        //$(q + " .player .stat.bumps .value").text(x["cartouches"]);
+        //$(q + " .player .stat.airTime .value").text(aTime.toFixed(1) + "s");
+        //$(q + " .player .stat.airHits .value").text(
+        //  playerAdvStats[x["name"]]["airHits"]
+        //);
+
+        /*
         //Add player name to chart header
         header.push(x["name"]);
 
@@ -170,8 +211,10 @@ function PostGameMain(d) {
         $(q + " .lowerCont .title").css({
           background: colors.primary,
         });
+        */
 
         //check and apply if stat leader
+        /*
         SetStatGlow(x["score"], "score", "score", q, maxStats);
         SetStatGlow(pts, "points", "points", q, maxStats);
         SetStatGlow(x["goals"], "goals", "goals", q, maxStats);
@@ -182,11 +225,13 @@ function PostGameMain(d) {
         SetStatGlow(x["cartouches"], "cartouches", "bumps", q, maxStats);
         SetStatGlow(x["airTime"], "airTime", "airTime", q, maxStats);
         SetStatGlow(x["airHits"], "airHits", "airHits", q, maxStats);
+        */
       }
     }
   }
 
   //Push header into chartData
+  /*
   chartData.push(header);
 
   //Determine maxSnapshots
@@ -217,6 +262,7 @@ function PostGameMain(d) {
 
   //Draw Chart
   //google.charts.setOnLoadCallback(drawChart(chartData, chartColors));
+  */
 
   //Write score to sheets
   //sheet variables
