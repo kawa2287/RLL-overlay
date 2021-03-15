@@ -900,9 +900,13 @@ i {
 .postGame .team .lowerArea .mainboard .p .g {
   display: flex;
   flex: 1;
-  height: 50;
-  width: 50;
+  height: 50px;
+  width: 50px;
   flex-basis: 25%;
+}
+.postGame .team .lowerArea .mainboard .p .g img {
+  height: 50px;
+  width: 50px;
 }
 
 .postGame .team.left {
