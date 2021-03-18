@@ -13,6 +13,7 @@ let teamBumps = [];
 let leftShots = [];
 let rightShots = [];
 let possessionTime = [0, 0];
+let attackZoneTime = [0, 0];
 let tmConsecutiveTouches = [0, 0];
 let ballData = {
   currentOwner: { player: "", team: "" },
