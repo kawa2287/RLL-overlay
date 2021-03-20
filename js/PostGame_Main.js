@@ -184,9 +184,8 @@ function PostGameMain(d) {
         //  playerAdvStats[x["name"]]["airHits"]
         //);
 
-        /*
         //Add player name to chart header
-        header.push(x["name"]);
+        //header.push(x["name"]);
 
         //set colors and logos
         let team = x["team"];
@@ -203,7 +202,7 @@ function PostGameMain(d) {
             "linear-gradient(to top,grey , " + colors.primary + ")",
         });
 
-        $(q + " img").attr("src", logo);
+        //$(q + " img").attr("src", logo);
         $(q).css({ background: colors.primary });
         $(q + " .scoreTitle").css({ color: "white" });
         $(q + " .lowerCont").css({ color: "white" });
@@ -211,7 +210,6 @@ function PostGameMain(d) {
         $(q + " .lowerCont .title").css({
           background: colors.primary,
         });
-        */
 
         //check and apply if stat leader
         /*

@@ -6,6 +6,13 @@ function MatchCreatedMain() {
   //$(".postGame .left.team").removeClass("left_post_anim");
   //$(".postGame .right.team").removeClass("right_post_anim");
 
+  //Determine next game
+  sheetUpdater.GetNextGame();
+  sheetUpdater.GetStandings();
+
+  //Show pregame
+  $(".pregame ").css({ transform: "translateY(-1080px)" });
+
   $("#chart-div").hide();
   console.log("init");
 

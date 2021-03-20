@@ -1,5 +1,79 @@
 //require("dotenv").config();
 
+exports.GetStandings = function () {
+  const { GoogleSpreadsheet } = require("google-spreadsheet");
+  const GOOGLE_SERVICE_ACCOUNT_EMAIL = ENV_MAP["GOOGLE_SERVICE_ACCOUNT_EMAIL"];
+  const GOOGLE_PRIVATE_KEY = ENV_MAP["GOOGLE_PRIVATE_KEY"];
+  const GOOGLE_SHEETS_SHEET_ID = ENV_MAP["GOOGLE_SHEETS_SHEET_ID"];
+  const ROOM_NAME = ENV_MAP["ROOM_NAME"];
+
+  const privateKey = GOOGLE_PRIVATE_KEY;
+  const sheetId = GOOGLE_SHEETS_SHEET_ID;
+  const email = GOOGLE_SERVICE_ACCOUNT_EMAIL;
+  if (!ROOM_NAME) {
+    // spreadsheet key is the long id in the sheets URL
+    console.log("no ROOM_NAME env var set");
+    return -1;
+  }
+
+  //try connection to sheet and determine next game of host room
+  try {
+    const doc = new GoogleSpreadsheet(sheetId);
+    doc
+      .useServiceAccountAuth({
+        client_email: email,
+        private_key: privateKey.replace(/\\n/g, "\n"),
+      })
+      .then(() => {
+        doc.loadInfo().then(async () => {
+          //Get Schedule
+          const sh = doc.sheetsByTitle["Standings"];
+
+          sh.loadCells("A1:W11").then(() => {
+            //start populating standings
+
+            for (let i = 1; i <= 8; i++) {
+              //logo
+              let logo = TEAM_LOGO_MAP[sh.getCellByA1("J" + (i + 1)).value];
+              $(".preGame .standings .teams .t." + i + " .logo img").attr(
+                "src",
+                logo
+              );
+
+              //Dong
+              $(".preGame .standings .teams .t." + i + " .dong").text(
+                sh.getCellByA1("K" + (i + 1)).value
+              );
+
+              //wins
+              $(".preGame .standings .teams .t." + i + " .w.record").text(
+                sh.getCellByA1("L" + (i + 1)).value
+              );
+
+              //losses
+              $(".preGame .standings .teams .t." + i + " .l.record").text(
+                sh.getCellByA1("M" + (i + 1)).value
+              );
+
+              //+/-
+              $(".preGame .standings .teams .t." + i + " .diff.val").text(
+                sh.getCellByA1("N" + (i + 1)).value
+              );
+
+              //GF
+              $(".preGame .standings .teams .t." + i + " .gf.val").text(
+                sh.getCellByA1("O" + (i + 1)).value
+              );
+            }
+          });
+        });
+      });
+  } catch (e) {
+    console.error("Error updating google sheet", e);
+    return -1;
+  }
+};
+
 exports.GetNextGame = function () {
   const { GoogleSpreadsheet } = require("google-spreadsheet");
   const GOOGLE_SERVICE_ACCOUNT_EMAIL = ENV_MAP["GOOGLE_SERVICE_ACCOUNT_EMAIL"];
@@ -53,11 +127,23 @@ exports.GetNextGame = function () {
                 cur["ROOM"] === ROOM_NAME
               ) {
                 //found next match
-                console.log("found!");
+                console.log("found next game!");
                 //set intended teams to be playing
                 scheduleLeftTeamName = cur["TM_A"];
                 scheduleRightTeamName = cur["TM_B"];
 
+                let leftLogo = TEAM_LOGO_MAP[cur["TM_A"]];
+                let rightLogo = TEAM_LOGO_MAP[cur["TM_B"]];
+
+                //set logos
+                $(".preGame .preview .images .left.team img").attr(
+                  "src",
+                  leftLogo
+                );
+                $(".preGame .preview .images .right.team img").attr(
+                  "src",
+                  rightLogo
+                );
                 break;
               }
             }
@@ -186,7 +272,8 @@ exports.sheetUpdater = function (TM_A, TM_A_SCR, TM_B, TM_B_SCR, write) {
                       cur["TM_A"].toUpperCase() === TM_A.toUpperCase() &&
                       cur["TM_B"].toUpperCase() === TM_B.toUpperCase() &&
                       cur["TM_A_SCR"] === "" &&
-                      cur["TM_B_SCR"] === ""
+                      cur["TM_B_SCR"] === "" &&
+                      cur["ROOM"] === ROOM_NAME
                     ) {
                       //found and teams in correct format
                       //send row to cell writer
@@ -197,7 +284,8 @@ exports.sheetUpdater = function (TM_A, TM_A_SCR, TM_B, TM_B_SCR, write) {
                       cur["TM_A"].toUpperCase() === TM_B.toUpperCase() &&
                       cur["TM_B"].toUpperCase() === TM_A.toUpperCase() &&
                       cur["TM_A_SCR"] === "" &&
-                      cur["TM_B_SCR"] === ""
+                      cur["TM_B_SCR"] === "" &&
+                      cur["ROOM"] === ROOM_NAME
                     ) {
                       //found and teams in backwards format
                       //send row to cell writer

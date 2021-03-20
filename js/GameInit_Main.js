@@ -1,6 +1,7 @@
 function GameInit(d) {
-  //Determine who should be playing next game
-  //sheetUpdater.GetNextGame();
+  //move pregame away
+  $(".pregame ").css({ transform: "translateY(0px)" });
+
   console.log("game init");
   //Clear Variables
   possessionTime = [0, 0];
