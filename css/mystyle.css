@@ -1405,6 +1405,7 @@ input {
   display: flex;
   flex: 1;
   flex-direction: row;
+  font-size: 25px;
 }
 .preGame .preview .charts .item .cont {
   display: flex;
