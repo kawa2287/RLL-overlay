@@ -1,5 +1,156 @@
 //require("dotenv").config();
 
+function GetStats(teamA, teamB) {
+  const { GoogleSpreadsheet } = require("google-spreadsheet");
+  const GOOGLE_SERVICE_ACCOUNT_EMAIL = ENV_MAP["GOOGLE_SERVICE_ACCOUNT_EMAIL"];
+  const GOOGLE_PRIVATE_KEY = ENV_MAP["GOOGLE_PRIVATE_KEY"];
+  const GOOGLE_SHEETS_SHEET_ID = ENV_MAP["GOOGLE_SHEETS_SHEET_ID"];
+  const ROOM_NAME = ENV_MAP["ROOM_NAME"];
+
+  const privateKey = GOOGLE_PRIVATE_KEY;
+  const sheetId = GOOGLE_SHEETS_SHEET_ID;
+  const email = GOOGLE_SERVICE_ACCOUNT_EMAIL;
+  if (!ROOM_NAME) {
+    // spreadsheet key is the long id in the sheets URL
+    console.log("no ROOM_NAME env var set");
+    return -1;
+  }
+
+  let stats = [];
+  let lgStats = {};
+
+  //try connection to sheet and determine next game of host room
+  try {
+    const doc = new GoogleSpreadsheet(sheetId);
+    doc
+      .useServiceAccountAuth({
+        client_email: email,
+        private_key: privateKey.replace(/\\n/g, "\n"),
+      })
+      .then(() => {
+        doc.loadInfo().then(async () => {
+          //Get Schedule
+          const sheet = doc.sheetsByTitle["pregame"];
+
+          //Get Team Stats
+          sheet.getRows().then((rows) => {
+            // find team
+            const len = rows.length;
+
+            // loop through rows
+            for (let x = 0; x < len; x++) {
+              let cur = rows[x];
+
+              //check if team name matches
+
+              if (
+                cur["TM"] === teamA ||
+                cur["TM"] === teamB ||
+                cur["TM"] === "LEAGUE MAX"
+              ) {
+                //set stats
+                if (cur["TM"] === teamA || cur["TM"] === teamB) {
+                  //set team stats
+                  let side = cur["TM"] === teamA ? ".left" : ".right";
+                  let colors = TEAM_COLOR_MAP[cur["TM"]];
+                  stats.push({
+                    name: cur["TM"],
+                    score: cur["AVG SCORE"],
+                    goals: cur["AVG GOALS"],
+                    saves: cur["AVG SAVES"],
+                    shots: cur["AVG SHOTS"],
+                    touches: cur["AVG TOUCHES"],
+                    airhit: cur["AVG AIR HITS"],
+                    demos: cur["AVG DEMOS"],
+                    useful: cur["AVG USEFUL HITS"],
+                    side: side,
+                    colors: colors,
+                  });
+                } else {
+                  //set league maxes
+                  lgStats = {
+                    name: cur["TM"],
+                    score: cur["AVG SCORE"],
+                    goals: cur["AVG GOALS"],
+                    saves: cur["AVG SAVES"],
+                    shots: cur["AVG SHOTS"],
+                    touches: cur["AVG TOUCHES"],
+                    airhit: cur["AVG AIR HITS"],
+                    demos: cur["AVG DEMOS"],
+                    useful: cur["AVG USEFUL HITS"],
+                  };
+                }
+              }
+            }
+            //set stats
+            for (var i = 0; i < 2; i++) {
+              //stats
+              UpdateStat(stats, lgStats, "score", i);
+              UpdateStat(stats, lgStats, "goals", i);
+              UpdateStat(stats, lgStats, "saves", i);
+              UpdateStat(stats, lgStats, "shots", i);
+              UpdateStat(stats, lgStats, "airhit", i);
+              UpdateStat(stats, lgStats, "demos", i);
+              UpdateStat(stats, lgStats, "useful", i);
+              UpdateStat(stats, lgStats, "chance", i);
+            }
+            console.log("stat set");
+          });
+        });
+      });
+  } catch (e) {
+    console.error("Error updating google sheet", e);
+    return -1;
+  }
+}
+
+function UpdateStat(stats, lgStats, stat, i) {
+  //determine side
+  let side = stats[i].side;
+
+  //determine tm
+  let tm = i === 0 ? 0 : 1;
+  let opp = i === 0 ? 1 : 0;
+
+  //determine if win chance toggle
+  let wChance = stat === "chance" ? true : false;
+  let val = 0;
+  let w = 0;
+  let visibility;
+
+  if (wChance) {
+    val =
+      (
+        (100 * parseFloat(stats[tm]["score"])) /
+        (parseFloat(stats[tm]["score"]) + parseFloat(stats[opp]["score"]))
+      ).toFixed(1) + "%";
+    w = val;
+    visibility =
+      stats[tm]["score"] > stats[opp]["score"] ? "visible" : "hidden";
+  } else {
+    val = stats[tm][stat];
+    let tot = parseFloat(lgStats[stat]);
+    w = ((100 * stats[tm][stat]) / tot).toFixed(2) + "%";
+    visibility = stats[tm][stat] > stats[opp][stat] ? "visible" : "hidden";
+  }
+
+  //update value
+  $(".preGame .preview .charts .item." + stat + " .value" + side).text(val);
+
+  //update bar width and color
+  $(".preGame .preview .charts .item." + stat + " .cont" + side + " .bar").css({
+    width: w,
+    background: stats[i].colors.primary,
+  });
+
+  //check if stat greater than opponent
+  $(".preGame .preview .charts .item." + stat + " .favor" + side + " .fas").css(
+    {
+      visibility: visibility,
+    }
+  );
+}
+
 exports.GetStandings = function () {
   const { GoogleSpreadsheet } = require("google-spreadsheet");
   const GOOGLE_SERVICE_ACCOUNT_EMAIL = ENV_MAP["GOOGLE_SERVICE_ACCOUNT_EMAIL"];
@@ -27,14 +178,14 @@ exports.GetStandings = function () {
       .then(() => {
         doc.loadInfo().then(async () => {
           //Get Schedule
-          const sh = doc.sheetsByTitle["Standings"];
+          const sh = doc.sheetsByTitle["Divisions"];
 
-          sh.loadCells("A1:W11").then(() => {
+          sh.loadCells("A1:BB14").then(() => {
             //start populating standings
 
             for (let i = 1; i <= 8; i++) {
               //logo
-              let logo = TEAM_LOGO_MAP[sh.getCellByA1("J" + (i + 1)).value];
+              let logo = TEAM_LOGO_MAP[sh.getCellByA1("K" + (i + 4)).value];
               $(".preGame .standings .teams .t." + i + " .logo img").attr(
                 "src",
                 logo
@@ -42,27 +193,32 @@ exports.GetStandings = function () {
 
               //Dong
               $(".preGame .standings .teams .t." + i + " .dong").text(
-                sh.getCellByA1("K" + (i + 1)).value
+                sh.getCellByA1("L" + (i + 4)).value
+              );
+
+              //Match Wins
+              $(".preGame .standings .teams .t." + i + " .matchwins").text(
+                sh.getCellByA1("M" + (i + 4)).value
               );
 
               //wins
               $(".preGame .standings .teams .t." + i + " .w.record").text(
-                sh.getCellByA1("L" + (i + 1)).value
+                sh.getCellByA1("N" + (i + 4)).value
               );
 
               //losses
               $(".preGame .standings .teams .t." + i + " .l.record").text(
-                sh.getCellByA1("M" + (i + 1)).value
+                sh.getCellByA1("O" + (i + 4)).value
               );
 
               //+/-
               $(".preGame .standings .teams .t." + i + " .diff.val").text(
-                sh.getCellByA1("N" + (i + 1)).value
+                sh.getCellByA1("P" + (i + 4)).value
               );
 
               //GF
               $(".preGame .standings .teams .t." + i + " .gf.val").text(
-                sh.getCellByA1("O" + (i + 1)).value
+                sh.getCellByA1("Q" + (i + 4)).value
               );
             }
           });
@@ -144,6 +300,9 @@ exports.GetNextGame = function () {
                   "src",
                   rightLogo
                 );
+
+                //Set stats on pregame page
+                GetStats(cur["TM_A"], cur["TM_B"]);
                 break;
               }
             }
