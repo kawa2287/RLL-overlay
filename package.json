@@ -4,6 +4,7 @@
   "description": "Websocket Relay. Very lightweight",
   "main": "ws-relay.js",
   "scripts": {
+    "start": "npm run build && npm run relay",
     "relay": "node ws-relay.js",
     "build": "browserify js/utils/sheetUpdater.js -o sheetUpdater.js -s sheetUpdater",
     "sass": "sass --watch sass/lowerthird.scss css/lowerthird.css"
@@ -17,5 +18,9 @@
     "google-spreadsheet": "3.1.15",
     "prompt": "^1.0.0",
     "ws": "^7.2.1"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "sass": "^1.32.8"
   }
 }
