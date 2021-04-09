@@ -185,7 +185,7 @@ exports.GetStandings = function () {
 
             for (let i = 1; i <= 8; i++) {
               //logo
-              let logo = TEAM_LOGO_MAP[sh.getCellByA1("K" + (i + 4)).value];
+              let logo = TEAM_LOGO_MAP[sh.getCellByA1("AI" + (i + 4)).value];
               $(".preGame .standings .teams .t." + i + " .logo img").attr(
                 "src",
                 logo
@@ -193,32 +193,32 @@ exports.GetStandings = function () {
 
               //Dong
               $(".preGame .standings .teams .t." + i + " .dong").text(
-                sh.getCellByA1("L" + (i + 4)).value
+                sh.getCellByA1("AJ" + (i + 4)).value
               );
 
               //Match Wins
               $(".preGame .standings .teams .t." + i + " .matchwins").text(
-                sh.getCellByA1("M" + (i + 4)).value
+                sh.getCellByA1("AK" + (i + 4)).value
               );
 
               //wins
               $(".preGame .standings .teams .t." + i + " .w.record").text(
-                sh.getCellByA1("N" + (i + 4)).value
+                sh.getCellByA1("AL" + (i + 4)).value
               );
 
               //losses
               $(".preGame .standings .teams .t." + i + " .l.record").text(
-                sh.getCellByA1("O" + (i + 4)).value
+                sh.getCellByA1("AM" + (i + 4)).value
               );
 
               //+/-
               $(".preGame .standings .teams .t." + i + " .diff.val").text(
-                sh.getCellByA1("P" + (i + 4)).value
+                sh.getCellByA1("AN" + (i + 4)).value
               );
 
               //GF
               $(".preGame .standings .teams .t." + i + " .gf.val").text(
-                sh.getCellByA1("Q" + (i + 4)).value
+                sh.getCellByA1("AO" + (i + 4)).value
               );
             }
           });
