@@ -350,9 +350,9 @@ function GetTeam(team) {
     teamsCounter[key] = 0;
   }
 
-  /*  TODO - determine team for 2's with a sub
+  // Potential new team finder
   //loop through players
-  /*for (var i = 0; i < team.length; i++) {
+  for (var i = 0; i < team.length; i++) {
     //check if schedule team names are initiated
     if (scheduleLeftTeamName !== "" && scheduleRightTeamName !== "") {
       //filter for current game in schedule
@@ -366,11 +366,18 @@ function GetTeam(team) {
       }
     } else {
       //just do it normally
-      teams[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
+      try {
+        //player found to be on a team.  Add a count to that team.
+        teamsCounter[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
+      } catch {
+        //player not found to be on a team.  Add a count to the RLL default
+        teamsCounter["RLL"] += 1;
+      }
     }
-  }*/
+  }
 
   //Loop through the team array and add a count
+  /*
   for (var i = 0; i < team.length; i++) {
     try {
       //player found to be on a team.  Add a count to that team.
@@ -380,6 +387,7 @@ function GetTeam(team) {
       teamsCounter["RLL"] += 1;
     }
   }
+  */
 
   //Push counters to sortable array
   var sortList = [];

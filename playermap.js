@@ -87,12 +87,12 @@ const TEAM_LOGO_MAP = {
 const TEAM_LEAGUE_MAP = {
   RLL: 1,
   KFC: 1,
-  "LONG JOHN": 1,
-  "PANDA EX": 2,
-  MCDONALDS: 2,
+  "LONG JOHN": 2,
+  "PANDA EX": 1,
+  MCDONALDS: 1,
   "TACO BELL": 2,
   "FAMOUS D": 2,
-  HOOTERS: 1,
+  HOOTERS: 2,
   "DAIRY QUEEN": 1,
 };
 
