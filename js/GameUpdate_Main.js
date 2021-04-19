@@ -366,7 +366,7 @@ function GetTeam(team) {
   /*
   for (var i = 0; i < team.length; i++) {
     try {
-      //player found to be on a team.  Add a count to that team.
+      //player found to be on agit  team.  Add a count to that team.
       teamsCounter[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
     } catch {
       //player not found to be on a team.  Add a count to the RLL default
