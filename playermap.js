@@ -22,53 +22,6 @@ const PLAYER_TEAM_MAP = {
   NKSSOCCER15: "TACO BELL",
   "ADES 35": "FAMOUS D",
   TFEEJ: "PANDA EX",
-
-  ARMSTRONG: "FAMOUS D",
-  STORM: "FAMOUS D",
-  CHIPPER: "FAMOUS D",
-  COUGAR: "FAMOUS D",
-  FURY: "FAMOUS D",
-  CAVEMAN: "FAMOUS D",
-  PONCHO: "FAMOUS D",
-  SHEPARD: "FAMOUS D",
-  DUDE: "FAMOUS D",
-  CENTICE: "FAMOUS D",
-  MAVERICK: "FAMOUS D",
-  MIDDY: "FAMOUS D",
-  OUTLAW: "FAMOUS D",
-  ROUNDHOUSE: "FAMOUS D",
-  SUNDOWN: "FAMOUS D",
-  "C-BLOCK": "FAMOUS D",
-  SULTAN: "FAMOUS D",
-  CASPER: "FAMOUS D",
-  ICEMAN: "FAMOUS D",
-  SQUALL: "FAMOUS D",
-  BOOMER: "FAMOUS D",
-  JUNKER: "FAMOUS D",
-  SWABBIE: "FAMOUS D",
-  JESTER: "FAMOUS D",
-  HOLLYWOOD: "FAMOUS D",
-  ARMSTRONG: "FAMOUS D",
-  TUSK: "FAMOUS D",
-  FOAMER: "FAMOUS D",
-  MYRTLE: "FAMOUS D",
-  MARLEY: "FAMOUS D",
-  RAINMAKER: "FAMOUS D",
-  SCOUT: "FAMOUS D",
-  BANDIT: "FAMOUS D",
-  GERWIN: "FAMOUS D",
-  TEX: "FAMOUS D",
-  YURI: "FAMOUS D",
-  MIDDY: "FAMOUS D",
-  WOLFMAN: "FAMOUS D",
-  MOUNTAIN: "FAMOUS D",
-  SAMARA: "FAMOUS D",
-  STICKS: "FAMOUS D",
-  KHAN: "FAMOUS D",
-  SALTIE: "FAMOUS D",
-  SABERTOOTH: "FAMOUS D",
-  STINGER: "FAMOUS D",
-  OUTLAW: "FAMOUS D",
 };
 
 const TEAM_LOGO_MAP = {
@@ -87,8 +40,8 @@ const TEAM_LOGO_MAP = {
 const TEAM_LEAGUE_MAP = {
   RLL: 1,
   KFC: 1,
-  "LONG JOHN": 2,
-  "PANDA EX": 1,
+  JAMAICA: 2,
+  MACEDONIA: 1,
   MCDONALDS: 1,
   "TACO BELL": 2,
   "FAMOUS D": 2,
@@ -127,14 +80,12 @@ const AVG_SCORE_MAP = {
 
 const TEAM_TRANSITION_MAP = {
   RLL: "assets/RLL_Logo_LARGE.png",
-  "TACO BELL": "assets/svg/LOGO_TACO.svg",
-  KFC: "assets/svg/LOGO_KFC.svg",
-  "LONG JOHN": "assets/svg/LOGO_SILVER.svg",
-  "PANDA EX": "assets/svg/LOGO_PANDA.svg",
-  MCDONALDS: "assets/svg/LOGO_MCDONALDS.svg",
-  "FAMOUS D": "assets/svg/LOGO_FAMOUS.svg",
-  HOOTERS: "assets/svg/LOGO_HOOTERS.svg",
-  "DAIRY QUEEN": "assets/svg/LOGO_DAIRY.svg",
+  JAMAICA: "assets/svg/LOGO_TACO.svg",
+  MACEDONIA: "assets/svg/LOGO_KFC.svg",
+  "PAPUA NEW GUINEA": "assets/svg/LOGO_SILVER.svg",
+  MONGOLIA: "assets/svg/LOGO_PANDA.svg",
+  URUGUAY: "assets/svg/LOGO_MCDONALDS.svg",
+  DROC: "assets/svg/LOGO_FAMOUS.svg",
 };
 
 const TEAM_COLOR_MAP = {
@@ -144,53 +95,40 @@ const TEAM_COLOR_MAP = {
     shadow: "white",
     tertiary: "black",
   },
-  "TACO BELL": {
+  JAMAICA: {
     primary: "#3d1147",
     secondary: "#f8d39d",
     shadow: "BLACK",
     tertiary: "black",
   },
-  "FAMOUS D": {
+  MACEDONIA: {
     primary: "#a6598f",
     secondary: "#fce5f5",
     shadow: "BLACK",
     tertiary: "black",
   },
-  "LONG JOHN": {
+  "PAPUA NEW GUINEA": {
     primary: "#5b5b5b",
     secondary: "#f2e2d2",
     shadow: "black",
     tertiary: "black",
   },
-  "PANDA EX": {
+  MONGOLIA: {
     primary: "#c02827",
     secondary: "WHITE",
     shadow: "#black",
     tertiary: "black",
   },
-  MCDONALDS: {
+  URUGUAY: {
     primary: "#961718",
     secondary: "ffc700",
     shadow: "black",
     tertiary: "black",
   },
-  KFC: {
+  DROC: {
     primary: "#e6e6e6",
     secondary: "#0c0d1d",
     shadow: "BLACK",
-    tertiary: "black",
-  },
-
-  HOOTERS: {
-    primary: "#ff571f",
-    secondary: "ffffff",
-    shadow: "black",
-    tertiary: "black",
-  },
-  "DAIRY QUEEN": {
-    primary: "#956e50",
-    secondary: "fbf4e1",
-    shadow: "black",
     tertiary: "black",
   },
 };

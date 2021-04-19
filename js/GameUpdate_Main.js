@@ -353,26 +353,12 @@ function GetTeam(team) {
   // Potential new team finder
   //loop through players
   for (var i = 0; i < team.length; i++) {
-    //check if schedule team names are initiated
-    if (scheduleLeftTeamName !== "" && scheduleRightTeamName !== "") {
-      //filter for current game in schedule
-      let tm = PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()];
-
-      console.log(scheduleRightTeamName);
-      console.log(scheduleLeftTeamName);
-
-      if (tm === scheduleLeftTeamName || tm === scheduleRightTeamName) {
-        teams[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
-      }
-    } else {
-      //just do it normally
-      try {
-        //player found to be on a team.  Add a count to that team.
-        teamsCounter[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
-      } catch {
-        //player not found to be on a team.  Add a count to the RLL default
-        teamsCounter["RLL"] += 1;
-      }
+    try {
+      //player found to be on a team.  Add a count to that team.
+      teamsCounter[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
+    } catch {
+      //player not found to be on a team.  Add a count to the RLL default
+      teamsCounter["RLL"] += 1;
     }
   }
 
