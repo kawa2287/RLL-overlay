@@ -28,9 +28,9 @@ const PLAYER_TEAM_MAP = {
   CHIPPER: "FAMOUS D",
   COUGAR: "FAMOUS D",
   FURY: "FAMOUS D",
-  CAVEMAN: "KFC",
+  CAVEMAN: "FAMOUS D",
   PONCHO: "FAMOUS D",
-  SHEPARD: "KFC",
+  SHEPARD: "FAMOUS D",
   DUDE: "FAMOUS D",
   CENTICE: "FAMOUS D",
   MAVERICK: "FAMOUS D",
@@ -86,13 +86,13 @@ const TEAM_LOGO_MAP = {
 
 const TEAM_LEAGUE_MAP = {
   RLL: 1,
-  KFC: 1,
-  "LONG JOHN": 2,
-  "PANDA EX": 1,
+  KFC: 2,
+  "LONG JOHN": 1,
+  "PANDA EX": 2,
   MCDONALDS: 1,
   "TACO BELL": 2,
   "FAMOUS D": 2,
-  HOOTERS: 2,
+  HOOTERS: 1,
   "DAIRY QUEEN": 1,
 };
 
