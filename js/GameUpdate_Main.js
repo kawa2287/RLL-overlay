@@ -97,7 +97,6 @@ function GameUpdateMain(d) {
 
   //Update AvgBall Speed and Possession Time
   if (previousData === undefined) {
-    console.log(gTime);
   } else if (gTime !== previousData.game.time) {
     //Set AvgBall Speed
     //------------------------
@@ -126,6 +125,7 @@ function GameUpdateMain(d) {
 
     //Set Possession Stats
     //------------------------
+    /*
     CheckPossession(gTime);
     let ltm = Math.round((100 * possessionTime[0]) / (300 - gTime));
     let rtm = Math.round((100 * possessionTime[1]) / (300 - gTime));
@@ -133,11 +133,13 @@ function GameUpdateMain(d) {
       (100 * (300 - gTime - (possessionTime[0] + possessionTime[1]))) /
         (300 - gTime)
     );
+    */
 
     //Get Colors
     let cleft = TEAM_COLOR_MAP[leftTeamName];
     let cright = TEAM_COLOR_MAP[rightTeamName];
 
+    /*
     //Set Bar Widths
     $("#tmPossession .bar.ltm").css({
       flex: ltm.toString(),
@@ -146,6 +148,25 @@ function GameUpdateMain(d) {
     $("#tmPossession .bar.none").css({ flex: none.toString() });
     $("#tmPossession .bar.rtm").css({
       flex: rtm.toString(),
+      background: cright.primary,
+    });
+    */
+
+    //Set Attack Zone Stats
+    //------------------------
+    CheckBallZone(d.game.ballY);
+    let totAtk = attackZoneTime[0] + attackZoneTime[1];
+    let ltmAtk = Math.round((100 * attackZoneTime[0]) / totAtk);
+    let rtmAtk = Math.round((100 * attackZoneTime[1]) / totAtk);
+
+    //Set Bar Widths
+    $("#tmPossession .bar.ltm").css({
+      flex: ltmAtk.toString(),
+      background: cleft.primary,
+    });
+    //$("#tmPossession .bar.none").css({ flex: none.toString() });
+    $("#tmPossession .bar.rtm").css({
+      flex: rtmAtk.toString(),
       background: cright.primary,
     });
 
@@ -157,8 +178,8 @@ function GameUpdateMain(d) {
     );
 
     //Set percentages
-    $("#tmPossession .top .right").text(ltm + "%");
-    $("#tmPossession .bot .left").text(rtm + "%");
+    $("#tmPossession .top .right").text(ltmAtk + "%");
+    $("#tmPossession .bot .left").text(rtmAtk + "%");
   }
 
   //Shot map shots
@@ -178,7 +199,7 @@ function GameUpdateMain(d) {
     slideStatTile("#avgBallSpeed");
   }
   if (ft === 180 || ft === 60) {
-    showLowerThird("TEAM BALL POSSESSION");
+    showLowerThird("TIME IN ATTACK ZONE");
     slideStatTile("#tmPossession");
   }
 
@@ -354,15 +375,17 @@ function GetTeam(team) {
   //loop through players
   for (var i = 0; i < team.length; i++) {
     //check if schedule team names are initiated
-    if (scheduleLeftTeamName !== "" && scheduleRightTeamName !== "") {
+    if (
+      scheduleLeftTeamName !== "" &&
+      scheduleRightTeamName !== "" &&
+      scheduleLeftTeamName !== undefined &&
+      scheduleRightTeamName !== undefined
+    ) {
       //filter for current game in schedule
       let tm = PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()];
 
-      console.log(scheduleRightTeamName);
-      console.log(scheduleLeftTeamName);
-
       if (tm === scheduleLeftTeamName || tm === scheduleRightTeamName) {
-        teams[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
+        teamsCounter[PLAYER_TEAM_MAP[team[i]["name"].toUpperCase()]] += 1;
       }
     } else {
       //just do it normally
